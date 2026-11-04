@@ -1,0 +1,142 @@
+{
+  "id": "sf-governed-og-starter",
+  "version": "0.1.0",
+  "status": "internal_design_prototype",
+  "evidence": "synthetic_only",
+  "namespace": "urn:example:sf-governed-og:",
+  "concepts": [
+    {
+      "id": "Account",
+      "definition": "A business party in a commercial relationship."
+    },
+    {
+      "id": "OperatorRole",
+      "definition": "A time-bounded role in which an account operates an asset."
+    },
+    {
+      "id": "Asset",
+      "definition": "An identified physical operational resource; ownership is distinct from operation."
+    },
+    {
+      "id": "Well",
+      "definition": "A well asset with a namespaced identifier; a specialization of Asset."
+    },
+    {
+      "id": "ProductionObservation",
+      "definition": "A measured quantity for a well, period, commodity, unit, and basis."
+    },
+    {
+      "id": "Contract",
+      "definition": "An agreement among counterparties covering specified obligations and assets."
+    },
+    {
+      "id": "RevenueEntry",
+      "definition": "A monetary entry with contract, account, period, currency, and accounting basis."
+    }
+  ],
+  "relationships": [
+    {
+      "source": "Account",
+      "predicate": "hasRole",
+      "target": "OperatorRole"
+    },
+    {
+      "source": "OperatorRole",
+      "predicate": "operates",
+      "target": "Asset"
+    },
+    {
+      "source": "Well",
+      "predicate": "subClassOf",
+      "target": "Asset"
+    },
+    {
+      "source": "ProductionObservation",
+      "predicate": "measures",
+      "target": "Well"
+    },
+    {
+      "source": "Contract",
+      "predicate": "covers",
+      "target": "Asset"
+    },
+    {
+      "source": "Contract",
+      "predicate": "hasCounterparty",
+      "target": "Account"
+    },
+    {
+      "source": "RevenueEntry",
+      "predicate": "underContract",
+      "target": "Contract"
+    }
+  ],
+  "metrics": [
+    {
+      "id": "booked_revenue",
+      "label": "Contract bookings",
+      "version": "0.1.0",
+      "definition": "Synthetic demonstration definition: executed contract consideration newly booked during the period; excludes cancellations, taxes, and unexercised options. Not recognized revenue.",
+      "status": "approved",
+      "approval": {
+        "kind": "synthetic_fixture",
+        "steward": "demo-finance-steward",
+        "reference": "fixture:approval:001"
+      },
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "grain": [
+        "operator_id",
+        "contract_id",
+        "period",
+        "currency"
+      ],
+      "aggregation": "sum",
+      "unit": "currency_minor_units",
+      "source_binding": "fixture:crm:contract_bookings",
+      "lineage": [
+        "fixture:contract:001",
+        "fixture:crm:contract_bookings"
+      ],
+      "action": {
+        "operation_id": "read_contract_bookings",
+        "side_effect": "read",
+        "required_scope": "finance:read",
+        "implementation": "local_fixture_only"
+      }
+    },
+    {
+      "id": "recognized_revenue",
+      "label": "Recognized revenue",
+      "version": "0.1.0",
+      "definition": "Synthetic demonstration definition: revenue recognized for satisfied performance obligations during the accounting period, net of reversals.",
+      "status": "approved",
+      "approval": {
+        "kind": "synthetic_fixture",
+        "steward": "demo-finance-steward",
+        "reference": "fixture:approval:001"
+      },
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-12-31",
+      "grain": [
+        "operator_id",
+        "contract_id",
+        "period",
+        "currency"
+      ],
+      "aggregation": "sum",
+      "unit": "currency_minor_units",
+      "source_binding": "fixture:erp:revenue_ledger",
+      "lineage": [
+        "fixture:contract:001",
+        "fixture:erp:revenue_ledger"
+      ],
+      "action": {
+        "operation_id": "read_recognized_revenue",
+        "side_effect": "read",
+        "required_scope": "finance:read",
+        "implementation": "local_fixture_only"
+      }
+    }
+  ]
+}

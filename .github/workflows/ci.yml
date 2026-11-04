@@ -1,0 +1,26 @@
+name: Verify prototype
+
+on:
+  push:
+    branches: [main, 'docs/**', 'feat/**', 'fix/**']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify behavior, example, and documentation links
+        run: python scripts/verify.py
+      - name: Check whitespace
+        run: git show --format= --check HEAD
