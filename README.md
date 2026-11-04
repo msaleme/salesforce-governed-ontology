@@ -24,13 +24,10 @@ Requires Python 3.10 or newer. No dependencies, credentials, Salesforce org, net
 ```sh
 git clone https://github.com/msaleme/salesforce-governed-ontology.git
 cd salesforce-governed-ontology
-git switch docs/professional-reference-prototype
 python3 demo.py
 python3 -m unittest -v test_demo.py
 python3 scripts/verify.py
 ```
-
-While the initial pull request is open, check out `docs/professional-reference-prototype` after cloning; the bootstrap `main` branch does not yet contain the prototype.
 
 The demo returns an ambiguous-metric clarification, two distinct read plans, a denied fixture request, and a synthetic reconciliation. Compare its output with [the checked-in example](examples/demo-output.json).
 
