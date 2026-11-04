@@ -1,6 +1,6 @@
 # Contributing
 
-This private design prototype uses branches and pull requests. Keep changes focused and preserve the distinction between executable local behavior and proposed platform functionality.
+This design prototype uses branches and pull requests. Keep changes focused and preserve the distinction between executable local behavior and proposed platform functionality.
 
 ## Development workflow
 

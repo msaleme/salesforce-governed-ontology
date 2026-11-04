@@ -30,7 +30,7 @@ python3 -m unittest -v test_demo.py
 python3 scripts/verify.py
 ```
 
-Repository access is required to clone this private project. While the initial pull request is open, check out `docs/professional-reference-prototype` after cloning; the bootstrap `main` branch does not yet contain the prototype.
+While the initial pull request is open, check out `docs/professional-reference-prototype` after cloning; the bootstrap `main` branch does not yet contain the prototype.
 
 The demo returns an ambiguous-metric clarification, two distinct read plans, a denied fixture request, and a synthetic reconciliation. Compare its output with [the checked-in example](examples/demo-output.json).
 

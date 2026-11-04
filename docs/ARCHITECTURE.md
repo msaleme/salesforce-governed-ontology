@@ -97,5 +97,5 @@ Future writes additionally require explicit action authority, bounded input, pre
 - Salesforce-centered governance is the design objective specified by Michael.
 - Original model, no NVIDIA dependency or copied implementation.
 - Synthetic Oil & Gas revenue reconciliation is the first bounded scenario.
-- Private repository packaging authorized on 2026-11-04. No public publication, external outreach, deployment, scheduled job, or org connection.
+- Repository packaging and public GitHub visibility authorized on 2026-11-04. No external outreach, deployment, scheduled job, or org connection.
 - Open: approved internal development location and org; existing semantic capability overlap; actual Informatica edition/API access; MuleSoft API contract; domain and finance approvers. These affect integration, not this local starter.

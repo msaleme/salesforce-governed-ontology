@@ -2,7 +2,8 @@
 
 ## Unreleased
 
-- Package the original local prototype as a standalone private repository.
+- Package the original local prototype as a standalone repository.
+- Public repository visibility authorized on 2026-11-04; no open-source license assigned.
 - Add onboarding, data model/API reference, walkthrough, validation boundaries, roadmap, contribution guidance, and security/license status.
 - Add deterministic example verification, local documentation link checks, and Python CI.
 - Preserve original synthetic resolver behavior and 15 behavioral controls.

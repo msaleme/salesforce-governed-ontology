@@ -1,6 +1,6 @@
 # License and ownership status
 
-This private repository is a working design and synthetic reference prototype. No open-source license is granted by this repository. Access to the repository does not itself grant redistribution or sublicensing rights.
+This public repository is a working design and synthetic reference prototype. Public visibility is not an open-source license: no open-source license is granted by this repository. Access to the repository does not itself grant redistribution or sublicensing rights.
 
 Corporate IP ownership, approved internal hosting, and any future distribution license remain to be determined through the appropriate process. This document does not assign ownership to Salesforce, Michael Saleme, or any other party.
 
