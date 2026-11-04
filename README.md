@@ -1,5 +1,9 @@
 # Salesforce-Governed Business Ontology
 
+[![Verify prototype](https://github.com/msaleme/salesforce-governed-ontology/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/msaleme/salesforce-governed-ontology/actions/workflows/ci.yml)
+
+**[Take the five-minute tour](docs/DEMO-GUIDE.md) · [Explore the ontology](docs/ONTOLOGY-MAP.md) · [Read the design decisions](docs/DESIGN-DECISIONS.md)**
+
 **Business meaning, governed in Salesforce, connected to enterprise evidence and permitted action.**
 
 A design proposal and runnable, synthetic Oil & Gas reference prototype for a Salesforce-centered semantic control plane. It separates approved business definitions from source metadata, API bindings, and execution authority.
@@ -24,12 +28,28 @@ Requires Python 3.10 or newer. No dependencies, credentials, Salesforce org, net
 ```sh
 git clone https://github.com/msaleme/salesforce-governed-ontology.git
 cd salesforce-governed-ontology
+python3 explore.py tour
+python3 explore.py validate
 python3 demo.py
-python3 -m unittest -v test_demo.py
 python3 scripts/verify.py
 ```
 
 The demo returns an ambiguous-metric clarification, two distinct read plans, a denied fixture request, and a synthetic reconciliation. Compare its output with [the checked-in example](examples/demo-output.json).
+
+## See the decisions, not just the diagram
+
+```text
+Which revenue?           → clarification_required
+Approved definition      → read_plan_only
+Missing fixture scope    → denied
+Expired definition       → definition_unavailable
+Wrong metric/API binding → binding_mismatch
+No explanation bridge    → difference_only
+Matching fixture bridge  → explained_by_fixture_bridge
+Different currencies     → incompatible_dimensions
+```
+
+Run one case with `python3 explore.py scenario binding-mismatch`, or get machine-readable results with `python3 explore.py tour --json`. All eight scenarios are local, synthetic, and repeatable.
 
 ## Demonstration
 
@@ -43,6 +63,9 @@ Amounts are integer minor units. The demo's default evaluation date is deliberat
 
 | Guide | Purpose |
 | --- | --- |
+| [Five-minute demo](docs/DEMO-GUIDE.md) | Presentation script, runnable scenarios, and candid FAQ |
+| [Ontology map](docs/ONTOLOGY-MAP.md) | Registry-derived concept graph and metric bindings |
+| [Design decisions](docs/DESIGN-DECISIONS.md) | Trade-offs, rationale, and consequences |
 | [Architecture](docs/ARCHITECTURE.md) | Components, trust boundaries, lifecycle, and proposed adapter contracts |
 | [Data model and API](docs/DATA-MODEL.md) | Vocabulary, metric fields, function contracts, and result statuses |
 | [Walkthrough](docs/WALKTHROUGH.md) | Reproduce the scenario and interpret the evidence |
@@ -58,9 +81,11 @@ Amounts are integer minor units. The demo's default evaluation date is deliberat
 ```text
 ontology.json             Synthetic vocabulary, metric definitions, and bindings
 demo.py                   Offline resolver and reconciliation functions
-test_demo.py              Behavioral controls using unittest
+explore.py                Guided tour, individual scenarios, and validation CLI
+validation.py             Structural checks and metric/source/operation contracts
+test_*.py                 Behavioral and malformed-registry regression controls
 examples/demo-output.json Deterministic reference output
-scripts/verify.py         Tests, output parity, and local Markdown link checks
+scripts/verify.py         Tests, registry/tour checks, diagram parity, and doc links
 docs/                     Architecture, contracts, review packet, and roadmap
 .github/workflows/ci.yml  Python verification on pull requests and branch pushes
 ```

@@ -1,5 +1,13 @@
 # Changelog
 
+## Guided experience and binding integrity - 2026-11-04
+
+- Add an eight-scenario CLI tour and registry validation command.
+- Reject swapped metric/source/operation bindings in the resolver.
+- Add malformed-registry and CLI regression controls.
+- Add a registry-derived ontology map, five-minute demo guide, and design decisions.
+- Verify diagram parity and all discovered tests in CI.
+
 ## Unreleased
 
 - Package the original local prototype as a standalone repository.
