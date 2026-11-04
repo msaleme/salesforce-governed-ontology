@@ -4,7 +4,7 @@ This design prototype uses branches and pull requests. Keep changes focused and 
 
 ## Development workflow
 
-1. Create a branch from the current review base.
+1. Create a branch from the latest `main`.
 2. Edit the model, implementation, or documentation.
 3. For behavior changes, add controls that demonstrate the intended behavior and relevant failure case.
 4. Run `python3 scripts/verify.py` and `git diff --check` from the root.
@@ -15,6 +15,8 @@ No dependency installation is needed. Python 3.10 and 3.12 are the CI matrix; ot
 ## Model changes
 
 Keep semantic IDs stable and distinct from display labels. Document definition changes and their version impact. Preserve fixture-only approval and provenance labels. Do not introduce real customer data, secrets, production identifiers, or claims of standard ontology compatibility without reviewed mappings.
+
+Run `python3 explore.py validate` after changing the registry. New metric types require an explicit binding in `validation.BINDINGS`, a scenario, and tests. Update the graph in `docs/ONTOLOGY-MAP.md` when relationships change; CI detects drift.
 
 If example output intentionally changes, regenerate it with `python3 demo.py > examples/demo-output.json`, inspect the diff, and explain the change in the PR. Do not update the example solely to silence a failure.
 

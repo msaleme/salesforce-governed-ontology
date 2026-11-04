@@ -2,6 +2,7 @@
 import json
 from datetime import date
 from pathlib import Path
+from validation import BINDINGS
 
 ROOT = Path(__file__).resolve().parent
 MODEL = json.loads((ROOT / 'ontology.json').read_text())
@@ -23,6 +24,8 @@ def resolve(metric_id, scopes, as_of='2026-11-03', model=None):
         return {'status': 'definition_unavailable'}
     if metric['action']['side_effect'] != 'read' or metric['action']['operation_id'] not in {'read_contract_bookings', 'read_recognized_revenue'}:
         return {'status': 'unsupported_action'}
+    if (metric['source_binding'], metric['action']['operation_id']) != BINDINGS.get(metric_id):
+        return {'status': 'binding_mismatch'}
     if metric['action']['required_scope'] not in scopes:
         return {'status': 'denied'}
     return {'status': 'read_plan_only', 'evidence': 'synthetic_only', 'concept': metric['id'],

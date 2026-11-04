@@ -3,12 +3,12 @@
 ## Reproducible local checks
 
 ```sh
-python3 -m unittest -v test_demo.py
+python3 -m unittest discover -v
 python3 scripts/verify.py
 git diff --check
 ```
 
-The verification script exits nonzero on a failed unit control, changed example output, or broken repository-relative Markdown file link. CI runs the same script on Python 3.10 and 3.12. CI results must be read from the actual workflow run; this document is not a predeclared passing result.
+The verification script exits nonzero on a failed unit control, invalid registry, unexpected tour outcome, drifted ontology diagram, changed example output, or broken repository-relative Markdown file link. CI runs the same script on Python 3.10 and 3.12. CI results must be read from the actual workflow run; this document is not a predeclared passing result.
 
 ## Existing behavioral controls
 
@@ -37,3 +37,9 @@ These are local behavior tests, not adversarial proof of a vendor authorization 
 No test here establishes live Salesforce record permissions, Informatica API access, MuleSoft identity propagation, Agentforce support, tenant isolation, cache safety, authenticated approvals, deployment readiness, or correct accounting treatment. Model completeness and all malformed-input cases are not exhaustively validated.
 
 The full [sandbox acceptance packet](PLATFORM-FIT-REVIEW.md) remains unexecuted. Preserve that distinction in demos, PRs, and executive summaries.
+
+## Registry and CLI regression controls
+
+[test_validation.py](../test_validation.py) adds mutation checks for malformed collections, duplicate identities/relationships, dangling graph references, missing metric fields, invalid/reversed dates, missing approval/lineage, and swapped metric/source/operation bindings. It also verifies inclusive validity boundaries, deterministic scenario outcomes without model mutation, CLI execution outside the checkout directory, and nonzero exit codes for invalid input.
+
+The generated graph in [the ontology map](ONTOLOGY-MAP.md) must match the registry relationships. The original demo output remains backward-compatible. The CLI is tested through subprocesses, not only direct function calls. The diagram text is checked; rendered GitHub appearance is not part of CI.

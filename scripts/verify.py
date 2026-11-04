@@ -10,12 +10,20 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
-    subprocess.run([sys.executable, '-m', 'unittest', '-v', 'test_demo.py'],
+    subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-v'],
                    cwd=ROOT, check=True)
+    subprocess.run([sys.executable, 'explore.py', 'validate'], cwd=ROOT, check=True)
+    subprocess.run([sys.executable, 'explore.py', 'tour', '--json'], cwd=ROOT, check=True, stdout=subprocess.DEVNULL)
     output = subprocess.check_output([sys.executable, 'demo.py'], cwd=ROOT, text=True)
     expected = json.loads((ROOT / 'examples/demo-output.json').read_text())
     if json.loads(output) != expected:
         raise SystemExit('FAIL: generated demo differs from examples/demo-output.json')
+    model = json.loads((ROOT / 'ontology.json').read_text())
+    graph = 'flowchart LR\n' + '\n'.join(
+        f"  {r['source']} -->|{r['predicate']}| {r['target']}" for r in model['relationships'])
+    diagram = (ROOT / 'docs/ONTOLOGY-MAP.md').read_text()
+    if f'```mermaid\n{graph}\n```' not in diagram:
+        raise SystemExit('FAIL: ontology diagram differs from registry relationships')
     links = 0
     for document in ROOT.rglob('*.md'):
         if '.git' in document.relative_to(ROOT).parts:
@@ -28,7 +36,7 @@ def main():
             if not destination.is_relative_to(ROOT) or not destination.exists():
                 raise SystemExit(f'FAIL: broken or out-of-repo link in {document.relative_to(ROOT)}: {target}')
             links += 1
-    print(f'PASS: example output matches; {links} local Markdown file links resolve.')
+    print(f'PASS: registry, tour, diagram, and example output match; {links} local Markdown file links resolve.')
 
 
 if __name__ == '__main__':

@@ -42,9 +42,10 @@ Accepts a metric identifier, a container of fixture scope strings, an ISO date, 
 | `unsupported_concept` | No matching metric exists |
 | `definition_unavailable` | Definition is not approved, lacks approval reference, or is outside validity dates |
 | `unsupported_action` | Operation is outside the fixed allowlist or is not read-only |
+| `binding_mismatch` | Metric, source, and allowed read operation do not match their expected triple |
 | `read_plan_only` | Fixture checks allow returning a definition, source, version, and operation |
 
-Checks are ordered: the initial finance scope check occurs before concept resolution. Read plans do not execute anything. The resolver does not enforce general model schema validity, immutable versions, authenticity, metadata freshness, or operation-to-source consistency. Malformed trusted fixture input can raise Python exceptions; it is not a public request-validation API.
+Checks are ordered: the initial finance scope check occurs before concept resolution. Read plans do not execute anything. The resolver does not enforce general model schema validity, immutable versions, authenticity, or metadata freshness. It does enforce the expected metric/source/operation triple. Malformed trusted fixture input can raise Python exceptions; it is not a public request-validation API.
 
 ### `fixtures()`
 
@@ -68,3 +69,11 @@ Bridge source and reason are checked for presence, not authenticity. No cryptogr
 ### `demo()`
 
 Returns the combined scenario dictionary printed as JSON by `python3 demo.py`. [Example output](../examples/demo-output.json) is checked for semantic JSON equality by the verification script.
+
+## Registry validation and guided CLI
+
+`python3 explore.py validate [path]` checks the bounded fixture registry with `validate_model(model)` from [validation.py](../validation.py). It returns path-qualified diagnostics and exits 1 for invalid input, 0 for a valid registry. This is a separate authoring check, not an automatic precondition inside `resolve`.
+
+The validator checks required fields, unique identities/relationships, relationship references, lifecycle states, date intervals, approval fixture fields, grain/unit/aggregation, lineage inclusion, and exact metric/source/operation bindings. Extra fields are allowed. This is neither a general JSON Schema implementation nor a proof of real approval, lineage truth, or complete business semantics.
+
+`python3 explore.py tour` explains eight local scenarios. `tour --json` emits structured results. `scenario NAME` emits one scenario. Unknown commands exit 2. See the [demo guide](DEMO-GUIDE.md).
