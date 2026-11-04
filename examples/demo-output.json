@@ -1,0 +1,44 @@
+{
+  "scope": "Local synthetic demonstration; no live authorization or integration",
+  "ambiguous_question": {
+    "status": "clarification_required",
+    "choices": [
+      "booked_revenue",
+      "recognized_revenue"
+    ]
+  },
+  "bookings_plan": {
+    "status": "read_plan_only",
+    "evidence": "synthetic_only",
+    "concept": "booked_revenue",
+    "version": "0.1.0",
+    "definition": "Synthetic demonstration definition: executed contract consideration newly booked during the period; excludes cancellations, taxes, and unexercised options. Not recognized revenue.",
+    "source": "fixture:crm:contract_bookings",
+    "operation": "read_contract_bookings"
+  },
+  "recognized_plan": {
+    "status": "read_plan_only",
+    "evidence": "synthetic_only",
+    "concept": "recognized_revenue",
+    "version": "0.1.0",
+    "definition": "Synthetic demonstration definition: revenue recognized for satisfied performance obligations during the accounting period, net of reversals.",
+    "source": "fixture:erp:revenue_ledger",
+    "operation": "read_recognized_revenue"
+  },
+  "unauthorized_fixture": {
+    "status": "denied",
+    "reason": "Synthetic fixture lacks finance:read scope"
+  },
+  "reconciliation": {
+    "status": "explained_by_fixture_bridge",
+    "currency": "USD",
+    "difference_minor": 30000000,
+    "sources": [
+      "fixture:crm:contract_bookings",
+      "fixture:erp:revenue_ledger",
+      "fixture:reconciliation:001"
+    ],
+    "evidence": "synthetic_only",
+    "explanation": "Unfulfilled performance obligations in this synthetic contract cohort"
+  }
+}
