@@ -1,7 +1,9 @@
 # Five-minute demonstration
 
-**Audience:** business leaders, solution architects, and domain stewards.  
-**Objective:** show why an agent needs governed meaning before selecting data.  
+**Audience:** business leaders, solution architects, and domain stewards.
+
+**Objective:** show why an agent needs governed meaning before selecting data.
+
 **Setup:** Python 3.10+, a local checkout, no credentials or external services.
 
 ## 1. Start with the business question
