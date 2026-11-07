@@ -85,6 +85,36 @@ class SandboxProbeTests(unittest.TestCase):
             client.get('/query')
         self.assertNotIn('secret', str(ctx.exception))
 
+    def test_control_characters_and_invalid_ports_fail_before_network(self):
+        for origin in (ORIGIN + ':invalid', '\n' + ORIGIN,
+                       ORIGIN.replace('example', 'exam\tple'), ORIGIN + '\x00'):
+            with self.subTest(origin=repr(origin)), self.assertRaises(ProbeError):
+                validate_origin(origin)
+        for token in ('abc\x00def', 'abc\x7fdef', 'abc\u00e9def'):
+            with self.assertRaises(ProbeError):
+                SandboxClient(ORIGIN, token, 'v61.0')
+
+    def test_duplicate_or_unnamed_field_metadata_is_rejected(self):
+        for fields in ([{'name': 'Version__c'}, {'name': 'Version__c'}],
+                       [{'name': 'Version__c'}, {}]):
+            client = self.client(metadata={'name': 'Metric__c', 'queryable': True,
+                                           'fields': fields})
+            with self.assertRaises(ProbeError):
+                probe(client, 'Metric__c', ['Version__c'])
+
+    def test_oversize_and_non_object_responses_fail_closed(self):
+        from sandbox_probe import MAX_BYTES
+        for data in (b'x' * (MAX_BYTES + 1), b'[]', b'null', b'{bad', b'\xff'):
+            client = SandboxClient(ORIGIN, 'synthetic-token', 'v61.0')
+            response = Mock()
+            response.__enter__ = Mock(return_value=response)
+            response.__exit__ = Mock(return_value=False)
+            response.read.return_value = data
+            client.opener = Mock()
+            client.opener.open.return_value = response
+            with self.assertRaises(ProbeError):
+                client.get('/sobjects/Account/describe')
+
     def test_invalid_token_and_version(self):
         for token, version in (('', 'v61.0'), ('a\nb', 'v61.0'), ('x', '../query')):
             with self.assertRaises(ProbeError):

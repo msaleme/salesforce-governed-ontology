@@ -22,9 +22,15 @@ class NoRedirects(HTTPRedirectHandler):
 
 
 def validate_origin(origin):
-    parsed = urlsplit(origin)
+    if not isinstance(origin, str) or any(ord(c) <= 32 or ord(c) == 127 for c in origin):
+        raise ProbeError('Invalid sandbox origin.')
+    try:
+        parsed = urlsplit(origin)
+        port = parsed.port
+    except ValueError:
+        raise ProbeError('Invalid sandbox origin.') from None
     if (parsed.scheme != 'https' or parsed.username or parsed.password
-            or parsed.port is not None or parsed.path not in ('', '/')
+            or port is not None or parsed.path not in ('', '/')
             or parsed.query or parsed.fragment
             or not re.fullmatch(r'[a-z0-9-]+--[a-z0-9-]+\.sandbox\.my\.salesforce\.com',
                                 parsed.hostname or '')):
@@ -43,7 +49,7 @@ class SandboxClient:
         self.origin = validate_origin(origin)
         if not re.fullmatch(r'v[0-9]{2,3}\.0', version):
             raise ProbeError('API version must look like vXX.0; select a version supported by your org.')
-        if not token or any(c.isspace() for c in token):
+        if not isinstance(token, str) or not token or any(ord(c) <= 32 or ord(c) >= 127 for c in token):
             raise ProbeError('Set SF_ACCESS_TOKEN to a valid session token locally.')
         self.token = token
         self.prefix = '/services/data/' + version
@@ -88,7 +94,10 @@ def probe(client, object_name, fields):
     descriptions = metadata.get('fields')
     if not isinstance(descriptions, list) or any(not isinstance(f, dict) for f in descriptions):
         raise ProbeError('Malformed field metadata.')
-    available = {f.get('name') for f in descriptions if isinstance(f.get('name'), str)}
+    names = [f.get('name') for f in descriptions]
+    if any(not isinstance(name, str) for name in names) or len(names) != len(set(names)):
+        raise ProbeError('Malformed or duplicate field metadata.')
+    available = set(names)
     if not set(fields).issubset(available):
         raise ProbeError('One or more requested fields are absent from this identity\'s describe response.')
     return {
