@@ -30,7 +30,34 @@ All linked sources were fetched on the research date. dbt, Snowflake and SHACL e
 | Data contracts | [Open Data Contract Standard](https://bitol-io.github.io/open-data-contract-standard/latest/) defines YAML contract sections including schema, quality, roles, SLAs and authoritative definitions. | Our semantic contract has narrower decision rules and lacks ODCS serialization/conformance, quality monitoring and service-level management. | Reference upstream data contracts rather than invent their quality and ownership fields again. |
 | Semantic interchange | [OSI announcement](https://www.snowflake.com/en/blog/open-semantic-interchanges-specs-finalized/) describes a vendor-neutral representation of datasets, metrics, dimensions, relationships and contexts. | Our bespoke JSON is not OSI. No converter, round trip or certification exists. | Track the actual specification and pin a revision before implementing an adapter; an interchange sidecar must not silently drop our refusal rules. |
 
-Catalog and lineage platforms, including Informatica, remain architectural dependencies rather than products we have evaluated here. Domain ontologies, Looker, AtScale, knowledge-graph databases and automatic ontology generation are outside this bounded review. This is not a claim that they are irrelevant or lack comparable features.
+## Knowledge graphs and established BI semantics: extended review
+
+The following additional primary sources were fetched on **2026-11-08**. Stardog, GraphDB and Looker extracts were partial; the statements below appear in the retrieved text. Neo4j's Labs page was retrieved in full after an older documentation URL returned 404. These are documentation observations, not installed-product results.
+
+| Foundation | Verified documentation claim | Contrast and reuse decision |
+| --- | --- | --- |
+| [Stardog inference engine](https://docs.stardog.com/inference-engine/) | Infers types and relationships from RDFS/OWL axioms and user rules, using query-time rewriting rather than materializing inferences. | Our code does not infer new graph facts. Reuse a reasoner if formal entailment is required; evaluate the resulting decision separately. An inferred relationship is not automatically financial explanation evidence. |
+| [GraphDB 11.0 reasoning](https://graphdb.ontotext.com/documentation/11.0/reasoning.html) | Forward-chaining RDF entailment rules and total materialization compute inferred statements with configured rulesets at load time. | We have no RDF store, load-time closure or inference maintenance. The query-time versus materialization trade-off belongs to a graph-platform decision, not our fixed Python registry. |
+| [Neo4j Labs neosemantics](https://neo4j.com/labs/neosemantics/) | RDF import/export, ontology/taxonomy vocabularies, SHACL validation and basic inferencing. The page limits this plugin to self-hosted Neo4j, not Aura. | Our JSON has no RDF interoperability. A future graph adapter must pin deployment and plugin versions, not assume all Neo4j installations expose the same capabilities. SHACL validates graph constraints; it does not by itself establish authenticated approval. |
+| [Looker / LookML](https://docs.cloud.google.com/looker/docs/what-is-lookml) | Models dimensions, aggregates, calculations and relationships; uses those models to construct database SQL. Projects are typically Git-versioned. | Git-managed definitions and reusable semantics are established capabilities, not our novelty. Preserve the existing LookML metric and join logic rather than rebuild them in this registry. |
+
+Catalog and lineage platforms, including Informatica, remain architectural dependencies rather than products evaluated here. Domain-specific ontologies, AtScale and automatic ontology generation remain outside this bounded review. No claim of market completeness follows.
+
+### Three meanings of “ontology” that must not be conflated
+
+1. **Formal inference:** What facts follow from the asserted graph and axioms? Stardog and GraphDB address this category; their documented inference strategies differ.
+2. **Operational or analytical meaning:** Which objects, metrics, relationships and operations represent the business? Palantir and semantic-layer platforms address different parts of this category.
+3. **Decision acceptance:** Given a selected meaning and evidence, should this request clarify, produce a read plan, or withhold an explanation? This repository provides a small synthetic example of this category.
+
+They can be composed. None substitutes automatically for the others. Our use of “ontology” describes a lightweight business vocabulary, not OWL conformance or an inference engine.
+
+### Build, borrow, defer
+
+- **Build now:** richer decision assertions and minimal counterexamples. Inspect exact sources, operations, amounts, provenance and absence of unsupported explanation, not just a success/refusal label.
+- **Borrow next:** native metric identity and definitions from the existing platform. Select one platform with its owner before building multiple adapters.
+- **Defer until evidence requires it:** graph persistence, inference, query compilation, broad domain modeling and action execution. These would turn a small acceptance testbed into an unvalidated platform rebuild.
+- **Do not claim closed:** interoperability, authenticated authorization, accounting correctness or independent validation. Those require separate evidence, not another documentation page.
+
 
 ## Compare the implemented approach, not the aspiration
 
@@ -74,6 +101,7 @@ These are not vendor feature scores. Our read-plan checks do not establish a sec
 | P0 | Unsupported bridge types could crash or look like explanation evidence | Implemented in this PR: object checks and nonempty textual bridge source/reason | Reconciliation boundary controls; authenticity remains unproven |
 | P1 | Claims lacked a compact, reproducible decision scorecard | Implemented in this PR: [12-case contract evaluation](EVALUATION.md), input/code hashes and CI receipt parity | Includes successful read/explanation controls as well as refusals; not a vendor benchmark |
 | P1 | Visitors lacked a focused way to contribute evidence | Implemented in this PR: [attention packet](ATTENTION.md) and counterexample issue form | Reproduction steps and claim limits required; no audience response claimed |
+| P1 | Status-only evaluation could miss wrong amounts, sources or unsupported explanations | Closed in follow-up: exact, type-sensitive expected-result comparison and mutation controls | Wrong-source/operation, wrong-amount, extra-explanation, missing-provenance, narrowed-choice and refusal-disclosure mutations fail evaluation |
 | P1 | No standards/platform interchange | Documented, not implemented: mapping and loss register below | Future adapter must preserve units, grain, temporal semantics and evidence boundaries, and fail unsupported mappings |
 | P1 | No live identity or metric execution proof | Blocked on designated sandbox, approved bindings and access | Allowed/denied real identities, source reconciliation and sanitized receipts |
 | P2 | No independent evaluation or broad domain model | Open | External reproduction, held-out cases and steward-reviewed domain expansion |

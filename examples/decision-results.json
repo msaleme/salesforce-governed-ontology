@@ -8,73 +8,211 @@
     {
       "case": "ambiguity",
       "expected_status": "clarification_required",
+      "expected_result": {
+        "status": "clarification_required",
+        "choices": [
+          "booked_revenue",
+          "recognized_revenue"
+        ]
+      },
       "actual_status": "clarification_required",
+      "actual_result": {
+        "status": "clarification_required",
+        "choices": [
+          "booked_revenue",
+          "recognized_revenue"
+        ]
+      },
+      "mismatch_fields": [],
       "passed": true
     },
     {
       "case": "approved-read",
       "expected_status": "read_plan_only",
+      "expected_result": {
+        "status": "read_plan_only",
+        "evidence": "synthetic_only",
+        "concept": "recognized_revenue",
+        "version": "0.1.0",
+        "definition": "Synthetic demonstration definition: revenue recognized for satisfied performance obligations during the accounting period, net of reversals.",
+        "source": "fixture:erp:revenue_ledger",
+        "operation": "read_recognized_revenue"
+      },
       "actual_status": "read_plan_only",
+      "actual_result": {
+        "status": "read_plan_only",
+        "evidence": "synthetic_only",
+        "concept": "recognized_revenue",
+        "version": "0.1.0",
+        "definition": "Synthetic demonstration definition: revenue recognized for satisfied performance obligations during the accounting period, net of reversals.",
+        "source": "fixture:erp:revenue_ledger",
+        "operation": "read_recognized_revenue"
+      },
+      "mismatch_fields": [],
       "passed": true
     },
     {
       "case": "denied",
       "expected_status": "denied",
+      "expected_result": {
+        "status": "denied",
+        "reason": "Synthetic fixture lacks finance:read scope"
+      },
       "actual_status": "denied",
+      "actual_result": {
+        "status": "denied",
+        "reason": "Synthetic fixture lacks finance:read scope"
+      },
+      "mismatch_fields": [],
       "passed": true
     },
     {
       "case": "expired",
       "expected_status": "definition_unavailable",
+      "expected_result": {
+        "status": "definition_unavailable"
+      },
       "actual_status": "definition_unavailable",
+      "actual_result": {
+        "status": "definition_unavailable"
+      },
+      "mismatch_fields": [],
       "passed": true
     },
     {
       "case": "binding-mismatch",
       "expected_status": "binding_mismatch",
+      "expected_result": {
+        "status": "binding_mismatch"
+      },
       "actual_status": "binding_mismatch",
+      "actual_result": {
+        "status": "binding_mismatch"
+      },
+      "mismatch_fields": [],
       "passed": true
     },
     {
       "case": "difference-only",
       "expected_status": "difference_only",
+      "expected_result": {
+        "status": "difference_only",
+        "currency": "USD",
+        "difference_minor": 30000000,
+        "sources": [
+          "fixture:crm:contract_bookings",
+          "fixture:erp:revenue_ledger"
+        ],
+        "evidence": "synthetic_only"
+      },
       "actual_status": "difference_only",
+      "actual_result": {
+        "status": "difference_only",
+        "currency": "USD",
+        "difference_minor": 30000000,
+        "sources": [
+          "fixture:crm:contract_bookings",
+          "fixture:erp:revenue_ledger"
+        ],
+        "evidence": "synthetic_only"
+      },
+      "mismatch_fields": [],
       "passed": true
     },
     {
       "case": "explained",
       "expected_status": "explained_by_fixture_bridge",
+      "expected_result": {
+        "status": "explained_by_fixture_bridge",
+        "currency": "USD",
+        "difference_minor": 30000000,
+        "sources": [
+          "fixture:crm:contract_bookings",
+          "fixture:erp:revenue_ledger",
+          "fixture:reconciliation:001"
+        ],
+        "evidence": "synthetic_only",
+        "explanation": "Unfulfilled performance obligations in this synthetic contract cohort"
+      },
       "actual_status": "explained_by_fixture_bridge",
+      "actual_result": {
+        "status": "explained_by_fixture_bridge",
+        "currency": "USD",
+        "difference_minor": 30000000,
+        "sources": [
+          "fixture:crm:contract_bookings",
+          "fixture:erp:revenue_ledger",
+          "fixture:reconciliation:001"
+        ],
+        "evidence": "synthetic_only",
+        "explanation": "Unfulfilled performance obligations in this synthetic contract cohort"
+      },
+      "mismatch_fields": [],
       "passed": true
     },
     {
       "case": "incompatible",
       "expected_status": "incompatible_dimensions",
+      "expected_result": {
+        "status": "incompatible_dimensions"
+      },
       "actual_status": "incompatible_dimensions",
+      "actual_result": {
+        "status": "incompatible_dimensions"
+      },
+      "mismatch_fields": [],
       "passed": true
     },
     {
       "case": "invalid-registry",
       "expected_status": "invalid_registry",
+      "expected_result": {
+        "status": "invalid_registry"
+      },
       "actual_status": "invalid_registry",
+      "actual_result": {
+        "status": "invalid_registry"
+      },
+      "mismatch_fields": [],
       "passed": true
     },
     {
       "case": "invalid-scopes",
       "expected_status": "invalid_request",
+      "expected_result": {
+        "status": "invalid_request"
+      },
       "actual_status": "invalid_request",
+      "actual_result": {
+        "status": "invalid_request"
+      },
+      "mismatch_fields": [],
       "passed": true
     },
     {
       "case": "expired-clarification",
       "expected_status": "definition_unavailable",
+      "expected_result": {
+        "status": "definition_unavailable"
+      },
       "actual_status": "definition_unavailable",
+      "actual_result": {
+        "status": "definition_unavailable"
+      },
+      "mismatch_fields": [],
       "passed": true
     },
     {
       "case": "malformed-bridge",
       "expected_status": "invalid_bridge",
+      "expected_result": {
+        "status": "invalid_bridge"
+      },
       "actual_status": "invalid_bridge",
+      "actual_result": {
+        "status": "invalid_bridge"
+      },
+      "mismatch_fields": [],
       "passed": true
     }
   ],
@@ -83,7 +221,7 @@
     "demo.py": "108153fe304ca178ecaf0b3692854f24201fa6f0be0b562c37f7e6514e9d3e03",
     "validation.py": "4f1bb55d22457a2755915b4b90cbc4a79ccb9f741de0fbc338a869d72b067fab",
     "explore.py": "45704699ed36385b0af6d68d4a4803279b15570e4ebd0961c9a9ac3dfa95bd74",
-    "evaluate.py": "0779bb842d8c2c0de8001f6a013e9a8fcc7fcb195fef617f1987ac5100229e91",
-    "examples/decision-cases.json": "1fcbd1064bf0d6cc4ba890386926fcacbf957b8d704dd50580edcf01581b2efe"
+    "evaluate.py": "8bda4e217ab523052271fe34fc86039c67073891aec2650f10b775e08f25422b",
+    "examples/decision-cases.json": "04fa4178a97e20c2a1e74cbf300cc44212f9780ba73ca034c9d050f32495cd75"
   }
 }

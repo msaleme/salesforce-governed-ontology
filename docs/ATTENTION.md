@@ -15,6 +15,8 @@ Lead with a familiar failure: contract bookings and recognized revenue differ; t
 - [Counterexample form](../.github/ISSUE_TEMPLATE/decision-counterexample.yml): a structured path to contribute an observed failure.
 - README entry points: one positioning statement and direct links to the evidence and contribution path.
 
+- [Complete technical article draft](ARTICLE-DRAFT.md): runnable narrative, expected outcomes and a narrow counterexample request.
+
 ## Proposed distribution experiments
 
 These are proposed actions, not scheduled jobs or promises of delivery. Post only after the reviewed code is available on the linked default branch, or link an immutable reviewed commit and identify it as a candidate.
