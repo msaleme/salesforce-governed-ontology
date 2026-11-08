@@ -24,3 +24,15 @@ jobs:
         run: python scripts/verify.py
       - name: Check whitespace
         run: git show --format= --check HEAD
+
+  rdf-parser-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install optional parser (core prototype stays dependency-free)
+        run: python -m pip install rdflib==7.1.4 pyparsing==3.3.3
+      - name: Check JSON-LD parsing and Turtle graph round-trip
+        run: python scripts/check_rdf.py

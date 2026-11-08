@@ -2,13 +2,32 @@
 
 [![Verify prototype](https://github.com/msaleme/salesforce-governed-ontology/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/msaleme/salesforce-governed-ontology/actions/workflows/ci.yml)
 
-**[Take the five-minute tour](docs/DEMO-GUIDE.md) · [Explore the ontology](docs/ONTOLOGY-MAP.md) · [Read the design decisions](docs/DESIGN-DECISIONS.md)**
+**An inspectable semantic decision testbed: know when an agent should answer, clarify, or withhold an explanation.**
 
-**An inspectable semantic decision testbed: clarify the metric, validate the read plan, and separate arithmetic from explanation.**
+## The payoff in 30 seconds
 
-A design proposal and runnable, synthetic Oil & Gas reference prototype for a Salesforce-centered semantic control plane. It separates approved business definitions from source metadata, API bindings, and execution authority.
+An agent sees USD 1.2M in contract bookings and USD 0.9M in recognized revenue. It can calculate a USD 0.3M difference. It cannot infer why from those amounts alone.
 
-> **Status: design prototype, not a deployed integration.** Salesforce governance, Informatica metadata ingestion, MuleSoft execution, and Agentforce consumption are proposed architecture. The core demonstration is offline Python. An optional read-only sandbox metadata probe is implemented but has not been live-verified. This repository is not an official Salesforce product and makes no determination of corporate IP ownership.
+```text
+Aligned amounts, no explanation evidence  -> difference_only
+Same amounts, matching synthetic bridge  -> explained_by_fixture_bridge
+Different currencies or cohorts         -> incompatible_dimensions
+```
+
+**For:** semantic-layer architects and agent-evaluation engineers who want inspectable acceptance tests around their existing platforms. **Not:** a replacement semantic engine, deployable Salesforce integration or production authorization service.
+
+[Evaluate with your team](docs/TEAM-EVALUATION.md) · [Five-minute tour](docs/DEMO-GUIDE.md) · [Second domain](docs/SECOND-DOMAIN.md) · [SKOS export and losses](docs/STANDARDS-EXPORT.md)
+
+> **Reference prototype.** Runnable offline finance and reliability contracts, not live integrations. All evidence is synthetic. No independent team validation or open-source reuse license is established. See [license status](LICENSE-STATUS.md) and the [licensing decision packet](docs/LICENSING-DECISION.md). This is not an official Salesforce product and makes no determination of corporate IP ownership.
+
+## Implemented versus proposed
+
+| Implemented and locally testable | Not established |
+| --- | --- |
+| Finance clarification, read planning and evidence-gated reconciliation | Live revenue execution or authenticated authorization |
+| Separate request-success objective contract with incomplete-evidence refusal | General arbitrary-domain engine or live monitoring |
+| Lossy SKOS concept projection with explicit loss report | Native platform import or lossless governance exchange |
+| Regression tests and portable self-run receipts | Independent reviewer acceptance or production readiness |
 
 ## Why this exists
 
@@ -28,6 +47,7 @@ Requires Python 3.10 or newer. No dependencies, credentials, Salesforce org, net
 ```sh
 git clone https://github.com/msaleme/salesforce-governed-ontology.git
 cd salesforce-governed-ontology
+python3 explore.py scenario difference-only
 python3 explore.py tour
 python3 explore.py validate
 python3 demo.py
@@ -51,6 +71,15 @@ Different currencies     → incompatible_dimensions
 
 Run one case with `python3 explore.py scenario binding-mismatch`, or get machine-readable results with `python3 explore.py tour --json`. All eight scenarios are local, synthetic, and repeatable.
 
+## Test a genuinely different domain
+
+```sh
+python3 reliability.py
+python3 standards_export.py
+```
+
+Reliability checks a request-success objective using counts, coverage and aligned time windows. A threshold miss does not identify a cause. The standards export preserves concept identity and definitions only; its report lists lost meaning. See [extension boundaries](docs/SECOND-DOMAIN.md) and [export verification](docs/STANDARDS-EXPORT.md).
+
 ## Review semantic changes
 
 Compare registry snapshots before accepting changed business meaning:
@@ -66,7 +95,7 @@ The [change-review tool](docs/CHANGE-REVIEW.md) flags silent version drift and r
 - [Competitive landscape and gap ledger](docs/COMPARISON.md): thirteen platform/standards perspectives, explicit trade-offs and reuse decisions.
 - [Reproduce the 12-case decision contract](docs/EVALUATION.md): `python3 evaluate.py`, full-result assertions, checked-in outcomes and input/code hashes. This is not a vendor benchmark.
 - [Report a synthetic counterexample](https://github.com/msaleme/salesforce-governed-ontology/issues/new?template=decision-counterexample.yml): include the commit, command, observed decision and expected behavior.
-- [Evidence-led attention packet](docs/ATTENTION.md): draft walkthrough and distribution experiments, not published outreach.
+- [Evidence-led attention packet](docs/ATTENTION.md): distribution experiments and the published walkthrough record.
 
 ## Optional sandbox readiness
 
@@ -113,7 +142,7 @@ docs/                     Architecture, contracts, review packet, and roadmap
 
 ## Scope and limitations
 
-- Seven concepts, seven relationships, and two metric definitions in a lightweight JSON registry. This is not an OWL reasoner, JSON-LD implementation, or validated industry-standard ontology.
+- The finance registry has seven concepts, seven relationships, and two metric definitions in a lightweight JSON registry. This is not an OWL reasoner, JSON-LD implementation, or validated industry-standard ontology.
 - Approval records, scope strings, source IDs, and reconciliation evidence are fixtures. They do not authenticate a caller, validate accounting policy, or establish a security boundary.
 - No vendor SDK, deployment package, metadata refresh, persistence, metric execution, verified live authorization, or production data is present. The optional sandbox probe issues bounded REST metadata reads only when explicitly invoked.
 - No NVIDIA code was copied and no NVIDIA runtime is required. This is original design work, not a fork of Auto Ontology.

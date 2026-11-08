@@ -1,0 +1,216 @@
+[
+  {
+    "id": "exact-threshold",
+    "observation": {
+      "service": "fixture:checkout",
+      "window_start": "2026-10-01T00:00:00Z",
+      "window_end": "2026-11-01T00:00:00Z",
+      "population": "eligible_production_requests",
+      "total": 10000,
+      "successful": 9990,
+      "coverage_complete": true,
+      "source": "fixture:request-counter"
+    },
+    "objective": {
+      "service": "fixture:checkout",
+      "window_start": "2026-10-01T00:00:00Z",
+      "window_end": "2026-11-01T00:00:00Z",
+      "population": "eligible_production_requests",
+      "indicator": "request_success_ratio",
+      "target_basis_points": 9990,
+      "version": "1.0"
+    },
+    "expected": {
+      "status": "objective_met",
+      "successful": 9990,
+      "total": 10000,
+      "target_basis_points": 9990,
+      "objective_version": "1.0",
+      "source": "fixture:request-counter",
+      "evidence": "synthetic_only",
+      "cause": "not_established"
+    }
+  },
+  {
+    "id": "below-threshold",
+    "observation": {
+      "service": "fixture:checkout",
+      "window_start": "2026-10-01T00:00:00Z",
+      "window_end": "2026-11-01T00:00:00Z",
+      "population": "eligible_production_requests",
+      "total": 10000,
+      "successful": 9989,
+      "coverage_complete": true,
+      "source": "fixture:request-counter"
+    },
+    "objective": {
+      "service": "fixture:checkout",
+      "window_start": "2026-10-01T00:00:00Z",
+      "window_end": "2026-11-01T00:00:00Z",
+      "population": "eligible_production_requests",
+      "indicator": "request_success_ratio",
+      "target_basis_points": 9990,
+      "version": "1.0"
+    },
+    "expected": {
+      "status": "objective_missed",
+      "successful": 9989,
+      "total": 10000,
+      "target_basis_points": 9990,
+      "objective_version": "1.0",
+      "source": "fixture:request-counter",
+      "evidence": "synthetic_only",
+      "cause": "not_established"
+    }
+  },
+  {
+    "id": "incomplete-coverage",
+    "observation": {
+      "service": "fixture:checkout",
+      "window_start": "2026-10-01T00:00:00Z",
+      "window_end": "2026-11-01T00:00:00Z",
+      "population": "eligible_production_requests",
+      "total": 10000,
+      "successful": 9990,
+      "coverage_complete": false,
+      "source": "fixture:request-counter"
+    },
+    "objective": {
+      "service": "fixture:checkout",
+      "window_start": "2026-10-01T00:00:00Z",
+      "window_end": "2026-11-01T00:00:00Z",
+      "population": "eligible_production_requests",
+      "indicator": "request_success_ratio",
+      "target_basis_points": 9990,
+      "version": "1.0"
+    },
+    "expected": {
+      "status": "insufficient_evidence"
+    }
+  },
+  {
+    "id": "empty-window",
+    "observation": {
+      "service": "fixture:checkout",
+      "window_start": "2026-10-01T00:00:00Z",
+      "window_end": "2026-11-01T00:00:00Z",
+      "population": "eligible_production_requests",
+      "total": 0,
+      "successful": 0,
+      "coverage_complete": true,
+      "source": "fixture:request-counter"
+    },
+    "objective": {
+      "service": "fixture:checkout",
+      "window_start": "2026-10-01T00:00:00Z",
+      "window_end": "2026-11-01T00:00:00Z",
+      "population": "eligible_production_requests",
+      "indicator": "request_success_ratio",
+      "target_basis_points": 9990,
+      "version": "1.0"
+    },
+    "expected": {
+      "status": "insufficient_evidence"
+    }
+  },
+  {
+    "id": "different-population",
+    "observation": {
+      "service": "fixture:checkout",
+      "window_start": "2026-10-01T00:00:00Z",
+      "window_end": "2026-11-01T00:00:00Z",
+      "population": "sampled_requests",
+      "total": 10000,
+      "successful": 9990,
+      "coverage_complete": true,
+      "source": "fixture:request-counter"
+    },
+    "objective": {
+      "service": "fixture:checkout",
+      "window_start": "2026-10-01T00:00:00Z",
+      "window_end": "2026-11-01T00:00:00Z",
+      "population": "eligible_production_requests",
+      "indicator": "request_success_ratio",
+      "target_basis_points": 9990,
+      "version": "1.0"
+    },
+    "expected": {
+      "status": "incompatible_dimensions"
+    }
+  },
+  {
+    "id": "different-window",
+    "observation": {
+      "service": "fixture:checkout",
+      "window_start": "2026-10-01T00:00:00Z",
+      "window_end": "2026-10-31T00:00:00Z",
+      "population": "eligible_production_requests",
+      "total": 10000,
+      "successful": 9990,
+      "coverage_complete": true,
+      "source": "fixture:request-counter"
+    },
+    "objective": {
+      "service": "fixture:checkout",
+      "window_start": "2026-10-01T00:00:00Z",
+      "window_end": "2026-11-01T00:00:00Z",
+      "population": "eligible_production_requests",
+      "indicator": "request_success_ratio",
+      "target_basis_points": 9990,
+      "version": "1.0"
+    },
+    "expected": {
+      "status": "incompatible_dimensions"
+    }
+  },
+  {
+    "id": "latency-is-not-success",
+    "observation": {
+      "service": "fixture:checkout",
+      "window_start": "2026-10-01T00:00:00Z",
+      "window_end": "2026-11-01T00:00:00Z",
+      "population": "eligible_production_requests",
+      "total": 10000,
+      "successful": 9990,
+      "coverage_complete": true,
+      "source": "fixture:request-counter"
+    },
+    "objective": {
+      "service": "fixture:checkout",
+      "window_start": "2026-10-01T00:00:00Z",
+      "window_end": "2026-11-01T00:00:00Z",
+      "population": "eligible_production_requests",
+      "indicator": "latency_p99",
+      "target_basis_points": 9990,
+      "version": "1.0"
+    },
+    "expected": {
+      "status": "unsupported_indicator"
+    }
+  },
+  {
+    "id": "impossible-count",
+    "observation": {
+      "service": "fixture:checkout",
+      "window_start": "2026-10-01T00:00:00Z",
+      "window_end": "2026-11-01T00:00:00Z",
+      "population": "eligible_production_requests",
+      "total": 10000,
+      "successful": 10001,
+      "coverage_complete": true,
+      "source": "fixture:request-counter"
+    },
+    "objective": {
+      "service": "fixture:checkout",
+      "window_start": "2026-10-01T00:00:00Z",
+      "window_end": "2026-11-01T00:00:00Z",
+      "population": "eligible_production_requests",
+      "indicator": "request_success_ratio",
+      "target_basis_points": 9990,
+      "version": "1.0"
+    },
+    "expected": {
+      "status": "invalid_input"
+    }
+  }
+]

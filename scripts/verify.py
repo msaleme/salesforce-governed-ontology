@@ -14,6 +14,7 @@ def main():
                    cwd=ROOT, check=True)
     subprocess.run([sys.executable, 'explore.py', 'validate'], cwd=ROOT, check=True)
     subprocess.run([sys.executable, 'explore.py', 'tour', '--json'], cwd=ROOT, check=True, stdout=subprocess.DEVNULL)
+    subprocess.run([sys.executable, 'reliability.py'], cwd=ROOT, check=True, stdout=subprocess.DEVNULL)
     output = subprocess.check_output([sys.executable, 'demo.py'], cwd=ROOT, text=True)
     expected = json.loads((ROOT / 'examples/demo-output.json').read_text())
     if json.loads(output) != expected:
