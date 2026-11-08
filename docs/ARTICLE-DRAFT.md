@@ -1,6 +1,6 @@
 # A correct subtraction is not an explanation
 
-**Unpublished technical article draft.** Uses only this repository's synthetic fixtures. Intended for one technical walkthrough after review; not a claim of independent validation or vendor superiority.
+**Source draft, published on dev.to on 2026-11-08.** The [published walkthrough](https://dev.to/mspro3210/a-correct-subtraction-is-not-an-explanation-j5f) uses absolute links and pins the verified merged commit. This file preserves the source narrative; not a claim of independent validation or vendor superiority.
 
 An agent sees $1.2 million in contract bookings and $900,000 in recognized revenue. It subtracts correctly and then says the $300,000 difference is caused by unfulfilled performance obligations.
 

@@ -120,3 +120,7 @@ docs/                     Architecture, contracts, review packet, and roadmap
 - Reuse existing platform semantics before introducing custom registry objects. Product availability, entitlement, and API compatibility remain unverified.
 
 **Next milestone:** select the existing semantic foundation with an internal platform owner, then prove one recognized-revenue read in a designated sandbox. See the [platform-fit packet](docs/PLATFORM-FIT-REVIEW.md).
+
+## Reproduction packet
+
+See the [one-command reproduction guide](docs/REPRODUCTION.md) and [captured synthetic demonstration](docs/TERMINAL-DEMO.md). The transcript is regenerated and checked by CI. External reproduction remains unverified.

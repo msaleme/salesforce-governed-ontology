@@ -1,6 +1,6 @@
 # Evidence-led attention packet
 
-Status: **draft distribution assets, not published outreach**. The goal is qualified reproduction and counterexamples, not traffic or sales. This is a reference prototype, not an official vendor product or a project with a granted open-source license.
+Status: **dev.to walkthrough published 2026-11-08; LinkedIn remains a manual draft**. The goal is qualified reproduction and counterexamples, not traffic or sales. This is a reference prototype, not an official vendor product or a project with a granted open-source license.
 
 ## The memorable idea
 
@@ -19,7 +19,7 @@ Lead with a familiar failure: contract bookings and recognized revenue differ; t
 
 ## Proposed distribution experiments
 
-These are proposed actions, not scheduled jobs or promises of delivery. Post only after the reviewed code is available on the linked default branch, or link an immutable reviewed commit and identify it as a candidate.
+The dev.to walkthrough and captured text demonstration are delivered; other rows remain proposed, not scheduled jobs or promises. Post only after the reviewed code is available on the linked default branch, or link an immutable reviewed commit and identify it as a candidate.
 
 | Priority | Surface and artifact | Audience hypothesis | Outcome to measure | Stop/change rule |
 | --- | --- | --- | --- | --- |
@@ -28,7 +28,7 @@ These are proposed actions, not scheduled jobs or promises of delivery. Post onl
 | 3 | A short synthetic terminal demonstration linked from the walkthrough | Readers need to see refusal and success in the same flow | Reproduction reports citing the demonstrated cases | Do not claim a video exists until recorded and checked |
 | 4 | A neutral standards mapping note after adapter evidence exists | Interoperability reviewers care about lost temporal/action semantics | Concrete mapping correction or accepted technical feedback | Hold until a reproducible mapping loss exists; do not post project plugs on third-party repos |
 
-Before any original post, check that surface's last 7 days and the last 30 days for a near-duplicate thesis; at most one original post per surface per week. Do not auto-post LinkedIn, create empty GitHub Discussions, or promote on third-party issue threads. No outreach or publication has been performed by this change.
+Before any original post, check that surface's last 7 days and the last 30 days for a near-duplicate thesis; at most one original post per surface per week. Do not auto-post LinkedIn, create empty GitHub Discussions, or promote on third-party issue threads. The dev.to walkthrough was published after these checks; see the [publication record](PUBLICATION-RECORD.md).
 
 ## LinkedIn draft
 
@@ -58,3 +58,7 @@ Which case should force an agent to withhold an explanation in your domain?
 ## Measurement discipline
 
 Record publication URL/date, linked commit, meaningful comments, independent reproduction reports, counterexamples accepted, and defects corrected. Keep self-runs separate from independent runs. Stars and views can describe reach, but do not prove adoption, accuracy or authority. No external baseline has been collected for this packet and no numeric growth forecast is offered.
+
+## Reproduction packet
+
+See the [one-command reproduction guide](REPRODUCTION.md) and [captured synthetic demonstration](TERMINAL-DEMO.md). The transcript is regenerated and checked by CI. External reproduction remains unverified.
