@@ -1,0 +1,190 @@
+{
+  "document": [
+    {
+      "@id": "urn:example:governed-ontology:vocabulary:910c7672df2fa1133d574c4334ff1318cbdb08a04ace50ebf1c7f281a9576198:",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#ConceptScheme"
+      ],
+      "http://purl.org/dc/terms/description": [
+        {
+          "@value": "Synthetic vocabulary projection; not executable governance."
+        }
+      ]
+    },
+    {
+      "@id": "urn:example:governed-ontology:vocabulary:910c7672df2fa1133d574c4334ff1318cbdb08a04ace50ebf1c7f281a9576198:Account",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#notation": [
+        {
+          "@value": "Account"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#definition": [
+        {
+          "@value": "A business party in a commercial relationship.",
+          "@language": "en"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "urn:example:governed-ontology:vocabulary:910c7672df2fa1133d574c4334ff1318cbdb08a04ace50ebf1c7f281a9576198:"
+        }
+      ]
+    },
+    {
+      "@id": "urn:example:governed-ontology:vocabulary:910c7672df2fa1133d574c4334ff1318cbdb08a04ace50ebf1c7f281a9576198:Asset",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#notation": [
+        {
+          "@value": "Asset"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#definition": [
+        {
+          "@value": "An identified physical operational resource; ownership is distinct from operation.",
+          "@language": "en"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "urn:example:governed-ontology:vocabulary:910c7672df2fa1133d574c4334ff1318cbdb08a04ace50ebf1c7f281a9576198:"
+        }
+      ]
+    },
+    {
+      "@id": "urn:example:governed-ontology:vocabulary:910c7672df2fa1133d574c4334ff1318cbdb08a04ace50ebf1c7f281a9576198:Contract",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#notation": [
+        {
+          "@value": "Contract"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#definition": [
+        {
+          "@value": "An agreement among counterparties covering specified obligations and assets.",
+          "@language": "en"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "urn:example:governed-ontology:vocabulary:910c7672df2fa1133d574c4334ff1318cbdb08a04ace50ebf1c7f281a9576198:"
+        }
+      ]
+    },
+    {
+      "@id": "urn:example:governed-ontology:vocabulary:910c7672df2fa1133d574c4334ff1318cbdb08a04ace50ebf1c7f281a9576198:OperatorRole",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#notation": [
+        {
+          "@value": "OperatorRole"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#definition": [
+        {
+          "@value": "A time-bounded role in which an account operates an asset.",
+          "@language": "en"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "urn:example:governed-ontology:vocabulary:910c7672df2fa1133d574c4334ff1318cbdb08a04ace50ebf1c7f281a9576198:"
+        }
+      ]
+    },
+    {
+      "@id": "urn:example:governed-ontology:vocabulary:910c7672df2fa1133d574c4334ff1318cbdb08a04ace50ebf1c7f281a9576198:ProductionObservation",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#notation": [
+        {
+          "@value": "ProductionObservation"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#definition": [
+        {
+          "@value": "A measured quantity for a well, period, commodity, unit, and basis.",
+          "@language": "en"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "urn:example:governed-ontology:vocabulary:910c7672df2fa1133d574c4334ff1318cbdb08a04ace50ebf1c7f281a9576198:"
+        }
+      ]
+    },
+    {
+      "@id": "urn:example:governed-ontology:vocabulary:910c7672df2fa1133d574c4334ff1318cbdb08a04ace50ebf1c7f281a9576198:RevenueEntry",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#notation": [
+        {
+          "@value": "RevenueEntry"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#definition": [
+        {
+          "@value": "A monetary entry with contract, account, period, currency, and accounting basis.",
+          "@language": "en"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "urn:example:governed-ontology:vocabulary:910c7672df2fa1133d574c4334ff1318cbdb08a04ace50ebf1c7f281a9576198:"
+        }
+      ]
+    },
+    {
+      "@id": "urn:example:governed-ontology:vocabulary:910c7672df2fa1133d574c4334ff1318cbdb08a04ace50ebf1c7f281a9576198:Well",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#notation": [
+        {
+          "@value": "Well"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#definition": [
+        {
+          "@value": "A well asset with a namespaced identifier; a specialization of Asset.",
+          "@language": "en"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "urn:example:governed-ontology:vocabulary:910c7672df2fa1133d574c4334ff1318cbdb08a04ace50ebf1c7f281a9576198:"
+        }
+      ]
+    }
+  ],
+  "report": {
+    "profile": "concept-vocabulary-skos-v1",
+    "source_sha256": "910c7672df2fa1133d574c4334ff1318cbdb08a04ace50ebf1c7f281a9576198",
+    "preserved": [
+      "concepts[].id (skos:notation)",
+      "concepts[].definition (English literal)"
+    ],
+    "omitted_source_paths": [
+      "/evidence",
+      "/id",
+      "/metrics",
+      "/namespace",
+      "/relationships",
+      "/status",
+      "/version"
+    ],
+    "lossless": false,
+    "executable": false,
+    "vendor_import_verified": false,
+    "warning": "Relationships, metrics, approvals, versions and action bindings are not transported. Do not execute from this export."
+  }
+}

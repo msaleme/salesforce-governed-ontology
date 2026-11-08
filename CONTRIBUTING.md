@@ -35,3 +35,7 @@ Use repository-relative links, executable commands, explicit assumptions, and cu
 ## Decision counterexamples
 
 Use the semantic decision counterexample issue form with a commit, Python version, minimal synthetic reproduction, actual outcome and expected outcome with rationale. Mark whether you ran it. See the [evaluation protocol](docs/EVALUATION.md); do not present fixture conformance as independent validation.
+
+## Team evaluation and second domain
+
+Use the [team evaluation packet](docs/TEAM-EVALUATION.md) for a bounded review. Reliability is intentionally separate from finance; document new domain-specific assumptions rather than adding unrelated fields to the finance registry. Standards changes must update the loss report and preserve the non-executable boundary. Licensing remains unresolved; see the [decision packet](docs/LICENSING-DECISION.md).
