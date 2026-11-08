@@ -31,3 +31,7 @@ Use repository-relative links, executable commands, explicit assumptions, and cu
 - Are simulated checks clearly distinguished from runtime enforcement?
 - Are accounting assumptions, provenance limits, and unverified integrations explicit?
 - Is the change consistent with the repository's [license status](LICENSE-STATUS.md)?
+
+## Decision counterexamples
+
+Use the semantic decision counterexample issue form with a commit, Python version, minimal synthetic reproduction, actual outcome and expected outcome with rationale. Mark whether you ran it. See the [evaluation protocol](docs/EVALUATION.md); do not present fixture conformance as independent validation.

@@ -1,0 +1,89 @@
+{
+  "evidence": "synthetic_only",
+  "evaluation": "fixed_decision_contract",
+  "vendor_comparison": false,
+  "total": 12,
+  "passed": 12,
+  "cases": [
+    {
+      "case": "ambiguity",
+      "expected_status": "clarification_required",
+      "actual_status": "clarification_required",
+      "passed": true
+    },
+    {
+      "case": "approved-read",
+      "expected_status": "read_plan_only",
+      "actual_status": "read_plan_only",
+      "passed": true
+    },
+    {
+      "case": "denied",
+      "expected_status": "denied",
+      "actual_status": "denied",
+      "passed": true
+    },
+    {
+      "case": "expired",
+      "expected_status": "definition_unavailable",
+      "actual_status": "definition_unavailable",
+      "passed": true
+    },
+    {
+      "case": "binding-mismatch",
+      "expected_status": "binding_mismatch",
+      "actual_status": "binding_mismatch",
+      "passed": true
+    },
+    {
+      "case": "difference-only",
+      "expected_status": "difference_only",
+      "actual_status": "difference_only",
+      "passed": true
+    },
+    {
+      "case": "explained",
+      "expected_status": "explained_by_fixture_bridge",
+      "actual_status": "explained_by_fixture_bridge",
+      "passed": true
+    },
+    {
+      "case": "incompatible",
+      "expected_status": "incompatible_dimensions",
+      "actual_status": "incompatible_dimensions",
+      "passed": true
+    },
+    {
+      "case": "invalid-registry",
+      "expected_status": "invalid_registry",
+      "actual_status": "invalid_registry",
+      "passed": true
+    },
+    {
+      "case": "invalid-scopes",
+      "expected_status": "invalid_request",
+      "actual_status": "invalid_request",
+      "passed": true
+    },
+    {
+      "case": "expired-clarification",
+      "expected_status": "definition_unavailable",
+      "actual_status": "definition_unavailable",
+      "passed": true
+    },
+    {
+      "case": "malformed-bridge",
+      "expected_status": "invalid_bridge",
+      "actual_status": "invalid_bridge",
+      "passed": true
+    }
+  ],
+  "sha256": {
+    "ontology.json": "ea0bed2cf944108bfc11b555a455fd1ac24569da2009650ccc86bf872a114147",
+    "demo.py": "108153fe304ca178ecaf0b3692854f24201fa6f0be0b562c37f7e6514e9d3e03",
+    "validation.py": "4f1bb55d22457a2755915b4b90cbc4a79ccb9f741de0fbc338a869d72b067fab",
+    "explore.py": "45704699ed36385b0af6d68d4a4803279b15570e4ebd0961c9a9ac3dfa95bd74",
+    "evaluate.py": "0779bb842d8c2c0de8001f6a013e9a8fcc7fcb195fef617f1987ac5100229e91",
+    "examples/decision-cases.json": "1fcbd1064bf0d6cc4ba890386926fcacbf957b8d704dd50580edcf01581b2efe"
+  }
+}

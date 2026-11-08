@@ -1,0 +1,44 @@
+name: Semantic decision counterexample
+description: Report a reproducible wrong decision using synthetic inputs only.
+title: "[Counterexample] "
+body:
+  - type: markdown
+    attributes:
+      value: "Use synthetic inputs only. Do not include credentials, customer data or private org metadata. For security reports, follow SECURITY.md."
+  - type: input
+    id: revision
+    attributes:
+      label: Commit and Python version
+      placeholder: "Full commit SHA, Python 3.x"
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      description: Include command and smallest synthetic input or mutation.
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed outcome
+      description: Paste the relevant result, including failures.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected semantic decision and rationale
+      description: Explain why the result should differ. Distinguish business policy from code behavior.
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence
+    attributes:
+      label: Evidence type
+      options:
+        - Independently reproduced synthetic result
+        - Proposed case, not yet executed
+    validations:
+      required: true

@@ -34,3 +34,11 @@
 - Original Salesforce-centered governance architecture and platform-fit review packet.
 - Seven Oil & Gas concepts, seven relationships, and two metric definitions.
 - Dependency-free local resolver and synthetic revenue reconciliation.
+
+## 2026-11-08 - Competitive evidence and decision boundaries
+
+- Expanded primary-source comparison and documented reuse-first positioning, interoperability losses and prioritized gaps.
+- Validate request shape and complete registry before plans or clarification; preserve specific refusal statuses and filter unavailable choices.
+- Refuse malformed reconciliation objects and nontextual bridge evidence.
+- Added fixed synthetic evaluation with hashed receipt, boundary regressions and contribution/attention assets.
+- No live integration, vendor benchmark, open-source license grant or outreach.
