@@ -5,6 +5,8 @@
 - Lightweight vocabulary and two distinct metric definitions.
 - Synthetic resolver, reconciliation, example output, and behavioral controls.
 - Proposed architecture and platform-fit review packet.
+- [Semantic change review](CHANGE-REVIEW.md): input fingerprints, version-drift detection and affected-record reporting.
+- [Primary-source positioning](COMPARISON.md) and evidence-ranked improvement priorities.
 
 ## Available: optional sandbox preflight
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-08 - Semantic change review
+
+- Added offline snapshot comparison, conservative change classification, version-drift checks and input fingerprints.
+- Added mutation and CLI regression controls; no approval or runtime authorization implied.
+- Documented primary-source comparison with Tableau Semantics, Palantir Ontology and dbt MetricFlow.
+
 ## Guided experience and binding integrity - 2026-11-04
 
 - Add an eight-scenario CLI tour and registry validation command.

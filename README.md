@@ -51,6 +51,16 @@ Different currencies     → incompatible_dimensions
 
 Run one case with `python3 explore.py scenario binding-mismatch`, or get machine-readable results with `python3 explore.py tour --json`. All eight scenarios are local, synthetic, and repeatable.
 
+## Review semantic changes
+
+Compare registry snapshots before accepting changed business meaning:
+
+```sh
+python3 change_review.py ontology.json ontology.json
+```
+
+The [change-review tool](docs/CHANGE-REVIEW.md) flags silent version drift and reports affected definitions, relationships and contracts. All actual changes require review; it never grants approval. See the [primary-source comparison and positioning](docs/COMPARISON.md) for how this reference complements Tableau Semantics, Palantir Ontology and dbt MetricFlow.
+
 ## Optional sandbox readiness
 
 The [sandbox integration guide](docs/SANDBOX-INTEGRATION.md) provides an opt-in REST metadata probe, local token setup and explicit evidence gates. It checks sandbox identity and approved object/field names, not revenue values. The offline quick start above remains credential-free and network-free.
