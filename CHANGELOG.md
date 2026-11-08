@@ -8,6 +8,13 @@
 - Add a registry-derived ontology map, five-minute demo guide, and design decisions.
 - Verify diagram parity and all discovered tests in CI.
 
+## Metadata type contracts - 2026-11-08
+
+- Add optional exact field-type contracts to the read-only sandbox probe.
+- Fail on missing/mismatched types and reject malformed or duplicate contracts.
+- Keep receipts sanitized and distinguish name-only checks from type verification.
+- Add synthetic regression controls; no live connectivity or semantic approval claimed.
+
 ## Unreleased
 
 - Package the original local prototype as a standalone repository.
