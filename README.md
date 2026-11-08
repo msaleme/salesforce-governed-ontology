@@ -8,7 +8,7 @@
 
 A design proposal and runnable, synthetic Oil & Gas reference prototype for a Salesforce-centered semantic control plane. It separates approved business definitions from source metadata, API bindings, and execution authority.
 
-> **Status: design prototype, not a deployed integration.** Salesforce governance, Informatica metadata ingestion, MuleSoft execution, and Agentforce consumption are proposed architecture. The executable code is an offline Python demonstration only. This repository is not an official Salesforce product and makes no determination of corporate IP ownership.
+> **Status: design prototype, not a deployed integration.** Salesforce governance, Informatica metadata ingestion, MuleSoft execution, and Agentforce consumption are proposed architecture. The core demonstration is offline Python. An optional read-only sandbox metadata probe is implemented but has not been live-verified. This repository is not an official Salesforce product and makes no determination of corporate IP ownership.
 
 ## Why this exists
 
@@ -50,6 +50,10 @@ Different currencies     → incompatible_dimensions
 ```
 
 Run one case with `python3 explore.py scenario binding-mismatch`, or get machine-readable results with `python3 explore.py tour --json`. All eight scenarios are local, synthetic, and repeatable.
+
+## Optional sandbox readiness
+
+The [sandbox integration guide](docs/SANDBOX-INTEGRATION.md) provides an opt-in REST metadata probe, local token setup and explicit evidence gates. It checks sandbox identity and approved object/field names, not revenue values. The offline quick start above remains credential-free and network-free.
 
 ## Demonstration
 
@@ -94,7 +98,7 @@ docs/                     Architecture, contracts, review packet, and roadmap
 
 - Seven concepts, seven relationships, and two metric definitions in a lightweight JSON registry. This is not an OWL reasoner, JSON-LD implementation, or validated industry-standard ontology.
 - Approval records, scope strings, source IDs, and reconciliation evidence are fixtures. They do not authenticate a caller, validate accounting policy, or establish a security boundary.
-- No vendor SDK, deployment package, metadata refresh, persistence, API execution, live authorization, or production data is present.
+- No vendor SDK, deployment package, metadata refresh, persistence, metric execution, verified live authorization, or production data is present. The optional sandbox probe issues bounded REST metadata reads only when explicitly invoked.
 - No NVIDIA code was copied and no NVIDIA runtime is required. This is original design work, not a fork of Auto Ontology.
 - Reuse existing platform semantics before introducing custom registry objects. Product availability, entitlement, and API compatibility remain unverified.
 

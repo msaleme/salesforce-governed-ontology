@@ -6,6 +6,10 @@
 - Synthetic resolver, reconciliation, example output, and behavioral controls.
 - Proposed architecture and platform-fit review packet.
 
+## Available: optional sandbox preflight
+
+The [read-only metadata probe](SANDBOX-INTEGRATION.md) checks sandbox classification and selected object/field visibility. Synthetic transport tests are included. Live connectivity and the metric read remain unverified. This is a prerequisite tool, not completion of the one-real-read milestone.
+
 ## Next: platform fit
 
 A designated internal platform owner evaluates existing semantic capabilities, entitlements, API coverage, storage, and approved development location. Record a reuse, extend, or defer decision using the [review template](PLATFORM-FIT-REVIEW.md). Proposed custom objects are not a default implementation decision.
