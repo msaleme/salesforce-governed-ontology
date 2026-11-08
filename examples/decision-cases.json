@@ -1,14 +1,113 @@
 [
-  {"case": "ambiguity", "expected_status": "clarification_required"},
-  {"case": "approved-read", "expected_status": "read_plan_only"},
-  {"case": "denied", "expected_status": "denied"},
-  {"case": "expired", "expected_status": "definition_unavailable"},
-  {"case": "binding-mismatch", "expected_status": "binding_mismatch"},
-  {"case": "difference-only", "expected_status": "difference_only"},
-  {"case": "explained", "expected_status": "explained_by_fixture_bridge"},
-  {"case": "incompatible", "expected_status": "incompatible_dimensions"},
-  {"case": "invalid-registry", "expected_status": "invalid_registry"},
-  {"case": "invalid-scopes", "expected_status": "invalid_request"},
-  {"case": "expired-clarification", "expected_status": "definition_unavailable"},
-  {"case": "malformed-bridge", "expected_status": "invalid_bridge"}
+  {
+    "case": "ambiguity",
+    "expected_status": "clarification_required",
+    "expected_result": {
+      "status": "clarification_required",
+      "choices": [
+        "booked_revenue",
+        "recognized_revenue"
+      ]
+    }
+  },
+  {
+    "case": "approved-read",
+    "expected_status": "read_plan_only",
+    "expected_result": {
+      "status": "read_plan_only",
+      "evidence": "synthetic_only",
+      "concept": "recognized_revenue",
+      "version": "0.1.0",
+      "definition": "Synthetic demonstration definition: revenue recognized for satisfied performance obligations during the accounting period, net of reversals.",
+      "source": "fixture:erp:revenue_ledger",
+      "operation": "read_recognized_revenue"
+    }
+  },
+  {
+    "case": "denied",
+    "expected_status": "denied",
+    "expected_result": {
+      "status": "denied",
+      "reason": "Synthetic fixture lacks finance:read scope"
+    }
+  },
+  {
+    "case": "expired",
+    "expected_status": "definition_unavailable",
+    "expected_result": {
+      "status": "definition_unavailable"
+    }
+  },
+  {
+    "case": "binding-mismatch",
+    "expected_status": "binding_mismatch",
+    "expected_result": {
+      "status": "binding_mismatch"
+    }
+  },
+  {
+    "case": "difference-only",
+    "expected_status": "difference_only",
+    "expected_result": {
+      "status": "difference_only",
+      "currency": "USD",
+      "difference_minor": 30000000,
+      "sources": [
+        "fixture:crm:contract_bookings",
+        "fixture:erp:revenue_ledger"
+      ],
+      "evidence": "synthetic_only"
+    }
+  },
+  {
+    "case": "explained",
+    "expected_status": "explained_by_fixture_bridge",
+    "expected_result": {
+      "status": "explained_by_fixture_bridge",
+      "currency": "USD",
+      "difference_minor": 30000000,
+      "sources": [
+        "fixture:crm:contract_bookings",
+        "fixture:erp:revenue_ledger",
+        "fixture:reconciliation:001"
+      ],
+      "evidence": "synthetic_only",
+      "explanation": "Unfulfilled performance obligations in this synthetic contract cohort"
+    }
+  },
+  {
+    "case": "incompatible",
+    "expected_status": "incompatible_dimensions",
+    "expected_result": {
+      "status": "incompatible_dimensions"
+    }
+  },
+  {
+    "case": "invalid-registry",
+    "expected_status": "invalid_registry",
+    "expected_result": {
+      "status": "invalid_registry"
+    }
+  },
+  {
+    "case": "invalid-scopes",
+    "expected_status": "invalid_request",
+    "expected_result": {
+      "status": "invalid_request"
+    }
+  },
+  {
+    "case": "expired-clarification",
+    "expected_status": "definition_unavailable",
+    "expected_result": {
+      "status": "definition_unavailable"
+    }
+  },
+  {
+    "case": "malformed-bridge",
+    "expected_status": "invalid_bridge",
+    "expected_result": {
+      "status": "invalid_bridge"
+    }
+  }
 ]

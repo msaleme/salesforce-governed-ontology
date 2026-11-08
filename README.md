@@ -63,8 +63,8 @@ The [change-review tool](docs/CHANGE-REVIEW.md) flags silent version drift and r
 
 ## Compare, reproduce, challenge
 
-- [Competitive landscape and gap ledger](docs/COMPARISON.md): nine platform/standards perspectives, explicit trade-offs and reuse decisions.
-- [Reproduce the 12-case decision contract](docs/EVALUATION.md): `python3 evaluate.py`, checked-in outcomes and input/code hashes. This is not a vendor benchmark.
+- [Competitive landscape and gap ledger](docs/COMPARISON.md): thirteen platform/standards perspectives, explicit trade-offs and reuse decisions.
+- [Reproduce the 12-case decision contract](docs/EVALUATION.md): `python3 evaluate.py`, full-result assertions, checked-in outcomes and input/code hashes. This is not a vendor benchmark.
 - [Report a synthetic counterexample](https://github.com/msaleme/salesforce-governed-ontology/issues/new?template=decision-counterexample.yml): include the commit, command, observed decision and expected behavior.
 - [Evidence-led attention packet](docs/ATTENTION.md): draft walkthrough and distribution experiments, not published outreach.
 
