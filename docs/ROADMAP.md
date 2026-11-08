@@ -5,6 +5,8 @@
 - Lightweight vocabulary and two distinct metric definitions.
 - Synthetic resolver, reconciliation, example output, and behavioral controls.
 - Proposed architecture and platform-fit review packet.
+- [Semantic change review](CHANGE-REVIEW.md): input fingerprints, version-drift detection and affected-record reporting.
+- [Primary-source positioning](COMPARISON.md) and evidence-ranked improvement priorities.
 
 ## Available: optional sandbox preflight
 
@@ -31,3 +33,7 @@ Expose the validated read route through a supported Agentforce integration. Add 
 ## Outside current scope
 
 Production rollout, write actions, autonomous approval, broad ontology generation, standards conformance certification, and performance claims. Each requires separate implementation and evidence; no delivery dates are implied.
+
+## Competitive gap closure (2026-11-08)
+
+The [competitive gap ledger](COMPARISON.md) records implemented request/registry boundaries, availability-filtered clarification, bridge shape checks and the [fixed decision evaluation](EVALUATION.md). Remaining priorities are pinned native semantic mapping, approved live identity/bindings, independent reproduction and ownership/licensing decisions. A new query engine or general graph runtime is not planned.

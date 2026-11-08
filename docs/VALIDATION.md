@@ -43,3 +43,9 @@ The full [sandbox acceptance packet](PLATFORM-FIT-REVIEW.md) remains unexecuted.
 [test_validation.py](../test_validation.py) adds mutation checks for malformed collections, duplicate identities/relationships, dangling graph references, missing metric fields, invalid/reversed dates, missing approval/lineage, and swapped metric/source/operation bindings. It also verifies inclusive validity boundaries, deterministic scenario outcomes without model mutation, CLI execution outside the checkout directory, and nonzero exit codes for invalid input.
 
 The generated graph in [the ontology map](ONTOLOGY-MAP.md) must match the registry relationships. The original demo output remains backward-compatible. The CLI is tested through subprocesses, not only direct function calls. The diagram text is checked; rendered GitHub appearance is not part of CI.
+
+## Planner boundaries and decision receipt
+
+[test_boundaries.py](../test_boundaries.py) exercises malformed request containers, missing/nested metric fields, invalid unselected records, duplicate identities, availability-filtered clarification and reconciliation input types. `resolve` validates the whole registry before returning plans or clarification choices, while preserving safely identifiable specific refusal statuses.
+
+[test_evaluate.py](../test_evaluate.py) verifies the [fixed decision contract](EVALUATION.md), including positive controls, deliberately wrong expectations and checked-in receipt parity. These authored cases are not held out and do not measure vendor or model accuracy.

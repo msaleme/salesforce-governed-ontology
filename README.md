@@ -4,7 +4,7 @@
 
 **[Take the five-minute tour](docs/DEMO-GUIDE.md) · [Explore the ontology](docs/ONTOLOGY-MAP.md) · [Read the design decisions](docs/DESIGN-DECISIONS.md)**
 
-**Business meaning, governed in Salesforce, connected to enterprise evidence and permitted action.**
+**An inspectable semantic decision testbed: clarify the metric, validate the read plan, and separate arithmetic from explanation.**
 
 A design proposal and runnable, synthetic Oil & Gas reference prototype for a Salesforce-centered semantic control plane. It separates approved business definitions from source metadata, API bindings, and execution authority.
 
@@ -50,6 +50,23 @@ Different currencies     → incompatible_dimensions
 ```
 
 Run one case with `python3 explore.py scenario binding-mismatch`, or get machine-readable results with `python3 explore.py tour --json`. All eight scenarios are local, synthetic, and repeatable.
+
+## Review semantic changes
+
+Compare registry snapshots before accepting changed business meaning:
+
+```sh
+python3 change_review.py ontology.json ontology.json
+```
+
+The [change-review tool](docs/CHANGE-REVIEW.md) flags silent version drift and reports affected definitions, relationships and contracts. All actual changes require review; it never grants approval. See the [primary-source comparison and positioning](docs/COMPARISON.md) for how this reference complements Tableau Semantics, Palantir Ontology and dbt MetricFlow.
+
+## Compare, reproduce, challenge
+
+- [Competitive landscape and gap ledger](docs/COMPARISON.md): nine platform/standards perspectives, explicit trade-offs and reuse decisions.
+- [Reproduce the 12-case decision contract](docs/EVALUATION.md): `python3 evaluate.py`, checked-in outcomes and input/code hashes. This is not a vendor benchmark.
+- [Report a synthetic counterexample](https://github.com/msaleme/salesforce-governed-ontology/issues/new?template=decision-counterexample.yml): include the commit, command, observed decision and expected behavior.
+- [Evidence-led attention packet](docs/ATTENTION.md): draft walkthrough and distribution experiments, not published outreach.
 
 ## Optional sandbox readiness
 
