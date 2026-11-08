@@ -38,3 +38,7 @@ The runner compares the full reviewed expected JSON object with the observed obj
 Mutation controls in [test_evaluate.py](../test_evaluate.py) deliberately preserve the correct status while corrupting sources, operations, amounts, explanations, provenance, clarification choices or refusal contents. These prove the evaluator detects those regressions; they do not add independently authored domain cases.
 
 **Changing the contract:** review `expected_result` in the case file against the intended behavior first. Never regenerate expectations from the implementation being tested. Regenerate only the receipt after reviewing the contract and code changes. Exact payload checks intentionally require review for wording or schema changes too. This remains a fixed regression contract, not an extensible external-input benchmark or held-out evaluation.
+
+## Reproduction packet
+
+See the [one-command reproduction guide](REPRODUCTION.md) and [captured synthetic demonstration](TERMINAL-DEMO.md). The transcript is regenerated and checked by CI. External reproduction remains unverified.

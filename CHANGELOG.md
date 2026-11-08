@@ -42,3 +42,9 @@
 - Refuse malformed reconciliation objects and nontextual bridge evidence.
 - Added fixed synthetic evaluation with hashed receipt, boundary regressions and contribution/attention assets.
 - No live integration, vendor benchmark, open-source license grant or outreach.
+
+## Reproduction and distribution follow-through (2026-11-08)
+
+- Added portable self-run receipts with source hashes, Git state, command output and failure propagation.
+- Added a captured synthetic CLI demonstration checked for parity in CI.
+- Published the verified pinned-commit walkthrough; recorded distribution evidence and remaining owner/access dependencies.

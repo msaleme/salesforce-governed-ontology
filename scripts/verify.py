@@ -24,6 +24,9 @@ def main():
     diagram = (ROOT / 'docs/ONTOLOGY-MAP.md').read_text()
     if f'```mermaid\n{graph}\n```' not in diagram:
         raise SystemExit('FAIL: ontology diagram differs from registry relationships')
+    transcript = subprocess.check_output([sys.executable, 'scripts/reproduce.py', '--demo'], cwd=ROOT, text=True)
+    if transcript != (ROOT / 'docs/TERMINAL-DEMO.md').read_text():
+        raise SystemExit('FAIL: captured demonstration differs from current behavior')
     links = 0
     for document in ROOT.rglob('*.md'):
         if '.git' in document.relative_to(ROOT).parts:
