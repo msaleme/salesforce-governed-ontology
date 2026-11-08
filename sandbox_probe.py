@@ -76,11 +76,36 @@ class SandboxClient:
             raise ProbeError('Salesforce returned invalid JSON.') from None
 
 
-def probe(client, object_name, fields):
+def parse_field_types(values):
+    """Parse repeatable CLI contracts without echoing supplied values on failure."""
+    result = {}
+    for value in values:
+        if not isinstance(value, str) or value.count('=') != 1:
+            raise ProbeError('Field type contract must use FIELD=TYPE.')
+        name, expected = value.split('=')
+        api_name(name)
+        if not re.fullmatch(r'[a-z][a-z0-9]{0,63}', expected):
+            raise ProbeError('Expected a lowercase describe type identifier.')
+        if name in result:
+            raise ProbeError('Duplicate field type contract.')
+        result[name] = expected
+    return result
+
+
+def probe(client, object_name, fields, field_types=None):
     object_name = api_name(object_name)
     if not fields or len(fields) != len(set(fields)):
         raise ProbeError('Supply at least one unique field API name.')
     fields = [api_name(field) for field in fields]
+    if field_types is None:
+        field_types = {}
+    if not isinstance(field_types, dict):
+        raise ProbeError('Field type contracts must be a mapping.')
+    for name, expected in field_types.items():
+        api_name(name)
+        if (name not in fields or not isinstance(expected, str)
+                or not re.fullmatch(r'[a-z][a-z0-9]{0,63}', expected)):
+            raise ProbeError('Field type contract must match a requested field and valid type identifier.')
     # This fixed query reads org classification only, not customer/business rows.
     org = client.get('/query?' + urlencode({'q': 'SELECT IsSandbox FROM Organization LIMIT 1'}))
     records = org.get('records')
@@ -100,7 +125,12 @@ def probe(client, object_name, fields):
     available = set(names)
     if not set(fields).issubset(available):
         raise ProbeError('One or more requested fields are absent from this identity\'s describe response.')
+    by_name = {field['name']: field for field in descriptions}
+    if any(by_name[name].get('type') != expected for name, expected in field_types.items()):
+        raise ProbeError('Requested field type is missing or mismatched; binding check failed.')
     return {
+        'field_type_contract_count': len(field_types),
+        'field_type_contracts_verified': bool(field_types),
         'status': 'sandbox_metadata_verified',
         'observed_at': datetime.now(timezone.utc).isoformat(),
         'sandbox_verified': True,
@@ -117,10 +147,13 @@ def main():
     parser.add_argument('--api-version', required=True)
     parser.add_argument('--object', required=True, dest='object_name')
     parser.add_argument('--field', action='append', required=True, dest='fields')
+    parser.add_argument('--field-type', action='append', default=[], metavar='FIELD=TYPE',
+                        help='Optional exact describe type contract for a requested field; repeatable.')
     args = parser.parse_args()
     try:
+        field_types = parse_field_types(args.field_type)
         client = SandboxClient(args.instance_url, os.environ.get('SF_ACCESS_TOKEN', ''), args.api_version)
-        print(json.dumps(probe(client, args.object_name, args.fields), indent=2))
+        print(json.dumps(probe(client, args.object_name, args.fields, field_types), indent=2))
     except (ProbeError, ValueError):
         # Never expose an unexpected exception's payload or a token-bearing URL.
         exc = sys.exc_info()[1]

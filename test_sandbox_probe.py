@@ -1,10 +1,10 @@
 """Synthetic transport tests, not evidence of live Salesforce enforcement."""
 import io
 import unittest
-from unittest.mock import Mock
+from unittest.mock import Mock, patch
 from urllib.error import HTTPError
 
-from sandbox_probe import NoRedirects, ProbeError, SandboxClient, probe, validate_origin
+from sandbox_probe import NoRedirects, ProbeError, SandboxClient, probe, validate_origin, parse_field_types, main
 
 ORIGIN = 'https://example--dev.sandbox.my.salesforce.com'
 
@@ -25,6 +25,56 @@ class SandboxProbeTests(unittest.TestCase):
         self.assertFalse(result['metric_value_verified'])
         self.assertFalse(result['business_records_read'])
         self.assertEqual(client.get.call_count, 2)
+
+    def test_type_contract_success_and_redacted_receipt(self):
+        client = self.client(metadata={'name': 'Metric__c', 'queryable': True,
+            'fields': [{'name': 'Version__c', 'type': 'string'}]})
+        result = probe(client, 'Metric__c', ['Version__c'], {'Version__c': 'string'})
+        self.assertTrue(result['field_type_contracts_verified'])
+        self.assertEqual(result['field_type_contract_count'], 1)
+        self.assertNotIn('Version__c', str(result))
+        self.assertFalse(result['authorization_boundary_verified'])
+
+    def test_absent_contract_is_not_claimed_verified(self):
+        result = probe(self.client(), 'Metric__c', ['Version__c'])
+        self.assertFalse(result['field_type_contracts_verified'])
+        self.assertEqual(result['field_type_contract_count'], 0)
+
+    def test_missing_malformed_or_wrong_type_fails(self):
+        for actual in (None, 'currency', 'String', [], {}, True):
+            with self.subTest(actual=actual):
+                client = self.client(metadata={'name': 'Metric__c', 'queryable': True,
+                    'fields': [{'name': 'Version__c', 'type': actual}]})
+                with self.assertRaises(ProbeError):
+                    probe(client, 'Metric__c', ['Version__c'], {'Version__c': 'string'})
+
+    def test_bad_contract_rejected_before_network(self):
+        for contract in ([], {'Other__c': 'string'}, {'Version__c': None},
+                         {'Version__c': 'STRING'}, {'Version__c': 'string\n'}):
+            client = self.client()
+            with self.assertRaises(ProbeError):
+                probe(client, 'Metric__c', ['Version__c'], contract)
+            client.get.assert_not_called()
+
+    def test_cli_contract_parser_rejects_ambiguity(self):
+        self.assertEqual(parse_field_types(['Version__c=string']), {'Version__c': 'string'})
+        for values in (['Version__c'], ['Version__c=string=extra'],
+                       ['Version__c='], ['Version__c=string', 'Version__c=currency'],
+                       ['../Name=string']):
+            with self.assertRaises(ProbeError):
+                parse_field_types(values)
+
+    def test_cli_passes_contract_and_reports_failure(self):
+        argv = ['sandbox_probe.py', '--instance-url', ORIGIN, '--api-version', 'v61.0',
+                '--object', 'Metric__c', '--field', 'Version__c',
+                '--field-type', 'Version__c=string']
+        client = self.client(metadata={'name': 'Metric__c', 'queryable': True,
+            'fields': [{'name': 'Version__c', 'type': 'currency'}]})
+        with patch('sys.argv', argv), patch('sandbox_probe.SandboxClient', return_value=client), \
+                patch('sys.stderr', new_callable=io.StringIO) as output:
+            self.assertEqual(main(), 1)
+            self.assertIn('mismatched', output.getvalue())
+            self.assertNotIn('Version__c', output.getvalue())
 
     def test_unverified_org_stops_before_describe(self):
         for org in ({}, {'done': False}, {'done': True, 'totalSize': 1,

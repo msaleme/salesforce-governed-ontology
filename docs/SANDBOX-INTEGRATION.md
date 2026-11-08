@@ -25,12 +25,32 @@ unset SF_ACCESS_TOKEN
 
 Replace all uppercase placeholders with approved names. Repeat `--field` for each required field. Standard, enhanced sandbox My Domain hostnames are supported; custom domains, production orgs and redirects are rejected. There is no automatic login, refresh, retry, credential persistence or network call in the offline test suite.
 
+## Optional field-type contracts
+
+After the platform owner supplies approved bindings, add repeatable
+`--field-type YOUR_APPROVED_FIELD=string` arguments to the command above.
+Each contract must name a field also supplied with `--field`; duplicate contracts
+are rejected before any network request. Use the exact, case-sensitive REST
+`describe` type, not a UI label. `string` is illustrative, not an approved binding.
+No type coercion or compatibility inference is performed. Unknown type identifiers
+are not treated as supported types: they must match the returned describe value.
+
+A missing or mismatched type fails the probe. The sanitized receipt reports only
+`field_type_contract_count` and `field_type_contracts_verified`, never the field
+names or types. With no contracts, the count is zero and verification is false;
+legacy name-only checks remain available. A subset of fields may be contracted,
+so the count does not imply all requested fields have been type-checked.
+
+Type agreement does not verify units, currency, precision/scale, reference targets,
+nullability, accounting meaning or field access enforcement. Those remain separate
+binding and live-read acceptance requirements. No actual org binding is included.
+
 ## What happens
 
 1. Validate the hostname, API version and API-name syntax locally.
 2. Send the fixed query `SELECT IsSandbox FROM Organization LIMIT 1`.
 3. Stop unless a complete response explicitly identifies one sandbox organization.
-4. GET the selected object's `describe` endpoint and verify its name, queryability and required field presence.
+4. GET the selected object's `describe` endpoint and verify its name, queryability and required field presence, plus any supplied exact field-type contracts.
 5. Emit a timestamped summary without the hostname, org ID, token, object/field names or raw response. On failure, exit nonzero with a bounded diagnostic. HTTP response bodies are never printed.
 
 Network requests have a 20-second timeout and a 2 MB response cap. Redirects are refused before a second request can forward credentials. TLS verification uses Python's normal trust store. A local machine controlling the token or trusted proxy remains within the operator's trust boundary.
