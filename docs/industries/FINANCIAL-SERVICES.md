@@ -20,6 +20,10 @@ Proposed data path: Position and valuation systems plus entity master → review
 
 Use the shared [trust-boundary architecture](../CTO-ADVISORY.md). Native sources retain authorization and data authority; the semantic catalog does not grant access. Resolve identifiers and effective-time relationships before aggregation. Do not join on display names.
 
+## Data request and runnable subset
+
+Use the [data-to-proof readiness check](../DATA-TO-PROOF.md) for exact objects, fields, join keys, owners and actionable missing-evidence results. This is a narrow synthetic subset, not the full architecture below.
+
 ## First decision contract
 
 Freeze one exposure definition, valuation timestamp, legal-entity scope, currency conversion source and netting basis. Aggregate only after approved group membership and netting rules are applied; never infer eligibility from a shared parent name.
@@ -54,6 +58,6 @@ Review mappings field by field, retain explicit loss reports, and refuse require
 
 ## Evidence boundary
 
-Finance comparison controls are analogous only. No risk engine, netting evaluator, entity resolver or financial-services integration is implemented.
+The [object-mapped proof](../DATA-TO-PROOF.md) computes one synthetic aligned gross-report difference. No risk engine, netting evaluator, entity resolver or live integration is implemented.
 
 A credible next artifact is a steward-reviewed native mapping plus a reproducible counterexample, not an unverified claim of industry adoption. Submit synthetic evidence using the [team evaluation disposition](../TEAM-EVALUATION.md).

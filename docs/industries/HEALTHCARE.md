@@ -20,6 +20,10 @@ Proposed data path: Bed-management and staffing systems → reviewed facility/un
 
 Use the shared [trust-boundary architecture](../CTO-ADVISORY.md). Native sources retain authorization and data authority; the semantic catalog does not grant access. Resolve identifiers and effective-time relationships before aggregation. Do not join on display names.
 
+## Data request and runnable subset
+
+Use the [data-to-proof readiness check](../DATA-TO-PROOF.md) for exact objects, fields, join keys, owners and actionable missing-evidence results. This is a narrow synthetic subset, not the full architecture below.
+
 ## First decision contract
 
 Use unit/observation-time grain, explicit bed-status exclusions and staffing coverage interval. Count available staffed beds only under a locally approved rule. Keep patient-level records outside the demonstration.
@@ -54,6 +58,6 @@ Review mappings field by field, retain explicit loss reports, and refuse require
 
 ## Evidence boundary
 
-Reliability examples illustrate completeness and window checks only. Healthcare terms, staffing rules and capacity calculations are not implemented.
+The [object-mapped proof](../DATA-TO-PROOF.md) counts synthetic ready AND explicitly staffed beds. Staffing derivation, clinical suitability, live feeds and privacy boundaries are not implemented.
 
 A credible next artifact is a steward-reviewed native mapping plus a reproducible counterexample, not an unverified claim of industry adoption. Submit synthetic evidence using the [team evaluation disposition](../TEAM-EVALUATION.md).

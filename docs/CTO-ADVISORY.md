@@ -2,7 +2,7 @@
 
 **Decision requested:** sponsor one bounded, read-only evaluation around a disputed business metric, using the semantic platform already in place.
 
-**Status:** proposed reference architectures, not delivered industry integrations. The runnable repository demonstrates synthetic finance and service-reliability decisions only. It does not establish market leadership, customer adoption, compliance, or production readiness. [Reuse rights remain unresolved](../LICENSE-STATUS.md).
+**Status:** proposed reference architectures, not delivered industry integrations. The runnable repository includes synthetic finance, service reliability and [five narrow object-mapped calculations](DATA-TO-PROOF.md); broader industry behavior remains proposed. It does not establish market leadership, customer adoption, compliance, or production readiness. [Reuse rights remain unresolved](../LICENSE-STATUS.md).
 
 ## Why a CTO should care
 

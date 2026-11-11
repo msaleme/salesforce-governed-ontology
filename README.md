@@ -52,7 +52,7 @@ executes a binding or contacts a platform. See the [input contract and example](
 
 [CTO decision brief](docs/CTO-ADVISORY.md) · [Pilot scorecard and decision record](docs/CTO-PILOT-KIT.md)
 
-Proposed reference architectures for [energy](docs/industries/ENERGY.md), [financial services](docs/industries/FINANCIAL-SERVICES.md), [healthcare operations](docs/industries/HEALTHCARE.md), [manufacturing](docs/industries/MANUFACTURING.md), and [retail / distribution](docs/industries/RETAIL.md). Each identifies a bounded business decision, native-system boundaries, semantic counterexamples, ownership and a first pilot. These are design blueprints, not additional implemented domains or validated integrations.
+Proposed reference architectures for [energy](docs/industries/ENERGY.md), [financial services](docs/industries/FINANCIAL-SERVICES.md), [healthcare operations](docs/industries/HEALTHCARE.md), [manufacturing](docs/industries/MANUFACTURING.md), and [retail / distribution](docs/industries/RETAIL.md). Each identifies a bounded business decision, native-system boundaries, semantic counterexamples, ownership and a first pilot. The broader architectures remain proposals. [Run the data-to-proof check](docs/DATA-TO-PROOF.md) for five narrow synthetic calculations, required objects/fields and owner-specific next actions. No native integrations are validated.
 
 
 ## Go deeper

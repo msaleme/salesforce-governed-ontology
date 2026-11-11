@@ -20,6 +20,10 @@ Proposed data path: OMS, WMS and carrier events → reviewed line/package mappin
 
 Use the shared [trust-boundary architecture](../CTO-ADVISORY.md). Native sources retain authorization and data authority; the semantic catalog does not grant access. Resolve identifiers and effective-time relationships before aggregation. Do not join on display names.
 
+## Data request and runnable subset
+
+Use the [data-to-proof readiness check](../DATA-TO-PROOF.md) for exact objects, fields, join keys, owners and actionable missing-evidence results. This is a narrow synthetic subset, not the full architecture below.
+
 ## First decision contract
 
 Freeze whether the metric is line-level or order-level and original versus revised promise. Define timezone, delivery event, cancellations, split shipments and observation cutoff. Require all required lines before calling an order delivered on time.
@@ -54,6 +58,6 @@ Review mappings field by field, retain explicit loss reports, and refuse require
 
 ## Evidence boundary
 
-Existing examples do not implement fulfillment metrics or carrier ingestion. They demonstrate analogous dimension and incomplete-evidence checks only.
+The [object-mapped proof](../DATA-TO-PROOF.md) computes a synthetic original-promise line rate from complete delivery summaries. Raw carrier ingestion and split-quantity reconciliation are not implemented.
 
 A credible next artifact is a steward-reviewed native mapping plus a reproducible counterexample, not an unverified claim of industry adoption. Submit synthetic evidence using the [team evaluation disposition](../TEAM-EVALUATION.md).

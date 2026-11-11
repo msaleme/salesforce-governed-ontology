@@ -20,6 +20,10 @@ Proposed data path: Historian and production accounting → reviewed well-ID and
 
 Use the shared [trust-boundary architecture](../CTO-ADVISORY.md). Native sources retain authorization and data authority; the semantic catalog does not grant access. Resolve identifiers and effective-time relationships before aggregation. Do not join on display names.
 
+## Data request and runnable subset
+
+Use the [data-to-proof readiness check](../DATA-TO-PROOF.md) for exact objects, fields, join keys, owners and actionable missing-evidence results. This is a narrow synthetic subset, not the full architecture below.
+
 ## First decision contract
 
 Metric A: measured production at well/day/commodity with unit and measurement basis. Metric B: recognized revenue at contract/accounting-period/currency. Compare trends separately; reconcile money only with an approved quantity/price/allocation/recognition bridge.

@@ -20,9 +20,13 @@ Proposed data path: MES, historian and quality systems → reviewed equipment/or
 
 Use the shared [trust-boundary architecture](../CTO-ADVISORY.md). Native sources retain authorization and data authority; the semantic catalog does not grant access. Resolve identifiers and effective-time relationships before aggregation. Do not join on display names.
 
+## Data request and runnable subset
+
+Use the [data-to-proof readiness check](../DATA-TO-PROOF.md) for exact objects, fields, join keys, owners and actionable missing-evidence results. This is a narrow synthetic subset, not the full architecture below.
+
 ## First decision contract
 
-For the pilot, define availability as runtime/planned production time, performance as ideal cycle time × total count/runtime, and quality as good count/total count. Require compatible duration units, positive denominators and steward-approved exclusions. This proposed formula is not repository executable behavior.
+For the pilot, define availability as runtime/planned production time, performance as ideal cycle time × total count/runtime, and quality as good count/total count. Require compatible duration units, positive denominators and steward-approved exclusions. A bounded single-run version is executable in the [object-mapped proof](../DATA-TO-PROOF.md); the broader event-level rules remain proposed.
 
 Record the contract revision, source schema revision, identity/purpose reference, freshness threshold, completeness observations and permitted answer type. Thresholds must be chosen by the domain owner before execution, not invented by an agent. These fields are design requirements, not supported inputs to the current CLI.
 
@@ -54,6 +58,6 @@ Review mappings field by field, retain explicit loss reports, and refuse require
 
 ## Evidence boundary
 
-The reliability contract supplies a useful refusal pattern, not an OEE engine. Equipment identities, event reconciliation and manufacturing metrics require new reviewed implementation.
+The [object-mapped proof](../DATA-TO-PROOF.md) computes synthetic single-run OEE factors from pre-reconciled inputs. Equipment identity resolution, event overlap and rework reconciliation remain upstream/unimplemented.
 
 A credible next artifact is a steward-reviewed native mapping plus a reproducible counterexample, not an unverified claim of industry adoption. Submit synthetic evidence using the [team evaluation disposition](../TEAM-EVALUATION.md).

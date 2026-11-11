@@ -77,7 +77,7 @@ Production review requested is not production approved. Preserve failed pilot ev
 
 ## Adoption evidence ladder
 
-1. Maintainer-authored runnable examples: available for finance and reliability.
+1. Maintainer-authored runnable examples: finance, reliability and [five narrow object-mapped calculations](DATA-TO-PROOF.md).
 2. External reproduction or counterexample: [request open](https://github.com/msaleme/salesforce-governed-ontology/issues/9); no response asserted here.
 3. Steward-reviewed native mapping: required for each industry; not established.
 4. Identity-bound sandbox result: required; not established.
