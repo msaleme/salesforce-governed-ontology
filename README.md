@@ -48,6 +48,13 @@ metric IDs, units, grains, scopes and read bindings are supported. It emits only
 local read plans and labels all supplied evidence unverified. It never runs SQL,
 executes a binding or contacts a platform. See the [input contract and example](docs/BRING-YOUR-OWN-DATA.md).
 
+## CTO and industry architecture pack
+
+[CTO decision brief](docs/CTO-ADVISORY.md) · [Pilot scorecard and decision record](docs/CTO-PILOT-KIT.md)
+
+Proposed reference architectures for [energy](docs/industries/ENERGY.md), [financial services](docs/industries/FINANCIAL-SERVICES.md), [healthcare operations](docs/industries/HEALTHCARE.md), [manufacturing](docs/industries/MANUFACTURING.md), and [retail / distribution](docs/industries/RETAIL.md). Each identifies a bounded business decision, native-system boundaries, semantic counterexamples, ownership and a first pilot. These are design blueprints, not additional implemented domains or validated integrations.
+
+
 ## Go deeper
 
 - [Run, demonstrate and reproduce](docs/RUN-GUIDE.md): walkthrough, presentation script, captured output and reproducible receipts.

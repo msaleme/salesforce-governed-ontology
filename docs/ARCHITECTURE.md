@@ -99,3 +99,7 @@ Future writes additionally require explicit action authority, bounded input, pre
 - Synthetic Oil & Gas revenue reconciliation is the first bounded scenario.
 - Repository packaging and public GitHub visibility authorized on 2026-11-04. No external outreach, deployment, scheduled job, or org connection.
 - Open: approved internal development location and org; existing semantic capability overlap; actual Informatica edition/API access; MuleSoft API contract; domain and finance approvers. These affect integration, not this local starter.
+
+## 8. CTO and industry reference architectures
+
+For reuse decisions, accountable owners and cross-industry pilot boundaries, see the [CTO decision brief](CTO-ADVISORY.md) and [pilot decision kit](CTO-PILOT-KIT.md). These proposed blueprints extend the design, not the implemented runtime or its evidence claims.
