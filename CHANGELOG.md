@@ -8,6 +8,12 @@
 - Consolidate run/reproduction and assurance/platform-fit guides; retain legacy script entry points.
 - Add unposted contributor issue drafts and a local demo recording outline.
 
+## 2026-11-13 - Semantic federation reference design
+
+- Document Data 360 harmonization, Tableau Semantics and MuleSoft orchestration.
+- Add six-platform field crosswalk, native semantic-loss notes, read contracts and pilot acceptance matrix.
+- Add crosswalk/registry drift verification to the existing test workflow.
+- No live adapter, deployed Mule application, new approval or formula translator.
 
 ## 2026-11-08 - Semantic change review
 
