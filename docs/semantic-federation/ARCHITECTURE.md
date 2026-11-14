@@ -144,3 +144,7 @@ Open semantic interchange may eventually reduce custom mapping effort, but no fo
 - [Machine-readable crosswalk](CROSSWALK.json)
 
 Return to the [repository overview](../../README.md).
+
+## Extension boundaries
+
+See [Data 360, Tableau Semantics and six-platform federation](ARCHITECTURE.md) for native metric reuse and [MuleSoft contracts](MULESOFT.md) for the proposed integration boundary. Native formulas and source authorization remain authoritative; the current runtime remains offline with unverified supplied evidence.
