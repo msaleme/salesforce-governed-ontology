@@ -1,0 +1,227 @@
+{
+  "status": "design_only_not_runtime_config",
+  "date": "2026-11-13",
+  "ontology_sha256": "ea0bed2cf944108bfc11b555a455fd1ac24569da2009650ccc86bf872a114147",
+  "platforms": [
+    {
+      "platform": "salesforce",
+      "status": "design_only",
+      "native_binding_verified": false,
+      "concept_mapping": "DMO / semantic definition",
+      "relationship_mapping": "DMO relationship / semantic relationship",
+      "metric_fields": {
+        "id": "local ID linked to semantic model + measure",
+        "label": "native display label; not identity",
+        "definition": "reviewed meaning of native semantic measure",
+        "version": "mapping revision + pinned native revision/export digest",
+        "status": "reviewed sidecar; never auto-approved",
+        "approval": "authenticated stewardship reference or unresolved sidecar",
+        "valid_from": "approved definition effective start, not data period",
+        "valid_to": "approved definition effective end, not data period",
+        "grain": "semantic dimensions",
+        "aggregation": "native semantic measure",
+        "unit": "reviewed currency/scale/precision; no assumed conversion",
+        "source_binding": "semantic model + measure",
+        "lineage": "native asset and lineage references when available; unresolved gaps explicit",
+        "action": {
+          "operation_id": "allowlisted MuleSoft read operation + schema version",
+          "side_effect": "read",
+          "required_scope": "gateway scope plus separately enforced native authorization",
+          "implementation": "proposed adapter; current registry remains local_fixture_only"
+        }
+      },
+      "mulesoft_route": "Data Cloud connector for documented operations; HTTP to Tableau Semantics REST",
+      "semantic_loss_to_review": "DMO mapping does not transfer analytical semantics or lifecycle approval",
+      "source_url": "https://developer.salesforce.com/docs/data/semantic-layer/guide/get-started.html"
+    },
+    {
+      "platform": "snowflake",
+      "status": "design_only",
+      "native_binding_verified": false,
+      "concept_mapping": "Semantic View logical table",
+      "relationship_mapping": "logical-table relationship",
+      "metric_fields": {
+        "id": "local ID linked to Semantic View + metric",
+        "label": "native display label; not identity",
+        "definition": "reviewed meaning of metric expression; facts remain row-level",
+        "version": "mapping revision + pinned native revision/export digest",
+        "status": "reviewed sidecar; never auto-approved",
+        "approval": "authenticated stewardship reference or unresolved sidecar",
+        "valid_from": "approved definition effective start, not data period",
+        "valid_to": "approved definition effective end, not data period",
+        "grain": "dimensions",
+        "aggregation": "metric expression; facts remain row-level",
+        "unit": "reviewed currency/scale/precision; no assumed conversion",
+        "source_binding": "Semantic View + metric",
+        "lineage": "native asset and lineage references when available; unresolved gaps explicit",
+        "action": {
+          "operation_id": "allowlisted MuleSoft read operation + schema version",
+          "side_effect": "read",
+          "required_scope": "gateway scope plus separately enforced native authorization",
+          "implementation": "proposed adapter; current registry remains local_fixture_only"
+        }
+      },
+      "mulesoft_route": "Approved native metadata/query interface through MuleSoft System API",
+      "semantic_loss_to_review": "Join fan-out, null semantics and facts versus aggregated metrics",
+      "source_url": "https://docs.snowflake.com/en/user-guide/views-semantic/overview"
+    },
+    {
+      "platform": "databricks",
+      "status": "design_only",
+      "native_binding_verified": false,
+      "concept_mapping": "metric-view source / Unity Catalog object",
+      "relationship_mapping": "metric-view joins",
+      "metric_fields": {
+        "id": "local ID linked to catalog.schema.metric_view + measure",
+        "label": "native display label; not identity",
+        "definition": "reviewed meaning of native measure expression",
+        "version": "mapping revision + pinned native revision/export digest",
+        "status": "reviewed sidecar; never auto-approved",
+        "approval": "authenticated stewardship reference or unresolved sidecar",
+        "valid_from": "approved definition effective start, not data period",
+        "valid_to": "approved definition effective end, not data period",
+        "grain": "dimensions",
+        "aggregation": "native measure expression",
+        "unit": "reviewed currency/scale/precision; no assumed conversion",
+        "source_binding": "catalog.schema.metric_view + measure",
+        "lineage": "native asset and lineage references when available; unresolved gaps explicit",
+        "action": {
+          "operation_id": "allowlisted MuleSoft read operation + schema version",
+          "side_effect": "read",
+          "required_scope": "gateway scope plus separately enforced native authorization",
+          "implementation": "proposed adapter; current registry remains local_fixture_only"
+        }
+      },
+      "mulesoft_route": "Approved SQL/metadata interface through MuleSoft System API",
+      "semantic_loss_to_review": "Window measures, filters and non-additive aggregations",
+      "source_url": "https://docs.databricks.com/aws/en/uc-semantics/metric-views"
+    },
+    {
+      "platform": "dbt",
+      "status": "design_only",
+      "native_binding_verified": false,
+      "concept_mapping": "semantic model + entity",
+      "relationship_mapping": "entity-based semantic joins",
+      "metric_fields": {
+        "id": "local ID linked to project/environment + metric",
+        "label": "native display label; not identity",
+        "definition": "reviewed meaning of MetricFlow metric definition",
+        "version": "mapping revision + pinned native revision/export digest",
+        "status": "reviewed sidecar; never auto-approved",
+        "approval": "authenticated stewardship reference or unresolved sidecar",
+        "valid_from": "approved definition effective start, not data period",
+        "valid_to": "approved definition effective end, not data period",
+        "grain": "dimensions and time dimension",
+        "aggregation": "MetricFlow metric definition",
+        "unit": "reviewed currency/scale/precision; no assumed conversion",
+        "source_binding": "project/environment + metric",
+        "lineage": "native asset and lineage references when available; unresolved gaps explicit",
+        "action": {
+          "operation_id": "allowlisted MuleSoft read operation + schema version",
+          "side_effect": "read",
+          "required_scope": "gateway scope plus separately enforced native authorization",
+          "implementation": "proposed adapter; current registry remains local_fixture_only"
+        }
+      },
+      "mulesoft_route": "Supported Semantic Layer API/export through MuleSoft System API",
+      "semantic_loss_to_review": "Schema version, time spine, cumulative and ratio semantics",
+      "source_url": "https://docs.getdbt.com/docs/use-dbt-semantic-layer/dbt-sl"
+    },
+    {
+      "platform": "looker",
+      "status": "design_only",
+      "native_binding_verified": false,
+      "concept_mapping": "LookML view",
+      "relationship_mapping": "Explore joins",
+      "metric_fields": {
+        "id": "local ID linked to model + Explore + view.measure",
+        "label": "native display label; not identity",
+        "definition": "reviewed meaning of LookML measure and calculation",
+        "version": "mapping revision + pinned native revision/export digest",
+        "status": "reviewed sidecar; never auto-approved",
+        "approval": "authenticated stewardship reference or unresolved sidecar",
+        "valid_from": "approved definition effective start, not data period",
+        "valid_to": "approved definition effective end, not data period",
+        "grain": "dimensions / dimension groups",
+        "aggregation": "LookML measure and calculation",
+        "unit": "reviewed currency/scale/precision; no assumed conversion",
+        "source_binding": "model + Explore + view.measure",
+        "lineage": "native asset and lineage references when available; unresolved gaps explicit",
+        "action": {
+          "operation_id": "allowlisted MuleSoft read operation + schema version",
+          "side_effect": "read",
+          "required_scope": "gateway scope plus separately enforced native authorization",
+          "implementation": "proposed adapter; current registry remains local_fixture_only"
+        }
+      },
+      "mulesoft_route": "Supported Looker metadata/query API through MuleSoft System API",
+      "semantic_loss_to_review": "Filters, access context and fan-out safeguards",
+      "source_url": "https://docs.cloud.google.com/looker/docs/lookml-terms-and-concepts"
+    },
+    {
+      "platform": "power_bi",
+      "status": "design_only",
+      "native_binding_verified": false,
+      "concept_mapping": "semantic-model table",
+      "relationship_mapping": "model relationship",
+      "metric_fields": {
+        "id": "local ID linked to workspace + model + measure",
+        "label": "native display label; not identity",
+        "definition": "reviewed meaning of native DAX measure",
+        "version": "mapping revision + pinned native revision/export digest",
+        "status": "reviewed sidecar; never auto-approved",
+        "approval": "authenticated stewardship reference or unresolved sidecar",
+        "valid_from": "approved definition effective start, not data period",
+        "valid_to": "approved definition effective end, not data period",
+        "grain": "dimension columns",
+        "aggregation": "native DAX measure",
+        "unit": "reviewed currency/scale/precision; no assumed conversion",
+        "source_binding": "workspace + model + measure",
+        "lineage": "native asset and lineage references when available; unresolved gaps explicit",
+        "action": {
+          "operation_id": "allowlisted MuleSoft read operation + schema version",
+          "side_effect": "read",
+          "required_scope": "gateway scope plus separately enforced native authorization",
+          "implementation": "proposed adapter; current registry remains local_fixture_only"
+        }
+      },
+      "mulesoft_route": "Approved model metadata/query interface through MuleSoft System API",
+      "semantic_loss_to_review": "Filter context, calculation groups, RLS/OLS and tenant interface availability",
+      "source_url": "https://learn.microsoft.com/en-us/power-bi/connect-data/service-datasets-understand"
+    }
+  ],
+  "example_local_metric": {
+    "id": "recognized_revenue",
+    "label": "Recognized revenue",
+    "version": "0.1.0",
+    "definition": "Synthetic demonstration definition: revenue recognized for satisfied performance obligations during the accounting period, net of reversals.",
+    "status": "approved",
+    "approval": {
+      "kind": "synthetic_fixture",
+      "steward": "demo-finance-steward",
+      "reference": "fixture:approval:001"
+    },
+    "valid_from": "2026-01-01",
+    "valid_to": "2026-12-31",
+    "grain": [
+      "operator_id",
+      "contract_id",
+      "period",
+      "currency"
+    ],
+    "aggregation": "sum",
+    "unit": "currency_minor_units",
+    "source_binding": "fixture:erp:revenue_ledger",
+    "lineage": [
+      "fixture:contract:001",
+      "fixture:erp:revenue_ledger"
+    ],
+    "action": {
+      "operation_id": "read_recognized_revenue",
+      "side_effect": "read",
+      "required_scope": "finance:read",
+      "implementation": "local_fixture_only"
+    }
+  },
+  "required_extension": "reviewed sidecar and separately implemented native adapters; no substitution of fixture bindings"
+}
