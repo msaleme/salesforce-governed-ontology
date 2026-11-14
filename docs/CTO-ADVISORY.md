@@ -97,3 +97,7 @@ Begin with one metric pair, one source boundary and read-only scope. Budget engi
 Use the [pilot and decision kit](CTO-PILOT-KIT.md). Stop if the incumbent already handles the problem adequately, no authoritative owner exists, reuse is uncleared, a required native mapping silently loses meaning, or access restrictions cannot be enforced at the source.
 
 **Success is an independently reproducible, useful decision improvement with acceptable operating cost. It is not another ontology diagram or a higher test count.**
+
+## Related decision guides
+
+For reuse decisions, accountable owners and cross-industry pilot boundaries, see the [CTO decision brief](CTO-ADVISORY.md) and [pilot decision kit](CTO-PILOT-KIT.md). These proposed blueprints extend the design, not the implemented runtime or its evidence claims.
