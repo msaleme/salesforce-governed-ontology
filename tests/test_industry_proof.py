@@ -5,7 +5,7 @@ import subprocess
 import sys
 import unittest
 
-from industry_proof import DATA, INDUSTRIES, ROOT, assess, run_all
+from sgo.industry_proof import DATA, INDUSTRIES, ROOT, assess, run_all
 
 
 def fixture(industry):

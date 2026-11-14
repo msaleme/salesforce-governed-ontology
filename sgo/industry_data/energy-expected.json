@@ -1,0 +1,10 @@
+{
+  "status": "difference_only",
+  "values": {
+    "booked_minor": 120000000,
+    "recognized_minor": 90000000,
+    "difference_minor": 30000000,
+    "currency": "USD",
+    "cause": "not_established"
+  }
+}

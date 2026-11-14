@@ -1,6 +1,6 @@
 # CTO pilot and architecture decision kit
 
-Proposed process, not a completed deployment or compliance assessment. Start with the [CTO brief](CTO-ADVISORY.md) and [30-minute local evaluation](TEAM-EVALUATION.md). Resolve [licensing](LICENSING-DECISION.md) before reuse or deployment. Existing live-integration prerequisites still apply.
+Proposed process, not a completed deployment or compliance assessment. Start with the [CTO brief](CTO-ADVISORY.md) and [30-minute local evaluation](ASSURANCE.md). Reuse is covered by the [MIT License](../LICENSE); deployment still requires appropriate authorization. Existing live-integration prerequisites still apply.
 
 ## Four evidence gates, not a promised timeline
 

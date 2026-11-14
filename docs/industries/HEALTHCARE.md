@@ -2,7 +2,7 @@
 
 [CTO brief](../CTO-ADVISORY.md) · [Pilot decision kit](../CTO-PILOT-KIT.md)
 
-**Design hypothesis only.** No live industry integration, domain validation, deployment or standards conformance is established by this document. [License status](../../LICENSE-STATUS.md) is unchanged.
+**Design hypothesis only.** No live industry integration, domain validation, deployment or standards conformance is established by this document. Reuse is covered by the [MIT License](../../LICENSE).
 
 ## Executive decision
 
@@ -60,4 +60,4 @@ Review mappings field by field, retain explicit loss reports, and refuse require
 
 The [object-mapped proof](../DATA-TO-PROOF.md) counts synthetic ready AND explicitly staffed beds. Staffing derivation, clinical suitability, live feeds and privacy boundaries are not implemented.
 
-A credible next artifact is a steward-reviewed native mapping plus a reproducible counterexample, not an unverified claim of industry adoption. Submit synthetic evidence using the [team evaluation disposition](../TEAM-EVALUATION.md).
+A credible next artifact is a steward-reviewed native mapping plus a reproducible counterexample, not an unverified claim of industry adoption. Submit synthetic evidence using the [team evaluation disposition](../ASSURANCE.md).

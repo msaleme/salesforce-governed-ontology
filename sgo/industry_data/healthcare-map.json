@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "industry": "healthcare",
+  "evidence": "synthetic_only",
+  "claim": "Count explicitly staffed, ready beds under a fictional operational rule at one snapshot.",
+  "formula": "count(BedAvailability.ready AND StaffingCoverage.staffed), exactly one of each per Bed",
+  "native_mapping_status": "unverified",
+  "objects": [
+    {
+      "name": "Bed",
+      "grain": "one bed",
+      "owner": "Facilities data steward",
+      "candidate_source": "Bed/location master; not a claimed FHIR profile",
+      "schema_revision": "synthetic-v1",
+      "fields": {
+        "id": "text",
+        "unit_id": "text"
+      },
+      "joins": []
+    },
+    {
+      "name": "BedAvailability",
+      "grain": "one bed at snapshot",
+      "owner": "Clinical operations",
+      "candidate_source": "Bed-management snapshot, no patient records",
+      "schema_revision": "synthetic-v1",
+      "fields": {
+        "id": "text",
+        "bed_id": "text",
+        "ready": "bool"
+      },
+      "joins": [
+        {
+          "field": "bed_id",
+          "target": "Bed",
+          "cardinality": "many-to-one"
+        }
+      ]
+    },
+    {
+      "name": "StaffingCoverage",
+      "grain": "one bed at snapshot",
+      "owner": "Staffing operations",
+      "candidate_source": "Locally approved derived staffing coverage, not inferred from headcount",
+      "schema_revision": "synthetic-v1",
+      "fields": {
+        "id": "text",
+        "bed_id": "text",
+        "staffed": "bool"
+      },
+      "joins": [
+        {
+          "field": "bed_id",
+          "target": "Bed",
+          "cardinality": "many-to-one"
+        }
+      ]
+    }
+  ]
+}

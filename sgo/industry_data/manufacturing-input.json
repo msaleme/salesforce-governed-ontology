@@ -1,0 +1,76 @@
+{
+  "industry": "manufacturing",
+  "scope": {
+    "cohort": "fictional-closed-cohort-1",
+    "window_start": "2026-11-01T00:00:00Z",
+    "window_end": "2026-11-02T00:00:00Z"
+  },
+  "sources": {
+    "Run": {
+      "source_ref": "fixture:manufacturing:Run",
+      "schema_revision": "synthetic-v1",
+      "scope": {
+        "cohort": "fictional-closed-cohort-1",
+        "window_start": "2026-11-01T00:00:00Z",
+        "window_end": "2026-11-02T00:00:00Z"
+      },
+      "complete": true,
+      "observed_at": "2026-11-02T00:00:00Z",
+      "expected_ids": [
+        "run-1"
+      ],
+      "rows": [
+        {
+          "id": "run-1",
+          "product_id": "product-1",
+          "planned_seconds": 100,
+          "runtime_seconds": 90
+        }
+      ]
+    },
+    "RateDefinition": {
+      "source_ref": "fixture:manufacturing:RateDefinition",
+      "schema_revision": "synthetic-v1",
+      "scope": {
+        "cohort": "fictional-closed-cohort-1",
+        "window_start": "2026-11-01T00:00:00Z",
+        "window_end": "2026-11-02T00:00:00Z"
+      },
+      "complete": true,
+      "observed_at": "2026-11-02T00:00:00Z",
+      "expected_ids": [
+        "rate-1"
+      ],
+      "rows": [
+        {
+          "id": "rate-1",
+          "run_id": "run-1",
+          "product_id": "product-1",
+          "ideal_cycle_seconds": 2
+        }
+      ]
+    },
+    "QualityObservation": {
+      "source_ref": "fixture:manufacturing:QualityObservation",
+      "schema_revision": "synthetic-v1",
+      "scope": {
+        "cohort": "fictional-closed-cohort-1",
+        "window_start": "2026-11-01T00:00:00Z",
+        "window_end": "2026-11-02T00:00:00Z"
+      },
+      "complete": true,
+      "observed_at": "2026-11-02T00:00:00Z",
+      "expected_ids": [
+        "quality-1"
+      ],
+      "rows": [
+        {
+          "id": "quality-1",
+          "run_id": "run-1",
+          "total": 40,
+          "good": 38
+        }
+      ]
+    }
+  }
+}

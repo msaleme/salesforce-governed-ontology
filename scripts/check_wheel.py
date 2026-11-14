@@ -22,10 +22,12 @@ def main():
         subprocess.run([str(python), '-m', 'pip', 'install', str(wheel)], cwd=base, check=True)
         env = dict(os.environ)
         env.pop('PYTHONPATH', None)
-        for args in (['tour','--json'], ['validate'], ['byod',str(ROOT/'examples/user-metrics.json')]):
+        for args in (['industry-proof','--json'], ['tour','--json'], ['validate'], ['byod',str(ROOT/'examples/user-metrics.json')]):
             result = subprocess.check_output([str(cli),*args], cwd=base, env=env, text=True)
             payload = json.loads(result)
-            if args[0] == 'tour':
+            if args[0] == 'industry-proof':
+                assert payload['passed'] and len(payload['results']) == 5
+            elif args[0] == 'tour':
                 assert len(payload) == 8 and all(row['result']['status'] == row['expected_status'] for row in payload)
             elif args[0] == 'validate':
                 assert payload['valid']

@@ -2,7 +2,7 @@
 
 **Decision requested:** sponsor one bounded, read-only evaluation around a disputed business metric, using the semantic platform already in place.
 
-**Status:** proposed reference architectures, not delivered industry integrations. The runnable repository includes synthetic finance, service reliability and [five narrow object-mapped calculations](DATA-TO-PROOF.md); broader industry behavior remains proposed. It does not establish market leadership, customer adoption, compliance, or production readiness. [Reuse rights remain unresolved](../LICENSE-STATUS.md).
+**Status:** proposed reference architectures, not delivered industry integrations. The runnable repository includes synthetic finance, service reliability and [five narrow object-mapped calculations](DATA-TO-PROOF.md); broader industry behavior remains proposed. It does not establish market leadership, customer adoption, compliance, or production readiness. [Reuse is permitted under the MIT License](../LICENSE).
 
 ## Why a CTO should care
 
@@ -78,7 +78,7 @@ This is a proposed design checklist, **not a new supported JSON schema**. Map it
 
 | Concern | Repository evidence | Missing pilot evidence |
 | --- | --- | --- |
-| Ambiguity, dimensions and read binding | [Finance evaluation](EVALUATION.md) | Native metadata mapping and steward-reviewed meanings |
+| Ambiguity, dimensions and read binding | [Finance evaluation](ASSURANCE.md) | Native metadata mapping and steward-reviewed meanings |
 | Evidence completeness and aligned time | [Reliability contract](SECOND-DOMAIN.md) | Industry-specific implementation and independently chosen cases |
 | Vocabulary interchange | [SKOS loss report](STANDARDS-EXPORT.md) | Reviewed industry mappings; native import compatibility |
 | Semantic change | [Change review](CHANGE-REVIEW.md) | Deployment/revocation workflow and actual downstream dependencies |

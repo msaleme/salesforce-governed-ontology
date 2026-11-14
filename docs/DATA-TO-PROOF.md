@@ -5,11 +5,11 @@
 ## One command, five bounded results
 
 ```sh
-python3 industry_proof.py
+sgo industry-proof
 # Full receipts for reproducibility:
-python3 industry_proof.py --json
+sgo industry-proof --json
 # Check a sanitized normalized extract against one fixed contract:
-python3 industry_proof.py --industry energy --input examples/industry-proof/energy-input.json
+sgo industry-proof --industry energy --input examples/industry-proof/energy-input.json
 ```
 
 No credentials or dependencies. Exit 0 means the narrow local calculation succeeded (or all bundled examples matched their authored results); 1 means evidence is blocked or an example mismatched; 2 means invalid CLI/JSON. Use `--json` to retain input, mapping and implementation SHA-256 hashes, source references and full results. Hashes identify bytes/normalized inputs; they do not authenticate evidence. Do not feed private records into public receipts.
@@ -127,6 +127,8 @@ Reconcile the mapper against manually adjudicated source rows, especially quanti
 4. Have an evaluator outside the implementation team freeze expected outputs for new cases. Compare against the existing workflow on the same cases, including valid answers, false refusals and unsupported answers.
 5. Record elapsed data-discovery time, clarification round trips and correction time for both workflows. If this adds effort without decision improvement, reject or simplify it. **Time savings have not yet been measured.**
 
-[Counterexample tests](../test_industry_proof.py) exercise every mapped object's missing/stale/duplicate/coverage failures, every foreign-key join, invalid numeric inputs and domain-specific traps. Alternative valid values check that the implementation computes answers rather than memorizing fixtures. The labels are maintainer-authored, not held out or independent. Run all checks with `python3 scripts/verify.py`.
+[Counterexample tests](../tests/test_industry_proof.py) exercise every mapped object's missing/stale/duplicate/coverage failures, every foreign-key join, invalid numeric inputs and domain-specific traps. Alternative valid values check that the implementation computes answers rather than memorizing fixtures. The labels are maintainer-authored, not held out or independent. Run all checks with `python3 scripts/verify.py`.
 
 Broader domain challenges in the [CTO brief](CTO-ADVISORY.md) remain proposals until separately implemented and tested. Licensing, domain review and live access gates remain unchanged.
+
+The compatibility command `python3 industry_proof.py` remains supported. The implementation and bundled fixtures live in `sgo/`; regression tests live in `tests/`.
