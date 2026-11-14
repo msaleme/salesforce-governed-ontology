@@ -48,6 +48,13 @@ metric IDs, units, grains, scopes and read bindings are supported. It emits only
 local read plans and labels all supplied evidence unverified. It never runs SQL,
 executes a binding or contacts a platform. See the [input contract and example](docs/BRING-YOUR-OWN-DATA.md).
 
+## Data 360 and cross-platform semantic federation
+
+[Architecture and Data 360 setup](docs/semantic-federation/ARCHITECTURE.md) · [Six-platform mappings](docs/semantic-federation/CROSSWALK.json) · [MuleSoft implementation contracts](docs/semantic-federation/MULESOFT.md) · [Pilot acceptance checklist](docs/semantic-federation/PILOT.md)
+
+Reuse Tableau Semantics, Snowflake Semantic Views, Databricks metric views, dbt, Looker and Power BI/Fabric definitions. MuleSoft coordinates metadata review and approved native queries; this ontology supplies decision checks and mapping governance. These are documented design mappings, not deployed adapters. Existing fixture execution is unchanged.
+
+
 ## Go deeper
 
 - [Run, demonstrate and reproduce](docs/RUN-GUIDE.md): walkthrough, presentation script, captured output and reproducible receipts.
