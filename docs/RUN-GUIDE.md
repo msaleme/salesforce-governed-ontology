@@ -50,7 +50,7 @@ python3 explore.py validate
 python3 scripts/verify.py
 ```
 
-Open [the ontology map](ONTOLOGY-MAP.md) to see the vocabulary. Open [ontology.json](../ontology.json) for the actual definitions. The two outputs above validate the bounded fixture model and run the local regression suite, not vendor integrations.
+Open [the ontology map](DATA-MODEL.md#ontology-map) to see the vocabulary. Open [ontology.json](../ontology.json) for the actual definitions. The two outputs above validate the bounded fixture model and run the local regression suite, not vendor integrations.
 
 ### Questions worth answering directly
 

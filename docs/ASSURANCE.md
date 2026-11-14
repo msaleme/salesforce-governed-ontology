@@ -1,4 +1,11 @@
-# Validation, evaluation and platform fit
+# Assurance and team evaluation
+
+- [Validation, evaluation and platform fit](#assurance)
+- [A bounded team evaluation](#team-evaluation)
+
+<a id="assurance"></a>
+
+## Validation, evaluation and platform fit
 
 [Local checks](#validation-and-evidence-boundaries) · [Decision contract](#reproducible-decision-contract) · [Platform-fit packet](#platform-fit-decision-packet)
 
@@ -9,9 +16,9 @@ full-result BYOD evaluation, malformed files and non-execution of bindings.
 environment and exercises commands outside the checkout. This check downloads
 build/runtime dependencies; the installed commands run offline.
 
-## Validation and evidence boundaries
+### Validation and evidence boundaries
 
-### Reproducible local checks
+#### Reproducible local checks
 
 ```sh
 python3 -m unittest discover -v
@@ -21,7 +28,7 @@ git diff --check
 
 The verification script exits nonzero on a failed unit control, invalid registry, unexpected tour outcome, drifted ontology diagram, changed example output, or broken repository-relative Markdown file link. CI runs the same script on Python 3.10 and 3.12. CI results must be read from the actual workflow run; this document is not a predeclared passing result.
 
-### Existing behavioral controls
+#### Existing behavioral controls
 
 The 15 test methods in [tests/test_demo.py](../tests/test_demo.py) cover:
 
@@ -43,25 +50,25 @@ The 15 test methods in [tests/test_demo.py](../tests/test_demo.py) cover:
 
 These are local behavior tests, not adversarial proof of a vendor authorization boundary. Multiple scenarios within a method do not count as separately reported test methods.
 
-### Not established
+#### Not established
 
 No test here establishes live Salesforce record permissions, Informatica API access, MuleSoft identity propagation, Agentforce support, tenant isolation, cache safety, authenticated approvals, deployment readiness, or correct accounting treatment. Model completeness and all malformed-input cases are not exhaustively validated.
 
 The full [sandbox acceptance packet](ASSURANCE.md) remains unexecuted. Preserve that distinction in demos, PRs, and executive summaries.
 
-### Registry and CLI regression controls
+#### Registry and CLI regression controls
 
 [tests/test_validation.py](../tests/test_validation.py) adds mutation checks for malformed collections, duplicate identities/relationships, dangling graph references, missing metric fields, invalid/reversed dates, missing approval/lineage, and swapped metric/source/operation bindings. It also verifies inclusive validity boundaries, deterministic scenario outcomes without model mutation, CLI execution outside the checkout directory, and nonzero exit codes for invalid input.
 
-The generated graph in [the ontology map](ONTOLOGY-MAP.md) must match the registry relationships. The original demo output remains backward-compatible. The CLI is tested through subprocesses, not only direct function calls. The diagram text is checked; rendered GitHub appearance is not part of CI.
+The generated graph in [the ontology map](DATA-MODEL.md#ontology-map) must match the registry relationships. The original demo output remains backward-compatible. The CLI is tested through subprocesses, not only direct function calls. The diagram text is checked; rendered GitHub appearance is not part of CI.
 
-### Planner boundaries and decision receipt
+#### Planner boundaries and decision receipt
 
 [tests/test_boundaries.py](../tests/test_boundaries.py) exercises malformed request containers, missing/nested metric fields, invalid unselected records, duplicate identities, availability-filtered clarification and reconciliation input types. `resolve` validates the whole registry before returning plans or clarification choices, while preserving safely identifiable specific refusal statuses.
 
 [tests/test_evaluate.py](../tests/test_evaluate.py) verifies the [fixed decision contract](ASSURANCE.md), including positive controls, deliberately wrong expectations and checked-in receipt parity. These authored cases are not held out and do not measure vendor or model accuracy.
 
-## Reproducible decision contract
+### Reproducible decision contract
 
 This is a fixed **synthetic contract evaluation**, not an LLM accuracy study or competitive product benchmark. No external model, vendor runtime, production data or network access is involved.
 
@@ -72,7 +79,7 @@ python3 scripts/verify.py
 
 [Cases](../examples/decision-cases.json) declare expected statuses and full result objects. The [runner](../evaluate.py) executes eight tour scenarios and four boundary scenarios. The checked-in [receipt](../examples/decision-results.json) contains each observed result, mismatched field names and SHA-256 hashes of the registry, case list and relevant implementation files. CI checks exact receipt parity. After an intentional implementation or case change, regenerate with `python3 evaluate.py > examples/decision-results.json` and review the diff.
 
-### What it measures
+#### What it measures
 
 - Clarification instead of silently selecting a meaning for “revenue.”
 - Valid read plans as well as missing-scope, expiry and wrong-binding refusals.
@@ -81,18 +88,18 @@ python3 scripts/verify.py
 
 The valid-read and valid-explanation controls prevent an implementation that refuses every request from passing. Expected outcomes were authored with the prototype and are not held-out data. Matching them demonstrates regression conformance only. The broader test suite also mutates malformed inputs; its test count is not a dataset size or accuracy score.
 
-### Limits and independent reproduction
+#### Limits and independent reproduction
 
 The receipt is reproducible, not signed or independently attested. A hash identifies content, not its truth. The fixed date and USD fixture do not validate other periods, currencies, accounting policies or domains. No latency, scale, security-boundary or financial correctness claim follows.
 
 For independent reproduction, record the commit, Python version, command, output, and any counterexample in a repository issue. Use synthetic inputs only. Do not paste credentials, customer data or private org metadata. A useful counterexample states both what the code did and why the expected semantic decision differs.
 
-### Future comparative protocol
+#### Future comparative protocol
 
 Before a platform comparison, fix a shared case corpus, native platform/version and approved mappings. Separate semantic-decision outcomes from query execution, authorization, unsupported features and setup failures. Include positive and abstention controls. Have a domain steward review expected outcomes, hold out cases before implementation, and report every failure and unsupported case. No selected success examples, no synthesized vendor scores, and no apples-to-oranges comparison of an offline plan with an executed query.
 
 
-### Payload correctness, not just outcome labels
+#### Payload correctness, not just outcome labels
 
 A `difference_only` result with the wrong amount is a failure. A refusal that also discloses a definition is a failure. A result that says `difference_only` but adds an invented explanation is also a failure.
 
@@ -102,25 +109,25 @@ Mutation controls in [tests/test_evaluate.py](../tests/test_evaluate.py) deliber
 
 **Changing the contract:** review `expected_result` in the case file against the intended behavior first. Never regenerate expectations from the implementation being tested. Regenerate only the receipt after reviewing the contract and code changes. Exact payload checks intentionally require review for wording or schema changes too. This remains a fixed regression contract, not an extensible external-input benchmark or held-out evaluation.
 
-### Reproduction packet
+#### Reproduction packet
 
 See the [one-command reproduction guide](RUN-GUIDE.md) and [captured synthetic demonstration](RUN-GUIDE.md). The transcript is regenerated and checked by CI. External reproduction remains unverified.
 
-## Platform-fit decision packet
+### Platform-fit decision packet
 
 Internal working draft | 2026-11-03 | Continuation of SF-ONTOLOGY-001
 
-### Decision requested from the internal platform owner
+#### Decision requested from the internal platform owner
 
 Where should governed business definitions and their approved source/action bindings live within the existing Salesforce architecture?
 
 Recommendation: reuse the existing semantic/data-model foundation wherever it can meet the requirements below; add only missing governance and execution bindings. Do not create the six proposed custom objects merely because they appear in the starter design. This packet specifies evaluation criteria, not verified product capabilities.
 
-### Preserve the ownership model
+#### Preserve the ownership model
 
 Salesforce is the proposed control plane for definition identity, approved versions, lifecycle and action bindings. Customer/domain stewards approve business meaning. Informatica contributes catalog and lineage evidence; MuleSoft supplies governed integrations; Agentforce consumes approved context and actions. Source systems retain transaction authority and access controls. “From Salesforce” describes the intended architecture, not a claim that this prototype is an official product or that IP ownership has been determined.
 
-### Reuse-first evaluation
+#### Reuse-first evaluation
 
 For each requirement, the reviewer records an existing feature/API, edition and entitlement, documentary evidence, sandbox result, and gap. All entries currently remain UNVERIFIED.
 
@@ -140,7 +147,7 @@ Decision outcomes:
 
 A second registry is justified only by a documented gap. Avoid separate canonical definitions in the catalog, agent prompt and Salesforce registry.
 
-### First sandbox slice
+#### First sandbox slice
 
 Question: “What is recognized revenue for this operator and accounting period?”
 
@@ -162,7 +169,7 @@ Expected trace:
 4. Preserve source authorization, handle partial/paginated responses explicitly and attach evidence.
 5. Return a result only with the correct definition, scope, currency, period and source receipt.
 
-### Acceptance evidence
+#### Acceptance evidence
 
 Capture sanitized requests/responses, definition and schema versions, timestamps, principal aliases, policy outcomes and source references. Never record tokens.
 
@@ -176,7 +183,7 @@ Required cases:
 
 These are proposed acceptance cases, not executed tests. The existing 15 local controls establish only synthetic prototype behavior.
 
-### Review disposition template
+#### Review disposition template
 
 - Platform owner / review date:
 - Existing semantic foundation selected:
@@ -190,6 +197,61 @@ These are proposed acceptance cases, not executed tests. The existing 15 local c
 - Decision: reuse / extend / defer
 - Remaining blocker and owner:
 
-### Current disposition
+#### Current disposition
 
 REVIEW READY, NOT PLATFORM VALIDATED. The existing starter is preserved. Repository packaging and public GitHub visibility were authorized on 2026-11-04. No org connection, platform object creation, API execution, or external platform review request was made.
+
+
+<a id="team-evaluation"></a>
+
+## A bounded team evaluation
+
+**Decision:** Is this decision-contract pattern worth adapting to our own semantic layer? Not: is this a supported production platform?
+
+Intended evaluators: a semantic-layer architect paired with an agent-evaluation or data-platform engineer. No vendor account or model endpoint is required for the core exercise. Start by reviewing [MIT license](../LICENSE); reuse is permitted under its terms. Platform deployment still requires appropriate access and validation.
+
+### Suggested 30-minute review
+
+1. **Understand the failure (5 minutes).** Run `python3 explore.py scenario difference-only` and `python3 explore.py scenario explained`. Inspect which extra fixture evidence changes the result. The bridge is supplied evidence, not independently verified causality.
+2. **Reproduce (5 minutes).** Run `python3 scripts/verify.py` and `python3 scripts/reproduce.py > /tmp/ontology-receipt.json`. Record the commit and Python version. A dirty tree must be disclosed.
+3. **Challenge transfer (10 minutes).** Run `python3 reliability.py`. Inspect `examples/reliability-cases.json`. Propose a synthetic case the current policy gets wrong, with expected result and rationale. Do not merely increase the existing test count.
+4. **Inspect portability (5 minutes).** Run `python3 standards_export.py`. Read `report.omitted_source_paths`. Decide whether retaining only concept identity and definition is useful. Optional RDFLib parser check: [export guide](STANDARDS-EXPORT.md).
+5. **Make a decision (5 minutes).** Complete the disposition below. Stop if the assumptions do not match your use case.
+
+### Review disposition
+
+Copy into an issue or your own review record:
+
+```text
+Reviewed commit:
+Reviewer role / relationship to project:
+Actually executed? yes/no; Python/OS:
+Commands and receipt (synthetic only, inspect before posting):
+Problem this could solve for our team:
+Counterexample input, expected output and rationale:
+Observed output:
+What would need replacement in our stack:
+License/ownership clearance: pending/confirmed by authorized owner
+Disposition: reject / revisit after named evidence / candidate for isolated spike
+Blocking evidence:
+```
+
+A self-run receipt is not an attestation. An automated peer is not an independent human team. Maintainer-written expected outputs establish regression behavior, not unbiased correctness.
+
+### Acceptance gates
+
+- **Local inspection:** commands pass at an identified commit; both domains and export losses are understood.
+- **Independent evidence:** an outside evaluator supplies a reproducible result or counterexample, with relationship and execution disclosed. Currently unverified; a request is not a result.
+- **Reuse:** MIT license applied, copyright Michael Saleme; preserve its notice.
+- **Native adapter:** platform owner provides versioned native export, approved bindings and sandbox access. Currently unverified.
+- **Deployment:** separate identity-boundary, availability, monitoring, audit retention and incident ownership review. Not offered by this prototype.
+
+### Integration seam and stop conditions
+
+Keep existing semantic/graph infrastructure. Adapt native metadata into reviewed decision inputs; do not replace your registry with this fixture format. Execute live reads only through your existing authenticated policy boundary. The planner's scope strings are not that boundary.
+
+Reject or defer if you need general-purpose metric execution, lossless graph exchange, statistical SLO monitoring, verified causal inference, production SLAs or verified rights to third-party inputs. No implementation here supplies them.
+
+### External review request
+
+A single focused request belongs on this repository's issue tracker, not promotional comments on other vendors' repositories. Requested artifact: one synthetic counterexample or a clean reproduction with execution disclosure. No stars, endorsements, customer data or access tokens requested. No outside response is assumed.

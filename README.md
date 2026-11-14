@@ -52,11 +52,11 @@ executes a binding or contacts a platform. See the [input contract and example](
 
 - [Run, demonstrate and reproduce](docs/RUN-GUIDE.md): walkthrough, presentation script, captured output and reproducible receipts.
 - [Validation, evaluation and platform fit](docs/ASSURANCE.md): controls, fixed-case evaluation and native-platform acceptance gates.
-- [Architecture](docs/ARCHITECTURE.md), [data model](docs/DATA-MODEL.md) and [ontology map](docs/ONTOLOGY-MAP.md).
-- [Platform comparison](docs/COMPARISON.md), [change review](docs/CHANGE-REVIEW.md) and [design decisions](docs/DESIGN-DECISIONS.md).
-- [Team evaluation](docs/TEAM-EVALUATION.md), [second domain](docs/SECOND-DOMAIN.md) and [SKOS export limitations](docs/STANDARDS-EXPORT.md).
-- [Sandbox integration](docs/SANDBOX-INTEGRATION.md), [roadmap](docs/ROADMAP.md), [contributing](CONTRIBUTING.md) and [security](SECURITY.md).
-- [Draft issue ideas and demo recording outline](docs/CONTRIBUTOR-DRAFTS.md) (not posted or recorded).
+- [Architecture, decisions and roadmap](docs/ARCHITECTURE.md); [data model, API and ontology map](docs/DATA-MODEL.md).
+- [Platform comparison](docs/COMPARISON.md) and [semantic change review](docs/CHANGE-REVIEW.md).
+- [Second domain](docs/SECOND-DOMAIN.md), [SKOS export limitations](docs/STANDARDS-EXPORT.md) and [sandbox integration](docs/SANDBOX-INTEGRATION.md).
+- [Project notes](docs/PROJECT-NOTES.md): publication history, licensing decision and retained article/outreach drafts.
+- [Draft issue ideas and demo outline](docs/CONTRIBUTOR-DRAFTS.md); [contributing](CONTRIBUTING.md) and [security](SECURITY.md).
 
 ## Verify
 

@@ -22,7 +22,7 @@ def main():
     model = json.loads((ROOT / 'ontology.json').read_text())
     graph = 'flowchart LR\n' + '\n'.join(
         f"  {r['source']} -->|{r['predicate']}| {r['target']}" for r in model['relationships'])
-    diagram = (ROOT / 'docs/ONTOLOGY-MAP.md').read_text()
+    diagram = (ROOT / 'docs/DATA-MODEL.md').read_text()
     if f'```mermaid\n{graph}\n```' not in diagram:
         raise SystemExit('FAIL: ontology diagram differs from registry relationships')
     transcript = subprocess.check_output([sys.executable, 'scripts/reproduce.py', '--demo'], cwd=ROOT, text=True)
