@@ -14,7 +14,7 @@ The [read-only metadata probe](SANDBOX-INTEGRATION.md) checks sandbox classifica
 
 ## Next: platform fit
 
-A designated internal platform owner evaluates existing semantic capabilities, entitlements, API coverage, storage, and approved development location. Record a reuse, extend, or defer decision using the [review template](PLATFORM-FIT-REVIEW.md). Proposed custom objects are not a default implementation decision.
+A designated internal platform owner evaluates existing semantic capabilities, entitlements, API coverage, storage, and approved development location. Record a reuse, extend, or defer decision using the [review template](ASSURANCE.md). Proposed custom objects are not a default implementation decision.
 
 **Exit evidence:** named owner, selected foundation, documented gaps, and designated sandbox.
 
@@ -36,4 +36,4 @@ Production rollout, write actions, autonomous approval, broad ontology generatio
 
 ## Competitive gap closure (2026-11-08)
 
-The [competitive gap ledger](COMPARISON.md) records implemented request/registry boundaries, availability-filtered clarification, bridge shape checks and the [fixed decision evaluation](EVALUATION.md). Remaining priorities are pinned native semantic mapping, approved live identity/bindings, independent reproduction and ownership/licensing decisions. A new query engine or general graph runtime is not planned.
+The [competitive gap ledger](COMPARISON.md) records implemented request/registry boundaries, availability-filtered clarification, bridge shape checks and the [fixed decision evaluation](ASSURANCE.md). Remaining priorities are pinned native semantic mapping, approved live identity/bindings, independent reproduction and native-platform validation. A new query engine or general graph runtime is not planned.

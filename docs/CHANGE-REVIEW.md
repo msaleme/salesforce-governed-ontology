@@ -36,4 +36,4 @@ Valid comparisons include SHA-256 fingerprints of sorted-key, compact, ASCII-esc
 
 ## Evidence
 
-[test_change_review.py](../test_change_review.py) exercises silent definition drift, insufficient registry-only version changes, lifecycle revocation, descriptive edits, additions/removals, collection ordering, unknown extensions, invalid bindings, malformed files, stable mapping serialization and CLI exit behavior. These are synthetic local controls, not vendor integration or independent validation.
+[tests/test_change_review.py](../tests/test_change_review.py) exercises silent definition drift, insufficient registry-only version changes, lifecycle revocation, descriptive edits, additions/removals, collection ordering, unknown extensions, invalid bindings, malformed files, stable mapping serialization and CLI exit behavior. These are synthetic local controls, not vendor integration or independent validation.

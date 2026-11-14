@@ -2,7 +2,7 @@
 
 **Decision:** Is this decision-contract pattern worth adapting to our own semantic layer? Not: is this a supported production platform?
 
-Intended evaluators: a semantic-layer architect paired with an agent-evaluation or data-platform engineer. No vendor account or model endpoint is required for the core exercise. Start by reviewing [license status](../LICENSE-STATUS.md); this repository does not currently grant open-source reuse rights. Do not treat this packet as permission to redistribute or deploy it.
+Intended evaluators: a semantic-layer architect paired with an agent-evaluation or data-platform engineer. No vendor account or model endpoint is required for the core exercise. Start by reviewing [MIT license](../LICENSE); reuse is permitted under its terms. Platform deployment still requires appropriate access and validation.
 
 ## Suggested 30-minute review
 
@@ -36,7 +36,7 @@ A self-run receipt is not an attestation. An automated peer is not an independen
 
 - **Local inspection:** commands pass at an identified commit; both domains and export losses are understood.
 - **Independent evidence:** an outside evaluator supplies a reproducible result or counterexample, with relationship and execution disclosed. Currently unverified; a request is not a result.
-- **Reuse:** authorized ownership/distribution decision and appropriate license. Currently unresolved.
+- **Reuse:** MIT license applied, copyright Michael Saleme; preserve its notice.
 - **Native adapter:** platform owner provides versioned native export, approved bindings and sandbox access. Currently unverified.
 - **Deployment:** separate identity-boundary, availability, monitoring, audit retention and incident ownership review. Not offered by this prototype.
 

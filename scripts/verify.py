@@ -26,11 +26,15 @@ def main():
     if f'```mermaid\n{graph}\n```' not in diagram:
         raise SystemExit('FAIL: ontology diagram differs from registry relationships')
     transcript = subprocess.check_output([sys.executable, 'scripts/reproduce.py', '--demo'], cwd=ROOT, text=True)
-    if transcript != (ROOT / 'docs/TERMINAL-DEMO.md').read_text():
+    guide = (ROOT / 'docs/RUN-GUIDE.md').read_text()
+    captured = guide.split('<!-- BEGIN GENERATED TRANSCRIPT -->\n', 1)[1].split('<!-- END GENERATED TRANSCRIPT -->', 1)[0]
+    if transcript != captured:
         raise SystemExit('FAIL: captured demonstration differs from current behavior')
+    if (ROOT / 'ontology.json').read_bytes() != (ROOT / 'sgo/ontology.json').read_bytes():
+        raise SystemExit('FAIL: packaged ontology differs from root registry')
     links = 0
     for document in ROOT.rglob('*.md'):
-        if '.git' in document.relative_to(ROOT).parts:
+        if any(part in {'.git', '.venv', 'build', 'dist'} or part.endswith('.egg-info') for part in document.relative_to(ROOT).parts):
             continue
         for target in re.findall(r'\[[^\]]*\]\(([^)]+)\)', document.read_text()):
             parsed = urlsplit(target)

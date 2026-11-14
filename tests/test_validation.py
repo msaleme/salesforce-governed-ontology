@@ -11,7 +11,7 @@ from demo import MODEL, resolve
 from explore import SCENARIOS, run_scenario
 from validation import validate_model
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[1]
 
 
 class RegistryValidation(unittest.TestCase):

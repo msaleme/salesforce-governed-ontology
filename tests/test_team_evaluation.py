@@ -6,7 +6,7 @@ from unittest.mock import patch
 import reliability
 from standards_export import export, recovered_concepts, SKOS
 
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).parents[1]
 
 
 class ReliabilityTests(unittest.TestCase):

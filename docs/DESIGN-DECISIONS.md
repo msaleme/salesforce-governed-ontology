@@ -12,7 +12,9 @@ These decisions describe the reference prototype. They are not claims of interna
 
 **Consequence:** a correct definition is necessary but insufficient to authorize a request. Live identity propagation must be proven separately.
 
-## ADR-002: Start with a deterministic, dependency-free executable slice
+## ADR-002: Start with a deterministic executable slice
+
+Update: the packaged core now uses `jsonschema` for draft 2020-12 structural validation. The original zero-dependency choice below is historical; runtime commands remain offline after installation.
 
 **Status:** implemented locally.
 
@@ -50,4 +52,4 @@ These decisions describe the reference prototype. They are not claims of interna
 
 **Decision:** first assess existing semantic capability and API coverage with a platform owner. Use custom objects only for demonstrated gaps.
 
-**Consequence:** the architecture documents illustrative objects, not an installation package or a commitment to custom storage. See the [review packet](PLATFORM-FIT-REVIEW.md).
+**Consequence:** the architecture documents illustrative objects, not an installation package or a commitment to custom storage. See the [review packet](ASSURANCE.md).

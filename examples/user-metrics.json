@@ -1,0 +1,164 @@
+{
+  "ontology": {
+    "id": "support-example",
+    "version": "0.1.0",
+    "status": "internal_design_prototype",
+    "evidence": "user_supplied_unverified",
+    "namespace": "urn:example:sf-governed-og:",
+    "concepts": [
+      {
+        "id": "Account",
+        "definition": "A business party in a commercial relationship."
+      },
+      {
+        "id": "OperatorRole",
+        "definition": "A time-bounded role in which an account operates an asset."
+      },
+      {
+        "id": "Asset",
+        "definition": "An identified physical operational resource; ownership is distinct from operation."
+      },
+      {
+        "id": "Well",
+        "definition": "A well asset with a namespaced identifier; a specialization of Asset."
+      },
+      {
+        "id": "ProductionObservation",
+        "definition": "A measured quantity for a well, period, commodity, unit, and basis."
+      },
+      {
+        "id": "Contract",
+        "definition": "An agreement among counterparties covering specified obligations and assets."
+      },
+      {
+        "id": "RevenueEntry",
+        "definition": "A monetary entry with contract, account, period, currency, and accounting basis."
+      }
+    ],
+    "relationships": [
+      {
+        "source": "Account",
+        "predicate": "hasRole",
+        "target": "OperatorRole"
+      },
+      {
+        "source": "OperatorRole",
+        "predicate": "operates",
+        "target": "Asset"
+      },
+      {
+        "source": "Well",
+        "predicate": "subClassOf",
+        "target": "Asset"
+      },
+      {
+        "source": "ProductionObservation",
+        "predicate": "measures",
+        "target": "Well"
+      },
+      {
+        "source": "Contract",
+        "predicate": "covers",
+        "target": "Asset"
+      },
+      {
+        "source": "Contract",
+        "predicate": "hasCounterparty",
+        "target": "Account"
+      },
+      {
+        "source": "RevenueEntry",
+        "predicate": "underContract",
+        "target": "Contract"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "support_tickets",
+        "label": "Support tickets",
+        "version": "0.1.0",
+        "definition": "Tickets created in the supplied reporting window.",
+        "status": "approved",
+        "approval": {
+          "kind": "user_supplied",
+          "steward": "demo-finance-steward",
+          "reference": "fixture:approval:001"
+        },
+        "valid_from": "2026-01-01",
+        "valid_to": "2026-12-31",
+        "grain": [
+          "team_id",
+          "period"
+        ],
+        "aggregation": "count",
+        "unit": "tickets",
+        "source_binding": "local:support:tickets",
+        "lineage": [
+          "local:support:tickets"
+        ],
+        "action": {
+          "operation_id": "read_support_tickets",
+          "side_effect": "read",
+          "required_scope": "support:read",
+          "implementation": "user_supplied_not_executed"
+        }
+      }
+    ]
+  },
+  "cases": [
+    {
+      "id": "accepted",
+      "request": {
+        "metric": "support_tickets",
+        "scopes": [
+          "support:read"
+        ],
+        "as_of": "2026-11-14"
+      },
+      "expected_result": {
+        "status": "read_plan_only",
+        "evidence": "user_supplied_unverified",
+        "concept": "support_tickets",
+        "version": "0.1.0",
+        "definition": "Tickets created in the supplied reporting window.",
+        "source": "local:support:tickets",
+        "operation": "read_support_tickets"
+      }
+    },
+    {
+      "id": "denied",
+      "request": {
+        "metric": "support_tickets",
+        "scopes": [],
+        "as_of": "2026-11-14"
+      },
+      "expected_result": {
+        "status": "denied"
+      }
+    },
+    {
+      "id": "expired",
+      "request": {
+        "metric": "support_tickets",
+        "scopes": [
+          "support:read"
+        ],
+        "as_of": "2027-01-01"
+      },
+      "expected_result": {
+        "status": "definition_unavailable"
+      }
+    },
+    {
+      "id": "unknown",
+      "request": {
+        "metric": "missing",
+        "scopes": [],
+        "as_of": "2026-11-14"
+      },
+      "expected_result": {
+        "status": "unsupported_concept"
+      }
+    }
+  ]
+}

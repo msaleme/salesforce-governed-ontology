@@ -54,7 +54,8 @@ def report():
     result = evaluate(json.loads((ROOT / 'examples/decision-cases.json').read_text()))
     result['sha256'] = {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
                         for name in ('ontology.json', 'demo.py', 'validation.py', 'explore.py',
-                                     'evaluate.py', 'examples/decision-cases.json')}
+                                     'evaluate.py', 'sgo/demo.py', 'sgo/validation.py', 'sgo/explore.py',
+                                     'sgo/ontology.schema.json', 'examples/decision-cases.json')}
     return result
 
 

@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "salesforce-governed-ontology"
+version = "0.2.0"
+description = "Offline semantic decision testbed and user-defined read-plan evaluation"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [{name = "Michael Saleme"}]
+dependencies = ["jsonschema>=4.23,<5"]
+
+[project.scripts]
+sgo = "sgo.cli:main"
+
+[tool.setuptools]
+packages = ["sgo"]
+
+[tool.setuptools.package-data]
+sgo = ["*.json"]

@@ -20,7 +20,7 @@ The original relationships are deliberately not coerced into `skos:broader` or `
 
 ## Verification levels
 
-The core dependency-free tests verify preserved concept identity/definition, explicit loss, unknown-field reporting, malformed-source refusal, content hashes and deterministic output. The projection reader is only for this producer's shape; it is not an independent JSON-LD implementation or an inverse registry importer.
+The core tests verify preserved concept identity/definition, explicit loss, unknown-field reporting, malformed-source refusal, content hashes and deterministic output. The projection reader is only for this producer's shape; it is not an independent JSON-LD implementation or an inverse registry importer.
 
 An optional third-party RDF parser smoke test checks parsed identities, English definitions, scheme membership and Turtle graph isomorphism:
 
@@ -30,7 +30,7 @@ python3 -m venv /tmp/ontology-rdf
 /tmp/ontology-rdf/bin/python scripts/check_rdf.py
 ```
 
-This optional command needs a package download. The ordinary quick start remains dependency-free and offline. A maintainer running RDFLib is parser compatibility evidence, not an independent reviewer, native Stardog/GraphDB/Neo4j import test, SKOS conformance certification, or lossless semantic interoperability.
+This optional command needs a package download. Install the core package first; ordinary commands then run offline. A maintainer running RDFLib is parser compatibility evidence, not an independent reviewer, native Stardog/GraphDB/Neo4j import test, SKOS conformance certification, or lossless semantic interoperability.
 
 **Never execute an API or authorize a request from this export.** No executable approval or binding semantics survive it. A team should reject this profile if it needs metric definitions, graph edges or governance transported intact.
 

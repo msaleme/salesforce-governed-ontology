@@ -1,17 +1,17 @@
 # Evidence-led attention packet
 
-Status: **dev.to walkthrough published 2026-11-08; LinkedIn remains a manual draft**. The goal is qualified reproduction and counterexamples, not traffic or sales. This is a reference prototype, not an official vendor product or a project with a granted open-source license.
+Status: **dev.to walkthrough published 2026-11-08; LinkedIn remains a manual draft**. The goal is qualified reproduction and counterexamples, not traffic or sales. This is a reference prototype, not an official vendor product. Reuse is covered by the MIT License.
 
 ## The memorable idea
 
 **A correct subtraction is not an explanation.**
 
-Lead with a familiar failure: contract bookings and recognized revenue differ; the agent explains why without evidence. Show the refusal and the evidence needed to move beyond it. The [decision evaluation](EVALUATION.md) gives a reader something concrete to run and challenge.
+Lead with a familiar failure: contract bookings and recognized revenue differ; the agent explains why without evidence. Show the refusal and the evidence needed to move beyond it. The [decision evaluation](ASSURANCE.md) gives a reader something concrete to run and challenge.
 
 ## Repository improvements included
 
 - [Comparison](COMPARISON.md): explicit alternatives, reuse decisions, trade-offs and remaining gaps.
-- [Evaluation](EVALUATION.md): a reproducible result with both successful and refused decisions.
+- [Evaluation](ASSURANCE.md): a reproducible result with both successful and refused decisions.
 - [Counterexample form](../.github/ISSUE_TEMPLATE/decision-counterexample.yml): a structured path to contribute an observed failure.
 - README entry points: one positioning statement and direct links to the evidence and contribution path.
 
@@ -61,4 +61,4 @@ Record publication URL/date, linked commit, meaningful comments, independent rep
 
 ## Reproduction packet
 
-See the [one-command reproduction guide](REPRODUCTION.md) and [captured synthetic demonstration](TERMINAL-DEMO.md). The transcript is regenerated and checked by CI. External reproduction remains unverified.
+See the [one-command reproduction guide](RUN-GUIDE.md) and [captured synthetic demonstration](RUN-GUIDE.md). The transcript is regenerated and checked by CI. External reproduction remains unverified.
