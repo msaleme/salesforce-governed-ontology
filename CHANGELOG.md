@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.1.0 - prepared, not released
+
+- Installable `sgo` CLI with the eight-verdict offline tour and legacy script compatibility.
+- `sgo byod` evaluates user-defined registries and expected-result cases locally, with bundled JSON Schema validation.
+- MIT license, copyright Michael Saleme.
+- Five industry reference guides, synthetic data-to-proof checks and bundled `sgo industry-proof` fixtures.
+- Data 360/Tableau semantic federation architecture, six-platform crosswalk and MuleSoft implementation contracts (designs, not deployed adapters).
+- Inline README GIF generated with agg; original asciinema recording and replay instructions retained.
+- Version metadata normalized from the unpublished 0.2.0 placeholder to the requested initial v0.1.0, including the Python package version. No tag or package publication implied.
+- Draft release notes: [v0.1.0](docs/releases/v0.1.0.md).
+
 ## Unreleased - package and contributor entry points
 
 - Apply MIT license, copyright Michael Saleme.
