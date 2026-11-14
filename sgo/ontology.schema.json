@@ -1,0 +1,223 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sgo:ontology-schema:1",
+  "title": "SGO registry structure",
+  "type": "object",
+  "required": [
+    "id",
+    "version",
+    "namespace",
+    "status",
+    "evidence",
+    "concepts",
+    "relationships",
+    "metrics"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "namespace": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "status": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "evidence": {
+      "enum": [
+        "synthetic_only",
+        "user_supplied_unverified"
+      ]
+    },
+    "concepts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "definition"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]*$"
+          },
+          "definition": {
+            "type": "string",
+            "pattern": "\\S"
+          }
+        }
+      }
+    },
+    "relationships": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "source",
+          "predicate",
+          "target"
+        ],
+        "properties": {
+          "source": {
+            "type": "string",
+            "pattern": "\\S"
+          },
+          "predicate": {
+            "type": "string",
+            "pattern": "\\S"
+          },
+          "target": {
+            "type": "string",
+            "pattern": "\\S"
+          }
+        }
+      }
+    },
+    "metrics": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "label",
+          "version",
+          "definition",
+          "source_binding",
+          "status",
+          "approval",
+          "valid_from",
+          "valid_to",
+          "grain",
+          "aggregation",
+          "unit",
+          "lineage",
+          "action"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "\\S"
+          },
+          "label": {
+            "type": "string",
+            "pattern": "\\S"
+          },
+          "version": {
+            "type": "string",
+            "pattern": "\\S"
+          },
+          "definition": {
+            "type": "string",
+            "pattern": "\\S"
+          },
+          "source_binding": {
+            "type": "string",
+            "pattern": "\\S"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "review",
+              "approved",
+              "deprecated",
+              "revoked"
+            ]
+          },
+          "approval": {
+            "type": "object",
+            "required": [
+              "kind",
+              "steward",
+              "reference"
+            ],
+            "properties": {
+              "kind": {
+                "type": "string",
+                "pattern": "\\S"
+              },
+              "steward": {
+                "type": "string",
+                "pattern": "\\S"
+              },
+              "reference": {
+                "type": "string",
+                "pattern": "\\S"
+              }
+            }
+          },
+          "valid_from": {
+            "type": "string",
+            "format": "date"
+          },
+          "valid_to": {
+            "type": "string",
+            "format": "date"
+          },
+          "grain": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "pattern": "\\S"
+            },
+            "uniqueItems": true
+          },
+          "aggregation": {
+            "type": "string",
+            "pattern": "\\S"
+          },
+          "unit": {
+            "type": "string",
+            "pattern": "\\S"
+          },
+          "lineage": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "pattern": "\\S"
+            }
+          },
+          "action": {
+            "type": "object",
+            "required": [
+              "operation_id",
+              "side_effect",
+              "required_scope",
+              "implementation"
+            ],
+            "properties": {
+              "operation_id": {
+                "type": "string",
+                "pattern": "\\S"
+              },
+              "side_effect": {
+                "const": "read"
+              },
+              "required_scope": {
+                "type": "string",
+                "pattern": "\\S"
+              },
+              "implementation": {
+                "type": "string",
+                "pattern": "\\S"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "description": "Structural contract. Extensions are retained; cross-references, uniqueness, dates and trusted fixture bindings require semantic validation. A user-supplied registry does not authorize operations."
+}

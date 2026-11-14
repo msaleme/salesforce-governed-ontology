@@ -108,7 +108,7 @@ class ChangeReview(unittest.TestCase):
         self.assertEqual(fingerprint(MODEL), fingerprint(dict(reversed(list(MODEL.items())))))
 
     def test_cli_exit_codes_and_json_from_other_directory(self):
-        script = str(Path(__file__).with_name('change_review.py'))
+        script = str(Path(__file__).parents[1] / 'change_review.py')
         with tempfile.TemporaryDirectory() as directory:
             baseline = Path(directory) / 'before.json'
             candidate = Path(directory) / 'after.json'

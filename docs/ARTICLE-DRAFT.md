@@ -50,7 +50,7 @@ The intended role is complementary. Keep authoritative metric definitions in the
 
 An evaluator that checks only `difference_only` can pass a result with the wrong amount. It can also miss an invented explanation appended to that result.
 
-The [fixed decision contract](EVALUATION.md) now checks complete result objects: source, operation, amount, currency, evidence markers and unexpected fields. Mutation tests deliberately keep the status correct while corrupting important payload fields. The evaluator must reject those results.
+The [fixed decision contract](ASSURANCE.md) now checks complete result objects: source, operation, amount, currency, evidence markers and unexpected fields. Mutation tests deliberately keep the status correct while corrupting important payload fields. The evaluator must reject those results.
 
 This is regression evidence, not a vendor leaderboard or model accuracy score. The expected cases were authored with the prototype. They are not held out. Exact fixture agreement does not establish production correctness.
 
@@ -64,4 +64,4 @@ Do not include customer data, tokens or private metadata. One reproducible disag
 
 ## What remains unproven
 
-No live metric execution, native-platform interoperability, authenticated authorization, independent reproduction or general accounting validation is demonstrated here. The [gap ledger](COMPARISON.md) keeps those boundaries explicit. This is a reference prototype, not an official vendor product; see [license status](../LICENSE-STATUS.md) for the unresolved distribution terms.
+No live metric execution, native-platform interoperability, authenticated authorization, independent reproduction or general accounting validation is demonstrated here. The [gap ledger](COMPARISON.md) keeps those boundaries explicit. This is a reference prototype, not an official vendor product; see [MIT license](../LICENSE) for reuse terms.

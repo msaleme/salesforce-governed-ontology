@@ -80,7 +80,7 @@ These are not vendor feature scores. Our read-plan checks do not establish a sec
 - **Valuable:** making a wrong-definition or unsupported-explanation failure easy to reproduce can help platform owners review agent behavior. This value is a hypothesis until independently used.
 - **Rare:** not established. The inspected platforms already address semantics and governance. We have no evidence that the individual checks are unique.
 - **Hard to imitate:** no. The small codebase is readily reproducible. A future body of independently contributed counterexamples and cross-platform reproductions could be harder to replicate; it does not exist yet.
-- **Organized to capture value:** tests and CI exist; licensing/ownership clearance, adapters, live evidence and external adoption remain unresolved.
+- **Organized to capture value:** tests and CI exist; MIT reuse terms are in place; adapters, live evidence and external adoption remain unresolved.
 
 **Verdict:** a useful reference and research contribution, not a defensible platform moat today.
 
@@ -96,16 +96,16 @@ These are not vendor feature scores. Our read-plan checks do not establish a sec
 | Priority | Gap | Action and status | Acceptance evidence |
 | --- | --- | --- | --- |
 | P0 | Changed meaning hidden behind unchanged versions | Implemented in this PR: [change review](CHANGE-REVIEW.md) | Version-drift, binding, removal and malformed-JSON tests |
-| P0 | Planner could accept a scope string or crash on malformed registry content | Implemented in this PR: validate request shape and complete registry before any plan/choices; preserve specific refusal statuses | [Boundary regressions](../test_boundaries.py), including malformed unselected records and duplicate identities |
+| P0 | Planner could accept a scope string or crash on malformed registry content | Implemented in this PR: validate request shape and complete registry before any plan/choices; preserve specific refusal statuses | [Boundary regressions](../tests/test_boundaries.py), including malformed unselected records and duplicate identities |
 | P0 | Clarification could suggest expired or revoked definitions | Implemented in this PR: only approved, date-valid registry choices are offered | Revocation and expiry negative controls |
 | P0 | Unsupported bridge types could crash or look like explanation evidence | Implemented in this PR: object checks and nonempty textual bridge source/reason | Reconciliation boundary controls; authenticity remains unproven |
-| P1 | Claims lacked a compact, reproducible decision scorecard | Implemented in this PR: [12-case contract evaluation](EVALUATION.md), input/code hashes and CI receipt parity | Includes successful read/explanation controls as well as refusals; not a vendor benchmark |
+| P1 | Claims lacked a compact, reproducible decision scorecard | Implemented in this PR: [12-case contract evaluation](ASSURANCE.md), input/code hashes and CI receipt parity | Includes successful read/explanation controls as well as refusals; not a vendor benchmark |
 | P1 | Visitors lacked a focused way to contribute evidence | Implemented in this PR: [attention packet](ATTENTION.md) and counterexample issue form | Reproduction steps and claim limits required; no audience response claimed |
 | P1 | Status-only evaluation could miss wrong amounts, sources or unsupported explanations | Closed in follow-up: exact, type-sensitive expected-result comparison and mutation controls | Wrong-source/operation, wrong-amount, extra-explanation, missing-provenance, narrowed-choice and refusal-disclosure mutations fail evaluation |
 | P1 | No standards/platform interchange | Documented, not implemented: mapping and loss register below | Future adapter must preserve units, grain, temporal semantics and evidence boundaries, and fail unsupported mappings |
 | P1 | No live identity or metric execution proof | Blocked on designated sandbox, approved bindings and access | Allowed/denied real identities, source reconciliation and sanitized receipts |
 | P2 | No independent evaluation or broad domain model | Open | External reproduction, held-out cases and steward-reviewed domain expansion |
-| P2 | No open-source license determination | Open; see [license status](../LICENSE-STATUS.md) | Owner-approved licensing/ownership decision, not an agent assumption |
+| P2 | Open-source reuse terms | Resolved: [MIT License](../LICENSE), copyright Michael Saleme | Preserve the license notice |
 
 ## Interoperability crosswalk and loss register
 

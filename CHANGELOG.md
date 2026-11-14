@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased - package and contributor entry points
+
+- Apply MIT license, copyright Michael Saleme.
+- Add installable `sgo` CLI, JSON Schema validation and offline custom metric/case evaluation.
+- Move regression controls to `tests/` and check isolated wheel installation in CI.
+- Consolidate run/reproduction and assurance/platform-fit guides; retain legacy script entry points.
+- Add unposted contributor issue drafts and a local demo recording outline.
+
+
 ## 2026-11-08 - Semantic change review
 
 - Added offline snapshot comparison, conservative change classification, version-drift checks and input fingerprints.
@@ -25,7 +34,7 @@
 
 - Package the original local prototype as a standalone repository.
 - Public repository visibility authorized on 2026-11-04; no open-source license assigned.
-- Add onboarding, data model/API reference, walkthrough, validation boundaries, roadmap, contribution guidance, and security/license status.
+- Add onboarding, data model/API reference, walkthrough, validation boundaries, roadmap, contribution guidance, and security/MIT license.
 - Add deterministic example verification, local documentation link checks, and Python CI.
 - Preserve original synthetic resolver behavior and 15 behavioral controls.
 

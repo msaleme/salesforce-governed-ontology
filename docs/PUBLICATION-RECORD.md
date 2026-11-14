@@ -6,7 +6,7 @@
 - Links and commands pinned to reviewed merged commit `9747a4810b5312a62dce75b9b75bbce5a9e1f4a8` from PR #6. Clean detached-checkout verification passed before publication, including all article scenario commands and evaluation.
 - Publication API read-back confirmed title, public URL and pinned commit in the body.
 - The authenticated published-article list was checked immediately before publishing. Previous original: October 31, outside seven days. Recent 30-day titles/bodies were reviewed; none duplicated the financial explanation case.
-- [Captured CLI demonstration](TERMINAL-DEMO.md) and [reproduction instructions](REPRODUCTION.md) added in this follow-up. These are not part of the older pinned article checkout.
+- [Captured CLI demonstration](RUN-GUIDE.md) and [reproduction instructions](RUN-GUIDE.md) added in this follow-up. These are not part of the older pinned article checkout.
 
 ## Measure outcomes, not distribution alone
 

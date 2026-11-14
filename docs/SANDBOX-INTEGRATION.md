@@ -67,7 +67,7 @@ A describe response is **not** a proof of field-level or row-level enforcement. 
 
 ## Evidence gates for the real metric
 
-The remaining dependencies are the [platform-fit packet](PLATFORM-FIT-REVIEW.md): named owner/steward, approved definition version and dimensions, actual Informatica asset, fixed MuleSoft read operation and schemas, approved test records, and two differently restricted identities.
+The remaining dependencies are the [platform-fit packet](ASSURANCE.md): named owner/steward, approved definition version and dimensions, actual Informatica asset, fixed MuleSoft read operation and schemas, approved test records, and two differently restricted identities.
 
 After those inputs exist, implement the fixed read binding and capture permitted/denied reads, revoked-definition rejection, stale/partial response handling and identity isolation. Keep live receipts in the approved private location, not this public repo. The offline ontology fixtures must not silently become live business approvals.
 

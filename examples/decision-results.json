@@ -218,10 +218,14 @@
   ],
   "sha256": {
     "ontology.json": "ea0bed2cf944108bfc11b555a455fd1ac24569da2009650ccc86bf872a114147",
-    "demo.py": "108153fe304ca178ecaf0b3692854f24201fa6f0be0b562c37f7e6514e9d3e03",
-    "validation.py": "4f1bb55d22457a2755915b4b90cbc4a79ccb9f741de0fbc338a869d72b067fab",
-    "explore.py": "45704699ed36385b0af6d68d4a4803279b15570e4ebd0961c9a9ac3dfa95bd74",
-    "evaluate.py": "8bda4e217ab523052271fe34fc86039c67073891aec2650f10b775e08f25422b",
+    "demo.py": "4165039db8c406b77f012df583ec20bbf794338429227bb2ce8620de5df3a7d6",
+    "validation.py": "c7892ff8b3357b96f775c1a2b9ed15e3aee84b540eb6879d660bdb023721b194",
+    "explore.py": "db01d2381867d77b14dc03427c8e2b4879f1fd47c3e770b5402497fe62f02848",
+    "evaluate.py": "b8b555b4e8528c6b4dee364cef1dd2054dc33eca5cef37fb95958531b12015f4",
+    "sgo/demo.py": "7763fc9b3511c1cabeb732ec4f175cc1d8bdf1eea7f45fb7b6680543cd6b68f3",
+    "sgo/validation.py": "c37997da8a259a3b50a7689f2b159c5c8a7e23ff014e4993a97b157fb038b60a",
+    "sgo/explore.py": "a7680651353221007ec52269cbbe34de1884c5ea1b7b43ab22fafd62686a896f",
+    "sgo/ontology.schema.json": "10f38471e48a56dabf7c7dd7f082b11acd781ed38abd6dd7c855950533086f57",
     "examples/decision-cases.json": "04fa4178a97e20c2a1e74cbf300cc44212f9780ba73ca034c9d050f32495cd75"
   }
 }

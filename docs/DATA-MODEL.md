@@ -81,4 +81,4 @@ Returns the combined scenario dictionary printed as JSON by `python3 demo.py`. [
 
 The validator checks required fields, unique identities/relationships, relationship references, lifecycle states, date intervals, approval fixture fields, grain/unit/aggregation, lineage inclusion, and exact metric/source/operation bindings. Extra fields are allowed. This is neither a general JSON Schema implementation nor a proof of real approval, lineage truth, or complete business semantics.
 
-`python3 explore.py tour` explains eight local scenarios. `tour --json` emits structured results. `scenario NAME` emits one scenario. Unknown commands exit 2. See the [demo guide](DEMO-GUIDE.md).
+`python3 explore.py tour` explains eight local scenarios. `tour --json` emits structured results. `scenario NAME` emits one scenario. Unknown commands exit 2. See the [demo guide](RUN-GUIDE.md).
