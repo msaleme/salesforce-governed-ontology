@@ -38,4 +38,4 @@ Use the semantic decision counterexample issue form with a commit, Python versio
 
 ## Team evaluation and second domain
 
-Use the [team evaluation packet](docs/TEAM-EVALUATION.md) for a bounded review. Reliability is intentionally separate from finance; document new domain-specific assumptions rather than adding unrelated fields to the finance registry. Standards changes must update the loss report and preserve the non-executable boundary. Reuse is covered by the [MIT License](LICENSE).
+Use the [team evaluation packet](docs/ASSURANCE.md#team-evaluation) for a bounded review. Reliability is intentionally separate from finance; document new domain-specific assumptions rather than adding unrelated fields to the finance registry. Standards changes must update the loss report and preserve the non-executable boundary. Reuse is covered by the [MIT License](LICENSE).

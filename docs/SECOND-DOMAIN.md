@@ -22,4 +22,4 @@ The implementation uses exact integer cross-multiplication, not rounded display 
 
 This is a separate bounded decision contract, not a new metric accepted by the financial resolver. No shared arbitrary-domain engine is claimed. The finance registry's grain, scope, binding rules and accounting assumptions remain finance-specific. Reliability needs its own count validity, denominator, completeness and threshold logic. A native monitor integration would need authenticated observations, deduplication, authoritative objective history and coverage validation.
 
-All cases are maintainer-authored synthetic examples, not a statistical benchmark or independent domain validation. See [the evaluation packet](TEAM-EVALUATION.md) for how to challenge them.
+All cases are maintainer-authored synthetic examples, not a statistical benchmark or independent domain validation. See [the evaluation packet](ASSURANCE.md#team-evaluation) for how to challenge them.
