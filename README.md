@@ -41,6 +41,22 @@ Install from this checkout; no package release is claimed. Installation fetches
 credentials or model calls. For development use `python -m pip install -e .`.
 Existing `python3 explore.py tour` and other root script commands remain supported.
 
+## Watch the terminal demo
+
+[Download the short asciinema recording](docs/assets/sgo-demo.cast) of
+`sgo tour` and `sgo byod examples/user-metrics.json`. It shows all eight tour
+verdicts and all four passing BYOD cases, with the complete command output.
+
+GitHub does not play `.cast` files inline. With asciinema installed, replay locally:
+
+```sh
+asciinema play docs/assets/sgo-demo.cast
+```
+
+The recording identifies its source commit and Python version. Output is paced
+for readability; this is not a performance benchmark. Only synthetic local data
+is shown, not live platform validation. No external recording host is used.
+
 ## Bring your own definitions
 
 `sgo byod FILE.json` loads a registry and explicit expected-result cases. Custom
