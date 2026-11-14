@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "industry": "energy",
+  "evidence": "synthetic_only",
+  "claim": "Compare aligned contract bookings with recognized revenue; do not infer why.",
+  "formula": "difference_minor = sum(Bookings.amount_minor) - sum(RevenueEntry.amount_minor)",
+  "native_mapping_status": "unverified",
+  "objects": [
+    {
+      "name": "Contract",
+      "grain": "one contract",
+      "owner": "Commercial data steward",
+      "candidate_source": "Reviewed CRM/ERP contract master",
+      "schema_revision": "synthetic-v1",
+      "fields": {
+        "id": "text",
+        "account_id": "text"
+      },
+      "joins": []
+    },
+    {
+      "name": "Bookings",
+      "grain": "one booking entry",
+      "owner": "Commercial finance",
+      "candidate_source": "Approved bookings ledger, not Opportunity.Amount by assumption",
+      "schema_revision": "synthetic-v1",
+      "fields": {
+        "id": "text",
+        "contract_id": "text",
+        "amount_minor": "nonnegative_int",
+        "currency": "USD"
+      },
+      "joins": [
+        {
+          "field": "contract_id",
+          "target": "Contract",
+          "cardinality": "many-to-one"
+        }
+      ]
+    },
+    {
+      "name": "RevenueEntry",
+      "grain": "one recognition entry",
+      "owner": "Accounting",
+      "candidate_source": "ERP recognition subledger",
+      "schema_revision": "synthetic-v1",
+      "fields": {
+        "id": "text",
+        "contract_id": "text",
+        "amount_minor": "nonnegative_int",
+        "currency": "USD"
+      },
+      "joins": [
+        {
+          "field": "contract_id",
+          "target": "Contract",
+          "cardinality": "many-to-one"
+        }
+      ]
+    }
+  ]
+}

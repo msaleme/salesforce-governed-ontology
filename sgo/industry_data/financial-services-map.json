@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "industry": "financial-services",
+  "evidence": "synthetic_only",
+  "claim": "Compare positive gross valuations for identical positions in two frozen reports.",
+  "formula": "difference_minor = sum(ReportA.amount_minor) - sum(ReportB.amount_minor); no netting",
+  "native_mapping_status": "unverified",
+  "objects": [
+    {
+      "name": "LegalEntity",
+      "grain": "one legal entity",
+      "owner": "Entity data steward",
+      "candidate_source": "Entity master; LEI mapping requires review",
+      "schema_revision": "synthetic-v1",
+      "fields": {
+        "id": "text",
+        "legal_name": "text"
+      },
+      "joins": []
+    },
+    {
+      "name": "Position",
+      "grain": "one position",
+      "owner": "Risk operations",
+      "candidate_source": "Position book",
+      "schema_revision": "synthetic-v1",
+      "fields": {
+        "id": "text",
+        "entity_id": "text"
+      },
+      "joins": [
+        {
+          "field": "entity_id",
+          "target": "LegalEntity",
+          "cardinality": "many-to-one"
+        }
+      ]
+    },
+    {
+      "name": "ReportA",
+      "grain": "one valuation per position",
+      "owner": "Risk methodology",
+      "candidate_source": "Frozen risk report A",
+      "schema_revision": "synthetic-v1",
+      "fields": {
+        "id": "text",
+        "position_id": "text",
+        "amount_minor": "nonnegative_int",
+        "currency": "USD"
+      },
+      "joins": [
+        {
+          "field": "position_id",
+          "target": "Position",
+          "cardinality": "many-to-one"
+        }
+      ]
+    },
+    {
+      "name": "ReportB",
+      "grain": "one valuation per position",
+      "owner": "Risk methodology",
+      "candidate_source": "Frozen risk report B",
+      "schema_revision": "synthetic-v1",
+      "fields": {
+        "id": "text",
+        "position_id": "text",
+        "amount_minor": "nonnegative_int",
+        "currency": "USD"
+      },
+      "joins": [
+        {
+          "field": "position_id",
+          "target": "Position",
+          "cardinality": "many-to-one"
+        }
+      ]
+    }
+  ]
+}

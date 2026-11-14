@@ -15,6 +15,7 @@ def main():
     subprocess.run([sys.executable, 'explore.py', 'validate'], cwd=ROOT, check=True)
     subprocess.run([sys.executable, 'explore.py', 'tour', '--json'], cwd=ROOT, check=True, stdout=subprocess.DEVNULL)
     subprocess.run([sys.executable, 'reliability.py'], cwd=ROOT, check=True, stdout=subprocess.DEVNULL)
+    subprocess.run([sys.executable, 'industry_proof.py', '--json'], cwd=ROOT, check=True, stdout=subprocess.DEVNULL)
     output = subprocess.check_output([sys.executable, 'demo.py'], cwd=ROOT, text=True)
     expected = json.loads((ROOT / 'examples/demo-output.json').read_text())
     if json.loads(output) != expected:
@@ -22,7 +23,7 @@ def main():
     model = json.loads((ROOT / 'ontology.json').read_text())
     graph = 'flowchart LR\n' + '\n'.join(
         f"  {r['source']} -->|{r['predicate']}| {r['target']}" for r in model['relationships'])
-    diagram = (ROOT / 'docs/ONTOLOGY-MAP.md').read_text()
+    diagram = (ROOT / 'docs/DATA-MODEL.md').read_text()
     if f'```mermaid\n{graph}\n```' not in diagram:
         raise SystemExit('FAIL: ontology diagram differs from registry relationships')
     transcript = subprocess.check_output([sys.executable, 'scripts/reproduce.py', '--demo'], cwd=ROOT, text=True)
@@ -32,6 +33,9 @@ def main():
         raise SystemExit('FAIL: captured demonstration differs from current behavior')
     if (ROOT / 'ontology.json').read_bytes() != (ROOT / 'sgo/ontology.json').read_bytes():
         raise SystemExit('FAIL: packaged ontology differs from root registry')
+    for fixture in (ROOT / 'examples/industry-proof').glob('*.json'):
+        if fixture.read_bytes() != (ROOT / 'sgo/industry_data' / fixture.name).read_bytes():
+            raise SystemExit(f'FAIL: packaged industry fixture differs: {fixture.name}')
     links = 0
     for document in ROOT.rglob('*.md'):
         if any(part in {'.git', '.venv', 'build', 'dist'} or part.endswith('.egg-info') for part in document.relative_to(ROOT).parts):

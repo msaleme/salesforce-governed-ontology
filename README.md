@@ -41,6 +41,22 @@ Install from this checkout; no package release is claimed. Installation fetches
 credentials or model calls. For development use `python -m pip install -e .`.
 Existing `python3 explore.py tour` and other root script commands remain supported.
 
+## Watch the terminal demo
+
+[Download the short asciinema recording](docs/assets/sgo-demo.cast) of
+`sgo tour` and `sgo byod examples/user-metrics.json`. It shows all eight tour
+verdicts and all four passing BYOD cases, with the complete command output.
+
+GitHub does not play `.cast` files inline. With asciinema installed, replay locally:
+
+```sh
+asciinema play docs/assets/sgo-demo.cast
+```
+
+The recording identifies its source commit and Python version. Output is paced
+for readability; this is not a performance benchmark. Only synthetic local data
+is shown, not live platform validation. No external recording host is used.
+
 ## Bring your own definitions
 
 `sgo byod FILE.json` loads a registry and explicit expected-result cases. Custom
@@ -54,16 +70,22 @@ executes a binding or contacts a platform. See the [input contract and example](
 
 Reuse Tableau Semantics, Snowflake Semantic Views, Databricks metric views, dbt, Looker and Power BI/Fabric definitions. MuleSoft coordinates metadata review and approved native queries; this ontology supplies decision checks and mapping governance. These are documented design mappings, not deployed adapters. Existing fixture execution is unchanged.
 
+## CTO and industry architecture pack
+
+[CTO decision brief](docs/CTO-ADVISORY.md) · [Pilot scorecard and decision record](docs/CTO-PILOT-KIT.md)
+
+Proposed reference architectures for [energy](docs/industries/ENERGY.md), [financial services](docs/industries/FINANCIAL-SERVICES.md), [healthcare operations](docs/industries/HEALTHCARE.md), [manufacturing](docs/industries/MANUFACTURING.md), and [retail / distribution](docs/industries/RETAIL.md). Each identifies a bounded business decision, native-system boundaries, semantic counterexamples, ownership and a first pilot. The broader architectures remain proposals. [Run the data-to-proof check](docs/DATA-TO-PROOF.md) for five narrow synthetic calculations, required objects/fields and owner-specific next actions. No native integrations are validated.
+
 
 ## Go deeper
 
 - [Run, demonstrate and reproduce](docs/RUN-GUIDE.md): walkthrough, presentation script, captured output and reproducible receipts.
 - [Validation, evaluation and platform fit](docs/ASSURANCE.md): controls, fixed-case evaluation and native-platform acceptance gates.
-- [Architecture](docs/ARCHITECTURE.md), [data model](docs/DATA-MODEL.md) and [ontology map](docs/ONTOLOGY-MAP.md).
-- [Platform comparison](docs/COMPARISON.md), [change review](docs/CHANGE-REVIEW.md) and [design decisions](docs/DESIGN-DECISIONS.md).
-- [Team evaluation](docs/TEAM-EVALUATION.md), [second domain](docs/SECOND-DOMAIN.md) and [SKOS export limitations](docs/STANDARDS-EXPORT.md).
-- [Sandbox integration](docs/SANDBOX-INTEGRATION.md), [roadmap](docs/ROADMAP.md), [contributing](CONTRIBUTING.md) and [security](SECURITY.md).
-- [Draft issue ideas and demo recording outline](docs/CONTRIBUTOR-DRAFTS.md) (not posted or recorded).
+- [Architecture, decisions and roadmap](docs/ARCHITECTURE.md); [data model, API and ontology map](docs/DATA-MODEL.md).
+- [Platform comparison](docs/COMPARISON.md) and [semantic change review](docs/CHANGE-REVIEW.md).
+- [Second domain](docs/SECOND-DOMAIN.md), [SKOS export limitations](docs/STANDARDS-EXPORT.md) and [sandbox integration](docs/SANDBOX-INTEGRATION.md).
+- [Project notes](docs/PROJECT-NOTES.md): publication history, licensing decision and retained article/outreach drafts.
+- [Draft issue ideas and demo outline](docs/CONTRIBUTOR-DRAFTS.md); [contributing](CONTRIBUTING.md) and [security](SECURITY.md).
 
 ## Verify
 

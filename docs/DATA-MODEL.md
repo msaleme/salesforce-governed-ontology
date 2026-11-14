@@ -1,6 +1,13 @@
-# Data model and local API
+# Data model, local API and ontology map
 
-## Vocabulary
+- [Data model and local API](#data-model)
+- [Oil & Gas ontology map](#ontology-map)
+
+<a id="data-model"></a>
+
+## Data model and local API
+
+### Vocabulary
 
 The authoritative example is [ontology.json](../ontology.json). Its namespace is `urn:example:sf-governed-og:` and its evidence classification is `synthetic_only`.
 
@@ -16,7 +23,7 @@ The authoritative example is [ontology.json](../ontology.json). Its namespace is
 
 Relationships connect Account to OperatorRole, OperatorRole to Asset, Well to Asset, ProductionObservation to Well, Contract to Asset and Account, and RevenueEntry to Contract. The JSON lists relationship types, not instance records. Temporal qualifiers and cardinality are architecture requirements, not implemented constraints in this fixture.
 
-## Metric record
+### Metric record
 
 Each fixture metric contains `id`, `label`, `version`, `definition`, `status`, `approval`, `valid_from`, `valid_to`, `grain`, `aggregation`, `unit`, `source_binding`, `lineage`, and `action`.
 
@@ -29,9 +36,9 @@ Each fixture metric contains `id`, `label`, `version`, `definition`, `status`, `
 
 `booked_revenue` is an internal identifier for contract bookings, not recognized revenue or a claim that Opportunity Amount is an accounting measure. The approved state means approved **within the synthetic fixture only**.
 
-## Python functions
+### Python functions
 
-### `resolve(metric_id, scopes, as_of="2026-11-03", model=None)`
+#### `resolve(metric_id, scopes, as_of="2026-11-03", model=None)`
 
 Accepts a metric identifier, a list, tuple, set or frozenset of nonempty fixture scope strings, an ISO date, and an optional model dictionary. Returns a dictionary. The default model is loaded from the adjacent JSON file at import time.
 
@@ -51,11 +58,11 @@ Checks are ordered: scope shape, missing finance scope, request identity/date, t
 
 `model=None` selects the default fixture. Read plans do not execute anything. These checks do not enforce immutable versions, authenticity, identity or metadata freshness. This is an in-process JSON-shaped fixture API, not a hardened network service with size/rate/depth limits.
 
-### `fixtures()`
+#### `fixtures()`
 
 Returns fresh bookings, recognized-revenue, and explanation-bridge dictionaries. All share operator, contract, period, and currency. Values are deterministic and synthetic.
 
-### `reconcile(booked, recognized, bridge=None)`
+#### `reconcile(booked, recognized, bridge=None)`
 
 Expects dictionaries with matching nonempty dimensions, approved fixture source strings, and integer `amount_minor` values. Booleans and floating-point values are rejected as amounts. The function compares a pre-aligned cohort; it does not align arbitrary accounting ledgers.
 
@@ -71,14 +78,56 @@ Expects dictionaries with matching nonempty dimensions, approved fixture source 
 
 Bridge must be an object; source and reason must be nonempty strings, but their authenticity is not checked. No cryptographic provenance or financial verification is implied.
 
-### `demo()`
+#### `demo()`
 
 Returns the combined scenario dictionary printed as JSON by `python3 demo.py`. [Example output](../examples/demo-output.json) is checked for semantic JSON equality by the verification script.
 
-## Registry validation and guided CLI
+### Registry validation and guided CLI
 
 `python3 explore.py validate [path]` checks the bounded fixture registry with `validate_model(model)` from [validation.py](../validation.py). It returns path-qualified diagnostics and exits 1 for invalid input, 0 for a valid registry. The same validator is now an automatic precondition before any plan or clarification inside `resolve`; authoring validation additionally returns detailed diagnostics.
 
-The validator checks required fields, unique identities/relationships, relationship references, lifecycle states, date intervals, approval fixture fields, grain/unit/aggregation, lineage inclusion, and exact metric/source/operation bindings. Extra fields are allowed. This is neither a general JSON Schema implementation nor a proof of real approval, lineage truth, or complete business semantics.
+The validator checks required fields, unique identities/relationships, relationship references, lifecycle states, date intervals, approval fixture fields, grain/unit/aggregation, lineage inclusion, and exact metric/source/operation bindings. Extra fields are allowed. The packaged validator also applies the bundled draft 2020-12 JSON Schema. Neither schema nor semantic checks prove real approval, lineage truth, or complete business semantics.
 
 `python3 explore.py tour` explains eight local scenarios. `tour --json` emits structured results. `scenario NAME` emits one scenario. Unknown commands exit 2. See the [demo guide](RUN-GUIDE.md).
+
+
+<a id="ontology-map"></a>
+
+## Oil & Gas ontology map
+
+This diagram is generated from [ontology.json](../ontology.json). It describes concept types, not customer records. The graph is a lightweight registry, not an OWL inference model.
+
+<!-- BEGIN GENERATED GRAPH -->
+```mermaid
+flowchart LR
+  Account -->|hasRole| OperatorRole
+  OperatorRole -->|operates| Asset
+  Well -->|subClassOf| Asset
+  ProductionObservation -->|measures| Well
+  Contract -->|covers| Asset
+  Contract -->|hasCounterparty| Account
+  RevenueEntry -->|underContract| Contract
+```
+<!-- END GENERATED GRAPH -->
+
+### How to read it
+
+- An Account has an OperatorRole. Operation does not imply ownership.
+- A Well specializes Asset. ProductionObservation measures a well, not revenue.
+- A Contract covers assets and identifies counterparties.
+- RevenueEntry belongs to a contract. Production needs additional commercial and accounting rules before it can explain revenue.
+
+### Metric bindings
+
+| Metric | Source fixture | Read operation |
+| --- | --- | --- |
+| `booked_revenue` | `fixture:crm:contract_bookings` | `read_contract_bookings` |
+| `recognized_revenue` | `fixture:erp:revenue_ledger` | `read_recognized_revenue` |
+
+Both metrics use operator, contract, period, and currency as their grain. Bindings are checked as metric/source/operation triples. Definitions and lifecycle dates are in the [data model](DATA-MODEL.md).
+
+### Deliberate boundaries
+
+Temporal role intervals, relationship cardinality, actual identifiers, identity resolution, and production-to-finance mappings are not implemented. Adding graph edges does not prove those semantics.
+
+The verification script checks the graph block against the registry so the diagram cannot silently drift.

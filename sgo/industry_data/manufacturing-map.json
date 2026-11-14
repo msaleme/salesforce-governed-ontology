@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "industry": "manufacturing",
+  "evidence": "synthetic_only",
+  "claim": "Calculate bounded OEE factors for one completed run and one product.",
+  "formula": "availability=runtime/planned; performance=ideal_cycle*total/runtime; quality=good/total",
+  "native_mapping_status": "unverified",
+  "objects": [
+    {
+      "name": "Run",
+      "grain": "one completed single-product run",
+      "owner": "Plant operations",
+      "candidate_source": "MES reconciled run summary",
+      "schema_revision": "synthetic-v1",
+      "fields": {
+        "id": "text",
+        "product_id": "text",
+        "planned_seconds": "positive_int",
+        "runtime_seconds": "positive_int"
+      },
+      "joins": []
+    },
+    {
+      "name": "RateDefinition",
+      "grain": "one approved rate per run",
+      "owner": "Industrial engineering",
+      "candidate_source": "Versioned engineering rate selection",
+      "schema_revision": "synthetic-v1",
+      "fields": {
+        "id": "text",
+        "run_id": "text",
+        "product_id": "text",
+        "ideal_cycle_seconds": "positive_int"
+      },
+      "joins": [
+        {
+          "field": "run_id",
+          "target": "Run",
+          "cardinality": "many-to-one"
+        }
+      ]
+    },
+    {
+      "name": "QualityObservation",
+      "grain": "one reconciled count per run",
+      "owner": "Quality",
+      "candidate_source": "MES/QMS reconciled counts; rework handled upstream",
+      "schema_revision": "synthetic-v1",
+      "fields": {
+        "id": "text",
+        "run_id": "text",
+        "total": "positive_int",
+        "good": "nonnegative_int"
+      },
+      "joins": [
+        {
+          "field": "run_id",
+          "target": "Run",
+          "cardinality": "many-to-one"
+        }
+      ]
+    }
+  ]
+}

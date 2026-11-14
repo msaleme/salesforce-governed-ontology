@@ -1,0 +1,74 @@
+{
+  "industry": "energy",
+  "scope": {
+    "cohort": "fictional-closed-cohort-1",
+    "window_start": "2026-11-01T00:00:00Z",
+    "window_end": "2026-11-02T00:00:00Z"
+  },
+  "sources": {
+    "Contract": {
+      "source_ref": "fixture:energy:Contract",
+      "schema_revision": "synthetic-v1",
+      "scope": {
+        "cohort": "fictional-closed-cohort-1",
+        "window_start": "2026-11-01T00:00:00Z",
+        "window_end": "2026-11-02T00:00:00Z"
+      },
+      "complete": true,
+      "observed_at": "2026-11-02T00:00:00Z",
+      "expected_ids": [
+        "contract-1"
+      ],
+      "rows": [
+        {
+          "id": "contract-1",
+          "account_id": "party-1"
+        }
+      ]
+    },
+    "Bookings": {
+      "source_ref": "fixture:energy:Bookings",
+      "schema_revision": "synthetic-v1",
+      "scope": {
+        "cohort": "fictional-closed-cohort-1",
+        "window_start": "2026-11-01T00:00:00Z",
+        "window_end": "2026-11-02T00:00:00Z"
+      },
+      "complete": true,
+      "observed_at": "2026-11-02T00:00:00Z",
+      "expected_ids": [
+        "booking-1"
+      ],
+      "rows": [
+        {
+          "id": "booking-1",
+          "contract_id": "contract-1",
+          "amount_minor": 120000000,
+          "currency": "USD"
+        }
+      ]
+    },
+    "RevenueEntry": {
+      "source_ref": "fixture:energy:RevenueEntry",
+      "schema_revision": "synthetic-v1",
+      "scope": {
+        "cohort": "fictional-closed-cohort-1",
+        "window_start": "2026-11-01T00:00:00Z",
+        "window_end": "2026-11-02T00:00:00Z"
+      },
+      "complete": true,
+      "observed_at": "2026-11-02T00:00:00Z",
+      "expected_ids": [
+        "revenue-1"
+      ],
+      "rows": [
+        {
+          "id": "revenue-1",
+          "contract_id": "contract-1",
+          "amount_minor": 90000000,
+          "currency": "USD"
+        }
+      ]
+    }
+  }
+}
