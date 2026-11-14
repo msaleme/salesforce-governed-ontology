@@ -19,4 +19,4 @@ sgo = "sgo.cli:main"
 packages = ["sgo"]
 
 [tool.setuptools.package-data]
-sgo = ["*.json"]
+sgo = ["*.json", "industry_data/*.json"]

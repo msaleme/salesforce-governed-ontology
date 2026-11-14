@@ -8,6 +8,9 @@ from .byod import evaluate_file, load_json, validate_registry
 
 def main(argv=None):
     argv = list(sys.argv[1:] if argv is None else argv)
+    if argv and argv[0] == 'industry-proof':
+        from .industry_proof import main as industry_main
+        return industry_main(argv[1:])
     if argv and argv[0] in ('tour', 'scenario', 'validate'):
         return explore.main(argv)
     parser = argparse.ArgumentParser(description=__doc__)
@@ -15,6 +18,7 @@ def main(argv=None):
     sub.add_parser('tour', help='Eight synthetic verdicts')
     sub.add_parser('scenario', help='One synthetic scenario (see sgo scenario --help)')
     sub.add_parser('validate', help='Validate the bounded fixture registry')
+    sub.add_parser('industry-proof', help='Five synthetic object-readiness calculations')
     byod = sub.add_parser('byod', help='Evaluate your own metric definitions and cases offline')
     byod.add_argument('path', help='JSON file with ontology and cases')
     schema = sub.add_parser('validate-registry', help='Schema and semantic checks for custom registries')

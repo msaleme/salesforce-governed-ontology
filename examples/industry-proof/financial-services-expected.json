@@ -1,0 +1,11 @@
+{
+  "status": "gross_difference_only",
+  "values": {
+    "report_a_minor": 10000,
+    "report_b_minor": 9000,
+    "difference_minor": 1000,
+    "currency": "USD",
+    "netting": "not_evaluated",
+    "cause": "not_established"
+  }
+}

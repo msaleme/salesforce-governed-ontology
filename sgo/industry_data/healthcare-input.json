@@ -1,0 +1,89 @@
+{
+  "industry": "healthcare",
+  "scope": {
+    "cohort": "fictional-closed-cohort-1",
+    "window_start": "2026-11-01T00:00:00Z",
+    "window_end": "2026-11-02T00:00:00Z"
+  },
+  "sources": {
+    "Bed": {
+      "source_ref": "fixture:healthcare:Bed",
+      "schema_revision": "synthetic-v1",
+      "scope": {
+        "cohort": "fictional-closed-cohort-1",
+        "window_start": "2026-11-01T00:00:00Z",
+        "window_end": "2026-11-02T00:00:00Z"
+      },
+      "complete": true,
+      "observed_at": "2026-11-02T00:00:00Z",
+      "expected_ids": [
+        "bed-1",
+        "bed-2"
+      ],
+      "rows": [
+        {
+          "id": "bed-1",
+          "unit_id": "unit-1"
+        },
+        {
+          "id": "bed-2",
+          "unit_id": "unit-1"
+        }
+      ]
+    },
+    "BedAvailability": {
+      "source_ref": "fixture:healthcare:BedAvailability",
+      "schema_revision": "synthetic-v1",
+      "scope": {
+        "cohort": "fictional-closed-cohort-1",
+        "window_start": "2026-11-01T00:00:00Z",
+        "window_end": "2026-11-02T00:00:00Z"
+      },
+      "complete": true,
+      "observed_at": "2026-11-02T00:00:00Z",
+      "expected_ids": [
+        "availability-1",
+        "availability-2"
+      ],
+      "rows": [
+        {
+          "id": "availability-1",
+          "bed_id": "bed-1",
+          "ready": true
+        },
+        {
+          "id": "availability-2",
+          "bed_id": "bed-2",
+          "ready": false
+        }
+      ]
+    },
+    "StaffingCoverage": {
+      "source_ref": "fixture:healthcare:StaffingCoverage",
+      "schema_revision": "synthetic-v1",
+      "scope": {
+        "cohort": "fictional-closed-cohort-1",
+        "window_start": "2026-11-01T00:00:00Z",
+        "window_end": "2026-11-02T00:00:00Z"
+      },
+      "complete": true,
+      "observed_at": "2026-11-02T00:00:00Z",
+      "expected_ids": [
+        "staffing-1",
+        "staffing-2"
+      ],
+      "rows": [
+        {
+          "id": "staffing-1",
+          "bed_id": "bed-1",
+          "staffed": true
+        },
+        {
+          "id": "staffing-2",
+          "bed_id": "bed-2",
+          "staffed": true
+        }
+      ]
+    }
+  }
+}

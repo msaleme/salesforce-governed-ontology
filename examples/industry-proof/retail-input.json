@@ -1,0 +1,91 @@
+{
+  "industry": "retail",
+  "scope": {
+    "cohort": "fictional-closed-cohort-1",
+    "window_start": "2026-11-01T00:00:00Z",
+    "window_end": "2026-11-02T00:00:00Z"
+  },
+  "sources": {
+    "OrderLine": {
+      "source_ref": "fixture:retail:OrderLine",
+      "schema_revision": "synthetic-v1",
+      "scope": {
+        "cohort": "fictional-closed-cohort-1",
+        "window_start": "2026-11-01T00:00:00Z",
+        "window_end": "2026-11-02T00:00:00Z"
+      },
+      "complete": true,
+      "observed_at": "2026-11-02T00:00:00Z",
+      "expected_ids": [
+        "line-1",
+        "line-2"
+      ],
+      "rows": [
+        {
+          "id": "line-1",
+          "order_id": "order-1"
+        },
+        {
+          "id": "line-2",
+          "order_id": "order-1"
+        }
+      ]
+    },
+    "Promise": {
+      "source_ref": "fixture:retail:Promise",
+      "schema_revision": "synthetic-v1",
+      "scope": {
+        "cohort": "fictional-closed-cohort-1",
+        "window_start": "2026-11-01T00:00:00Z",
+        "window_end": "2026-11-02T00:00:00Z"
+      },
+      "complete": true,
+      "observed_at": "2026-11-02T00:00:00Z",
+      "expected_ids": [
+        "promise-1",
+        "promise-2"
+      ],
+      "rows": [
+        {
+          "id": "promise-1",
+          "line_id": "line-1",
+          "original_due_at": "2026-11-01T12:00:00Z"
+        },
+        {
+          "id": "promise-2",
+          "line_id": "line-2",
+          "original_due_at": "2026-11-01T12:00:00Z"
+        }
+      ]
+    },
+    "DeliverySummary": {
+      "source_ref": "fixture:retail:DeliverySummary",
+      "schema_revision": "synthetic-v1",
+      "scope": {
+        "cohort": "fictional-closed-cohort-1",
+        "window_start": "2026-11-01T00:00:00Z",
+        "window_end": "2026-11-02T00:00:00Z"
+      },
+      "complete": true,
+      "observed_at": "2026-11-02T00:00:00Z",
+      "expected_ids": [
+        "delivery-1",
+        "delivery-2"
+      ],
+      "rows": [
+        {
+          "id": "delivery-1",
+          "line_id": "line-1",
+          "delivered_at": "2026-11-01T11:00:00Z",
+          "full_quantity": true
+        },
+        {
+          "id": "delivery-2",
+          "line_id": "line-2",
+          "delivered_at": "2026-11-01T13:00:00Z",
+          "full_quantity": true
+        }
+      ]
+    }
+  }
+}
