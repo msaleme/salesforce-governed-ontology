@@ -1,0 +1,10 @@
+{
+  "status": "original_promise_line_rate",
+  "values": {
+    "on_time_lines": 1,
+    "required_lines": 2,
+    "ratio": "1/2",
+    "grain": "line",
+    "cause": "not_established"
+  }
+}

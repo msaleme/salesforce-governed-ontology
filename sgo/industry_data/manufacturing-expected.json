@@ -1,0 +1,10 @@
+{
+  "status": "bounded_oee",
+  "values": {
+    "availability": "9/10",
+    "performance": "8/9",
+    "quality": "19/20",
+    "oee": "19/25",
+    "cause": "not_established"
+  }
+}

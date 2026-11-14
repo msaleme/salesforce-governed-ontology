@@ -1,0 +1,94 @@
+{
+  "industry": "financial-services",
+  "scope": {
+    "cohort": "fictional-closed-cohort-1",
+    "window_start": "2026-11-01T00:00:00Z",
+    "window_end": "2026-11-02T00:00:00Z"
+  },
+  "sources": {
+    "LegalEntity": {
+      "source_ref": "fixture:financial-services:LegalEntity",
+      "schema_revision": "synthetic-v1",
+      "scope": {
+        "cohort": "fictional-closed-cohort-1",
+        "window_start": "2026-11-01T00:00:00Z",
+        "window_end": "2026-11-02T00:00:00Z"
+      },
+      "complete": true,
+      "observed_at": "2026-11-02T00:00:00Z",
+      "expected_ids": [
+        "entity-1"
+      ],
+      "rows": [
+        {
+          "id": "entity-1",
+          "legal_name": "Fictional Entity"
+        }
+      ]
+    },
+    "Position": {
+      "source_ref": "fixture:financial-services:Position",
+      "schema_revision": "synthetic-v1",
+      "scope": {
+        "cohort": "fictional-closed-cohort-1",
+        "window_start": "2026-11-01T00:00:00Z",
+        "window_end": "2026-11-02T00:00:00Z"
+      },
+      "complete": true,
+      "observed_at": "2026-11-02T00:00:00Z",
+      "expected_ids": [
+        "position-1"
+      ],
+      "rows": [
+        {
+          "id": "position-1",
+          "entity_id": "entity-1"
+        }
+      ]
+    },
+    "ReportA": {
+      "source_ref": "fixture:financial-services:ReportA",
+      "schema_revision": "synthetic-v1",
+      "scope": {
+        "cohort": "fictional-closed-cohort-1",
+        "window_start": "2026-11-01T00:00:00Z",
+        "window_end": "2026-11-02T00:00:00Z"
+      },
+      "complete": true,
+      "observed_at": "2026-11-02T00:00:00Z",
+      "expected_ids": [
+        "valuation-a"
+      ],
+      "rows": [
+        {
+          "id": "valuation-a",
+          "position_id": "position-1",
+          "amount_minor": 10000,
+          "currency": "USD"
+        }
+      ]
+    },
+    "ReportB": {
+      "source_ref": "fixture:financial-services:ReportB",
+      "schema_revision": "synthetic-v1",
+      "scope": {
+        "cohort": "fictional-closed-cohort-1",
+        "window_start": "2026-11-01T00:00:00Z",
+        "window_end": "2026-11-02T00:00:00Z"
+      },
+      "complete": true,
+      "observed_at": "2026-11-02T00:00:00Z",
+      "expected_ids": [
+        "valuation-b"
+      ],
+      "rows": [
+        {
+          "id": "valuation-b",
+          "position_id": "position-1",
+          "amount_minor": 9000,
+          "currency": "USD"
+        }
+      ]
+    }
+  }
+}

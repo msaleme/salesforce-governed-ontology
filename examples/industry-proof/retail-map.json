@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "industry": "retail",
+  "evidence": "synthetic_only",
+  "claim": "Count fully delivered lines meeting the original promise in a closed cohort.",
+  "formula": "on_time = count(DeliverySummary.delivered_at <= Promise.original_due_at), one per required line",
+  "native_mapping_status": "unverified",
+  "objects": [
+    {
+      "name": "OrderLine",
+      "grain": "one noncancelled required line",
+      "owner": "Fulfillment operations",
+      "candidate_source": "Frozen OMS line cohort",
+      "schema_revision": "synthetic-v1",
+      "fields": {
+        "id": "text",
+        "order_id": "text"
+      },
+      "joins": []
+    },
+    {
+      "name": "Promise",
+      "grain": "one original promise per line",
+      "owner": "Customer operations",
+      "candidate_source": "Immutable original OMS promise extract",
+      "schema_revision": "synthetic-v1",
+      "fields": {
+        "id": "text",
+        "line_id": "text",
+        "original_due_at": "timestamp"
+      },
+      "joins": [
+        {
+          "field": "line_id",
+          "target": "OrderLine",
+          "cardinality": "many-to-one"
+        }
+      ]
+    },
+    {
+      "name": "DeliverySummary",
+      "grain": "one full-quantity delivery per line",
+      "owner": "Fulfillment operations",
+      "candidate_source": "Reviewed WMS/carrier aggregation, not raw scans",
+      "schema_revision": "synthetic-v1",
+      "fields": {
+        "id": "text",
+        "line_id": "text",
+        "delivered_at": "timestamp",
+        "full_quantity": "bool"
+      },
+      "joins": [
+        {
+          "field": "line_id",
+          "target": "OrderLine",
+          "cardinality": "many-to-one"
+        }
+      ]
+    }
+  ]
+}

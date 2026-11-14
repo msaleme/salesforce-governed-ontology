@@ -1,0 +1,8 @@
+{
+  "status": "bounded_capacity_count",
+  "values": {
+    "available_staffed_beds": 1,
+    "beds_observed": 2,
+    "clinical_suitability": "not_established"
+  }
+}
