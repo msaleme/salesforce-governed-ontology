@@ -1,8 +1,9 @@
 # Contributor and recording drafts
 
 These are draft issue bodies, not created GitHub issues. Suggested label:
-`good first issue`. The longer outline below remains a draft. A short [terminal recording](assets/sgo-demo.cast)
-now demonstrates `sgo tour` and `sgo byod examples/user-metrics.json`; it does not
+`good first issue`. The longer outline below remains a draft. A short [inline GIF demo](assets/sgo-demo.gif)
+([original terminal recording](assets/sgo-demo.cast);
+[replay instructions](../README.md#watch-the-terminal-demo)) demonstrates `sgo tour` and `sgo byod examples/user-metrics.json`; it does not
 claim to cover every step of the longer outline.
 
 ## Draft issue: Add a custom inventory metric example

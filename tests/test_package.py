@@ -24,6 +24,14 @@ class PackageTests(unittest.TestCase):
             path.write_text(json.dumps(data))
             return evaluate_file(path)
 
+    def test_version_exits_successfully_without_subcommand(self):
+        from sgo import __version__
+        with patch('sys.stdout', new_callable=io.StringIO) as output:
+            with self.assertRaises(SystemExit) as exit_result:
+                main(['--version'])
+        self.assertEqual(exit_result.exception.code, 0)
+        self.assertEqual(output.getvalue(), f'sgo {__version__}\n')
+
     def test_schema_valid_and_both_registries_conform(self):
         Draft202012Validator.check_schema(SCHEMA)
         self.assertEqual(schema_errors(self.data['ontology']), [])

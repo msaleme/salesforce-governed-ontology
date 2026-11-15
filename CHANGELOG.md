@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Add `sgo --version` to report the package version without a subcommand.
+- Link contributor drafts to the GIF and save the unpublished dev.to update for review.
+
 ## v0.1.0 - prepared, not released
 
 - Installable `sgo` CLI with the eight-verdict offline tour and legacy script compatibility.
@@ -10,14 +15,6 @@
 - Inline README GIF generated with agg; original asciinema recording and replay instructions retained.
 - Version metadata normalized from the unpublished 0.2.0 placeholder to the requested initial v0.1.0, including the Python package version. No tag or package publication implied.
 - Draft release notes: [v0.1.0](docs/releases/v0.1.0.md).
-
-## Unreleased - package and contributor entry points
-
-- Apply MIT license, copyright Michael Saleme.
-- Add installable `sgo` CLI, JSON Schema validation and offline custom metric/case evaluation.
-- Move regression controls to `tests/` and check isolated wheel installation in CI.
-- Consolidate run/reproduction and assurance/platform-fit guides; retain legacy script entry points.
-- Add unposted contributor issue drafts and a local demo recording outline.
 
 ## 2026-11-13 - Semantic federation reference design
 
@@ -46,14 +43,6 @@
 - Fail on missing/mismatched types and reject malformed or duplicate contracts.
 - Keep receipts sanitized and distinguish name-only checks from type verification.
 - Add synthetic regression controls; no live connectivity or semantic approval claimed.
-
-## Unreleased
-
-- Package the original local prototype as a standalone repository.
-- Public repository visibility authorized on 2026-11-04; no open-source license assigned.
-- Add onboarding, data model/API reference, walkthrough, validation boundaries, roadmap, contribution guidance, and security/MIT license.
-- Add deterministic example verification, local documentation link checks, and Python CI.
-- Preserve original synthetic resolver behavior and 15 behavioral controls.
 
 ## 0.1.0 design starter - 2026-11-03
 

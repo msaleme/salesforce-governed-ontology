@@ -22,6 +22,13 @@ def main():
         subprocess.run([str(python), '-m', 'pip', 'install', str(wheel)], cwd=base, check=True)
         env = dict(os.environ)
         env.pop('PYTHONPATH', None)
+        installed_version = subprocess.check_output(
+            [str(python), '-I', '-c',
+             'from importlib.metadata import version; print(version("salesforce-governed-ontology"))'],
+            cwd=base, env=env, text=True).strip()
+        for command in ([str(cli)], [str(python), '-I', '-m', 'sgo']):
+            result = subprocess.check_output(command + ['--version'], cwd=base, env=env, text=True)
+            assert result.strip() == f'sgo {installed_version}'
         for args in (['industry-proof','--json'], ['tour','--json'], ['validate'], ['byod',str(ROOT/'examples/user-metrics.json')]):
             result = subprocess.check_output([str(cli),*args], cwd=base, env=env, text=True)
             payload = json.loads(result)
