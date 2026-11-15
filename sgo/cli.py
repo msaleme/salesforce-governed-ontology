@@ -2,7 +2,7 @@
 import argparse
 import json
 import sys
-from . import explore
+from . import __version__, explore
 from .byod import evaluate_file, load_json, validate_registry
 
 
@@ -14,6 +14,7 @@ def main(argv=None):
     if argv and argv[0] in ('tour', 'scenario', 'validate'):
         return explore.main(argv)
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--version', action='version', version=f'sgo {__version__}')
     sub = parser.add_subparsers(dest='command', required=True)
     sub.add_parser('tour', help='Eight synthetic verdicts')
     sub.add_parser('scenario', help='One synthetic scenario (see sgo scenario --help)')
