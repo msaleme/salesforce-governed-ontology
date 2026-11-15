@@ -43,11 +43,14 @@ Existing `python3 explore.py tour` and other root script commands remain support
 
 ## Watch the terminal demo
 
+![Terminal demo of sgo tour and custom-metric BYOD](docs/assets/sgo-demo.gif)
+
 [Download the short asciinema recording](docs/assets/sgo-demo.cast) of
 `sgo tour` and `sgo byod examples/user-metrics.json`. It shows all eight tour
 verdicts and all four passing BYOD cases, with the complete command output.
 
-GitHub does not play `.cast` files inline. With asciinema installed, replay locally:
+The GIF plays inline; the original `.cast` retains the full text. With asciinema
+installed, replay locally:
 
 ```sh
 asciinema play docs/assets/sgo-demo.cast
@@ -56,6 +59,13 @@ asciinema play docs/assets/sgo-demo.cast
 The recording identifies its source commit and Python version. Output is paced
 for readability; this is not a performance benchmark. Only synthetic local data
 is shown, not live platform validation. No external recording host is used.
+
+Regenerate the GIF with [agg](https://github.com/asciinema/agg) 1.9.0:
+
+```sh
+agg --font-size 16 --theme github-dark --idle-time-limit 5 \
+  docs/assets/sgo-demo.cast docs/assets/sgo-demo.gif
+```
 
 ## Bring your own definitions
 
